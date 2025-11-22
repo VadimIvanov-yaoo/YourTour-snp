@@ -1,0 +1,107 @@
+@use 'colors';
+
+@mixin h1-pc {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 109%;
+  letter-spacing: 0.02em;
+  color: colors.$black;
+}
+
+@mixin h2-pc {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 59px;
+  line-height: 124%;
+  color: colors.$black;
+}
+
+@mixin h3-pc {
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 122%;
+  color: colors.$black;
+}
+
+@mixin p-big {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 122%;
+  color: colors.$black;
+}
+
+@mixin p-normal {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 142%;
+  color: colors.$black;
+}
+
+@mixin p-small {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 142%;
+  letter-spacing: -1%;
+  color: colors.$black;
+}
+
+//mobile
+
+@mixin h1-mobile {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 112%;
+  letter-spacing: 2%;
+  color: colors.$black;
+}
+
+@mixin h2-mobile {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 112%;
+  letter-spacing: 2%;
+  color: colors.$black;
+}
+
+@mixin h3-mobile {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 120%;
+  letter-spacing: 4%;
+  color: colors.$black;
+}
+
+@mixin p-big-mobile {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 142%;
+  color: colors.$black;
+}
+
+@mixin p-normal-mobile {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 142%;
+  color: colors.$black;
+}
+
+@mixin p-small-mobile {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 142%;
+  letter-spacing: -1%;
+  color: colors.$black;
+}
+
+@mixin flex-center-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

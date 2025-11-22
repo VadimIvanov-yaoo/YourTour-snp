@@ -1,0 +1,110 @@
+@use 'mixins';
+@use 'colors';
+@use 'reset';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.backgroundWrapper {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+    url('../images/hero-background.jpg') lightgray 10% / cover no-repeat;
+  background-size: cover;
+
+  .header {
+    padding: 28px 0px;
+    &__content {
+      @include mixins.flex-center-between;
+    }
+    &__phone {
+      @include mixins.p-normal;
+      text-decoration: none;
+      color: colors.$white;
+    }
+
+    &__nav {
+      &-list {
+        @include mixins.flex-center-between;
+        gap: 50px;
+        li {
+          .header__link {
+            @include mixins.p-normal;
+            text-decoration: none;
+            color: colors.$white;
+
+            &:after {
+              background-color: white;
+              display: block;
+              content: '';
+              height: 1.4px;
+              width: 0%;
+              -webkit-transition: width 0.1s ease-in-out;
+              transition: width 0.3s ease-in-out;
+            }
+
+            &:hover:after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.hero {
+  position: relative;
+  @include mixins.flex-column;
+  gap: 50px;
+  transform: translateX(0%);
+  text-align: center;
+  margin: 118px auto 0;
+  padding-bottom: 113px;
+
+  &__title {
+    @include mixins.h1-pc;
+    max-width: 768px;
+    color: colors.$white;
+  }
+
+  &__subtitle {
+    @include mixins.p-normal;
+    max-width: 562px;
+    color: colors.$white;
+  }
+  &__btn {
+    @include mixins.p-small;
+    border-radius: 10px;
+    padding: 5px 20px;
+    background-color: colors.$white;
+    cursor: pointer;
+    border: 1px solid colors.$white;
+    transition:
+      background 0.25s ease,
+      color 0.25s ease;
+
+    &:hover {
+      background-color: colors.$orange200;
+      color: colors.$white;
+      border: 1px solid colors.$orange200;
+    }
+
+    &:active {
+      background-color: colors.$orange100;
+      color: colors.$black;
+      border: 1px solid colors.$orange100;
+    }
+  }
+}
+
+@import 'media';

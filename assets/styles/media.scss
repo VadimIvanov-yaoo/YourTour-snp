@@ -1,0 +1,32 @@
+@media (max-width: 1224px) {
+  .container {
+    padding: 0 40px;
+    max-width: 100%;
+  }
+
+  .header__nav-list {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .backgroundWrapper {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+      url('../images/medium-hero-bg.jpg') lightgray 10% / cover no-repeat;
+  }
+
+  .container {
+    padding: 0 57px;
+    max-width: 100%;
+  }
+
+  .header__nav-list {
+    gap: (30px !important);
+  }
+
+  .hero__subtitle {
+    max-width: (442px !important);
+  }
+}
