@@ -157,9 +157,13 @@
 @media (max-width: 1024px) {
   .backgroundWrapper {
     background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
-      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
-      url('../images/medium-hero-bg.jpg') lightgray 10% / cover no-repeat;
+      linear-gradient(
+        360deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.06) 48.44%,
+        rgba(0, 0, 0, 0.5) 100%
+      ),
+      url('../images/medium-hero-bg.jpg') no-repeat center/cover lightgray;
   }
 
   .container {
@@ -269,6 +273,9 @@
 }
 
 @media (max-width: 940px) {
+  .tour {
+    padding-top: 75px;
+  }
   .tour__list {
     flex-wrap: wrap;
     gap: 15px;
@@ -307,8 +314,40 @@
     @include mixins.p-big-mobile;
     color: colors.$white;
   }
+}
 
-  .tour__btn-arrow {
-    //display: none;
+@media (max-width: 680px) {
+  .container {
+    padding: 0 21px;
+  }
+
+  .tour__card-wrapper {
+    grid-template-columns: repeat(1, 1fr) !important ;
+    gap: 18px;
+  }
+
+  .tour__header-block {
+    margin-bottom: 50px;
+    gap: 30px !important;
+  }
+
+  .tour__title {
+    @include mixins.h2-mobile;
+    letter-spacing: 0px;
+  }
+
+  .tour__list-link {
+    @include mixins.p-big-mobile;
+  }
+
+  .tour__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px !important;
+  }
+
+  .tour__card {
+    //width: 100%;
   }
 }
