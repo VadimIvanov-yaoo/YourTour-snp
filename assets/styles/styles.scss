@@ -15,11 +15,19 @@ body {
 }
 
 .backgroundWrapper {
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
-    url('../images/hero-background.jpg') lightgray 10% / cover no-repeat;
+  //background:
+  //  linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
+  //  linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+  //  url('../images/hero-background.jpg') lightgray 10% / cover no-repeat;
   background-size: cover;
+  background:
+    linear-gradient(
+      360deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.06) 48.44%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url('../images/hero-background.jpg') no-repeat center/cover lightgray;
 
   .header {
     padding: 28px 0px;
@@ -103,6 +111,171 @@ body {
       background-color: colors.$orange100;
       color: colors.$black;
       border: 1px solid colors.$orange100;
+    }
+  }
+}
+
+.tour {
+  background-color: colors.$beige100;
+  padding-top: 135px;
+
+  &__content {
+    @include mixins.flex-column;
+    align-items: center;
+  }
+
+  &__header-block {
+    @include mixins.flex-column;
+    gap: 35px;
+    margin-bottom: 100px;
+  }
+
+  &__title {
+    @include mixins.h2-pc;
+  }
+
+  &__list {
+    @include mixins.flex-center-between;
+    gap: 30px;
+  }
+
+  &__list-link {
+    text-decoration: none;
+    @include mixins.p-big;
+
+    &:after {
+      background-color: colors.$black;
+      display: block;
+      content: '';
+      height: 2px;
+      width: 0%;
+      -webkit-transition: width 0.1s ease-in-out;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+  }
+  &__list-link-active {
+    text-decoration: none;
+    @include mixins.p-big;
+    position: relative;
+    color: colors.$orange200;
+
+    &:after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: colors.$orange200;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      transition: width 0.3s ease-in-out;
+    }
+  }
+
+  &__card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
+  }
+
+  &__card {
+    position: relative;
+    @include mixins.flex-column;
+    justify-content: space-between;
+    align-items: start;
+    height: 100vh;
+    max-height: 531px;
+    border-radius: 50px;
+    overflow: hidden;
+    background: linear-gradient(
+      360deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.06) 48.44%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 1;
+
+    &-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 300ms ease;
+      transform: scale(1);
+      z-index: 0;
+    }
+
+    &-overlay {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        360deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.06) 48.44%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    &:hover &-bg {
+      transform: scale(1.2);
+    }
+
+    &-header {
+      position: relative;
+      @include mixins.flex-column;
+      align-items: start;
+      gap: 16px;
+      padding: 50px;
+      width: 370px;
+      z-index: 2;
+    }
+    &-title {
+      @include mixins.h3-pc;
+      color: colors.$white;
+      max-width: 240px;
+    }
+    &-price {
+      @include mixins.p-small;
+      color: colors.$white;
+    }
+
+    &-footer {
+      position: relative;
+      padding: 50px;
+      z-index: 2;
+    }
+  }
+  &__card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    gap: 15px;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: colors.$green400;
+    }
+
+    &-content {
+      @include mixins.p-big;
+      color: colors.$white;
     }
   }
 }
