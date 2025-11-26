@@ -1,7 +1,152 @@
+//@use 'mixins';
+//@use 'colors';
+//
+//@media (max-width: 1224px) {
+//  .container {
+//    padding: 0 40px;
+//    max-width: 100%;
+//  }
+//
+//  .header__nav-list {
+//    gap: 30px;
+//  }
+//}
+//
+//@media (max-width: 1024px) {
+//  .backgroundWrapper {
+//    background:
+//      linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
+//      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+//      url('../images/medium-hero-bg.jpg') lightgray 10% / cover no-repeat;
+//  }
+//
+//  .container {
+//    padding: 0 57px;
+//    max-width: 100%;
+//  }
+//
+//  .header__nav-list {
+//    gap: (30px !important);
+//  }
+//
+//  .hero__subtitle {
+//    max-width: (442px !important);
+//  }
+//}
+//
+//@media (max-width: 920px) {
+//  .backgroundWrapper {
+//    background:
+//      linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
+//      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+//      url('../images/medium-hero-bg.jpg') lightgray 10% / cover no-repeat;
+//  }
+//
+//  .container {
+//    padding: 0 40px;
+//    max-width: 100%;
+//  }
+//  .header__nav-list {
+//    gap: (20px !important);
+//  }
+//
+//  .hero__title {
+//    font-size: 72px;
+//  }
+//
+//  .hero__subtitle {
+//    max-width: (442px !important);
+//  }
+//}
+//
+//@media (max-width: 844px) {
+//  .backgroundWrapper {
+//    background:
+//      linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
+//      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+//      url('../images/medium-hero-bg.jpg') lightgray 10% / cover no-repeat;
+//  }
+//
+//  .container {
+//    padding: 0 20px;
+//    max-width: 100%;
+//  }
+//  .header__nav {
+//    display: none;
+//  }
+//
+//  .hero__title {
+//    font-size: 72px;
+//  }
+//
+//  .header__phone {
+//    font-size: 16px;
+//  }
+//}
+//
+//@media (max-width: 580px) {
+//  .backgroundWrapper {
+//    background:
+//      linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
+//      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+//      url('../images/medium-hero-bg.jpg') lightgray 10% / cover no-repeat;
+//    //max-height: 490px;
+//  }
+//
+//  .container {
+//    padding: 0 20px;
+//    max-width: 100%;
+//  }
+//
+//  .header__logo {
+//    max-width: 133px;
+//    object-fit: cover;
+//  }
+//
+//  .hero {
+//    gap: (40px !important);
+//    margin-top: (52px !important);
+//    padding-bottom: 52px;
+//  }
+//  .header__nav {
+//    display: none;
+//  }
+//
+//  .hero__title {
+//    font-size: 34px;
+//    max-width: 360px;
+//  }
+//
+//  .hero__subtitle {
+//    font-size: 16px;
+//    max-width: (310px !important);
+//  }
+//
+//  .header__phone {
+//    font-size: 16px !important;
+//  }
+//}
+//
+//@media (max-width: 360px) {
+//  .backgroundWrapper {
+//    background:
+//      linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
+//      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+//      url('../images/medium-hero-bg.jpg') lightgray 10% / cover no-repeat;
+//  }
+//
+//  .header {
+//    padding: (32px 0px !important);
+//  }
+//}
+
+@use 'mixins';
+@use 'colors';
+
 @media (max-width: 1224px) {
   .container {
-    padding: 0 40px;
     max-width: 100%;
+    padding: 0 57px;
   }
 
   .header__nav-list {
@@ -12,21 +157,197 @@
 @media (max-width: 1024px) {
   .backgroundWrapper {
     background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
-      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
-      url('../images/medium-hero-bg.jpg') lightgray 10% / cover no-repeat;
+      linear-gradient(
+        360deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.06) 48.44%,
+        rgba(0, 0, 0, 0.5) 100%
+      ),
+      url('../images/medium-hero-bg.jpg') no-repeat center/cover lightgray;
   }
 
   .container {
     padding: 0 57px;
-    max-width: 100%;
   }
 
   .header__nav-list {
-    gap: (30px !important);
+    gap: 30px !important;
   }
 
   .hero__subtitle {
-    max-width: (442px !important);
+    max-width: 442px !important;
+  }
+}
+
+@media (max-width: 920px) {
+  .container {
+    padding: 0 40px;
+  }
+
+  .header__nav-list {
+    gap: 20px !important;
+  }
+
+  .hero__title {
+    font-size: 72px;
+  }
+}
+
+@media (max-width: 844px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .hero__title {
+    font-size: 72px;
+  }
+
+  .header__phone {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 580px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .header__logo {
+    max-width: 133px;
+    object-fit: cover;
+  }
+
+  .hero {
+    gap: 40px !important;
+    margin-top: 52px !important;
+    padding-bottom: 52px;
+  }
+
+  .hero__title {
+    font-size: 34px;
+    max-width: 360px;
+  }
+
+  .hero__subtitle {
+    font-size: 16px;
+    max-width: 310px !important;
+  }
+
+  .header__phone {
+    font-size: 16px !important;
+  }
+
+  .header__nav {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    padding: 32px 0px !important;
+  }
+}
+
+@media (max-width: 1245px) {
+  .tour__card-wrapper {
+    grid-template-columns: repeat(2, 1fr) !important ;
+    gap: 18px;
+  }
+
+  .tour__card {
+    width: 450px;
+  }
+
+  .tour__card-header {
+    width: 100% !important;
+  }
+
+  .tour__card-title {
+    max-width: 350px;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 940px) {
+  .tour {
+    padding-top: 75px;
+  }
+  .tour__list {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .tour__card {
+    width: 318px;
+    height: 318px;
+    border-radius: 20px;
+  }
+
+  .tour__card-header {
+    padding: 25px;
+  }
+
+  .tour__card-footer {
+    padding: 25px;
+    gap: 13px;
+  }
+
+  .tour__card-title {
+    @include mixins.h3-mobile;
+    color: colors.$white;
+  }
+
+  .tour__card-price {
+    @include mixins.p-small-mobile;
+    color: colors.$white;
+  }
+
+  .tour__card-btn {
+    padding: 5px 15px;
+  }
+
+  .tour__card-btn-content {
+    @include mixins.p-big-mobile;
+    color: colors.$white;
+  }
+}
+
+@media (max-width: 680px) {
+  .container {
+    padding: 0 21px;
+  }
+
+  .tour__card-wrapper {
+    grid-template-columns: repeat(1, 1fr) !important ;
+    gap: 18px;
+  }
+
+  .tour__header-block {
+    margin-bottom: 50px;
+    gap: 30px !important;
+  }
+
+  .tour__title {
+    @include mixins.h2-mobile;
+    letter-spacing: 0px;
+  }
+
+  .tour__list-link {
+    @include mixins.p-big-mobile;
+  }
+
+  .tour__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px !important;
+  }
+
+  .tour__card {
+    //width: 100%;
   }
 }
