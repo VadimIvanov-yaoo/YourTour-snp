@@ -218,6 +218,321 @@
         </div>
       </div>
     </section>
+
+    <section class="tour-form">
+      <div class="container">
+        <div class="tour-form__content">
+          <div class="tour-form__header">
+            <h2 class="tour-form__title">Собери свой тур</h2>
+            <p class="tour-form__subtitle">
+              Идейные соображения высшего порядка, а также рамки и место
+              обучения кадров
+            </p>
+          </div>
+
+          <form class="tour-form__form">
+            <div class="tour-form__wrapper">
+              <div class="tour-form__stack">
+                <div class="tour-form__fields">
+                  <div class="tour-form__field">
+                    <label class="tour-form__label">Имя</label>
+                    <input
+                      class="tour-form__input"
+                      placeholder="Введите Ваше имя"
+                      type="text"
+                      required
+                    />
+                  </div>
+
+                  <div class="tour-form__field">
+                    <label class="tour-form__label">Направление</label>
+                    <select class="tour-form__input" name="tour" id="tour">
+                      <option selected disabled>Куда хотите ехать?</option>
+                      <option value="America">Америка</option>
+                      <option value="France">Франция</option>
+                      <option value="Asia">Азия</option>
+                    </select>
+                  </div>
+
+                  <div class="tour-form__field">
+                    <label class="tour-form__label">Email</label>
+                    <input
+                      class="tour-form__input"
+                      placeholder="example@mail.com"
+                      type="email"
+                      required
+                    />
+                  </div>
+
+                  <div class="tour-form__field">
+                    <label class="tour-form__label">Телефон</label>
+                    <input
+                      class="tour-form__input"
+                      placeholder="+ 7 (_ _ _) _ _ _ - _ _ - _ _"
+                      type="tel"
+                      required
+                    />
+                  </div>
+
+                  <div class="tour-form__field">
+                    <label class="tour-form__label">Дата от</label>
+                    <input
+                      onfocus="this.type='date'"
+                      onblur="this.type='text'"
+                      class="tour-form__input"
+                      placeholder="ДД.ММ.ГГГГ"
+                      type="text"
+                      required
+                    />
+                  </div>
+
+                  <div class="tour-form__field">
+                    <label class="tour-form__label">Дата до</label>
+                    <input
+                      onfocus="this.type='date'"
+                      onblur="this.type='text'"
+                      class="tour-form__input"
+                      placeholder="ДД.ММ.ГГГГ"
+                      type="text"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="tour-form__field tour-form__comment-block">
+                  <label for="comment" class="tour-form__label">
+                    Комментарий
+                  </label>
+                  <textarea
+                    class="tour-form__input tour-form__textarea"
+                    id="comment"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="tour-form__radio">
+                  <span class="tour-form__radio-name">Вам есть 18 лет?</span>
+
+                  <div class="tour-form__radio-wrapper">
+                    <label class="tour-form__radio-option">
+                      <input
+                        class="tour-form__radio-input"
+                        type="radio"
+                        name="age"
+                        value="yes"
+                      />
+                      <span class="tour-form__radio-text">Да</span>
+                    </label>
+
+                    <label class="tour-form__radio-option">
+                      <input
+                        class="tour-form__radio-input"
+                        type="radio"
+                        name="age"
+                        value="no"
+                      />
+                      <span class="tour-form__radio-text">Нет</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="tour-form__checkbox">
+                  <label class="tour-form__checkbox-label">
+                    <input class="tour-form__checkbox-input" type="checkbox" />
+                    <span class="tour-form__checkbox-text">
+                      Нажимая кнопку, я принимаю условия
+                      <a class="tour-form__checkbox-link" href="#">
+                        Лицензионного договора
+                      </a>
+                    </span>
+                  </label>
+                </div>
+
+                <div class="tour-form__button-block">
+                  <button
+                    type="button"
+                    class="tour-form__button tour-form__button-cyan-btn"
+                  >
+                    Найти тур
+                  </button>
+
+                  <button
+                    type="reset"
+                    class="tour-form__button tour-form__button-lightgreen-btn"
+                  >
+                    Сбросить
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="feedback">
+      <div class="container">
+        <div class="feedback__content">
+          <div class="feedback__header">
+            <h2 class="feedback__header-title">
+              Отзывы наших путешественников
+            </h2>
+            <p class="feedback__header-subtitle">
+              Идейные соображения высшего порядка, а также рамки и место
+              обучения кадров
+            </p>
+          </div>
+
+          <div class="feedback__card-wrapper">
+            <article class="feedback__card">
+              <div class="feedback__card-content">
+                <p class="feedback__card-text">
+                  Идейные соображения высшего порядка, а также рамки и место
+                  обучения кадров обеспечивает широкому кругу (специалистов)
+                  участие в формировании новых предложений. Идейные соображения
+                  высшего порядка, а также начало повседневной работы по
+                  формированию позиции позволяет оценить значение модели
+                  развития.
+                </p>
+
+                <div class="feedback__card-info">
+                  <div class="feedback__card-user">
+                    <h3 class="feedback__card-username">Мария</h3>
+                    <p class="feedback__card-tour">Тур: Вдали от дома</p>
+                  </div>
+                  <img
+                    class="feedback__card-user-avatar"
+                    src="./assets/images/woman-avatar.jpg"
+                    alt="avatar"
+                  />
+                </div>
+              </div>
+            </article>
+
+            <article class="feedback__card">
+              <div class="feedback__card-content">
+                <p class="feedback__card-text">
+                  Равным образом постоянный количественный рост и сфера нашей
+                  активности играет важную роль в формировании системы обучения
+                  кадров, соответствует насущным потребностям.
+                  <br />
+                  <br />
+                  Значимость этих проблем настолько очевидна, что дальнейшее
+                  развитие различных форм деятельности обеспечивает широкому
+                  кругу (специалистов) участие в формировании новых предложений.
+                  Повседневная практика показывает, что реализация намеченных
+                  плановых заданий в значительной степени обуславливает создание
+                  модели развития.
+                </p>
+
+                <div class="feedback__card-info">
+                  <div class="feedback__card-user">
+                    <h3 class="feedback__card-username">Павел</h3>
+                    <p class="feedback__card-tour">Тур: Путешествие в горы</p>
+                  </div>
+                  <img
+                    class="feedback__card-user-avatar"
+                    src="./assets/images/men-avatar.png"
+                    alt="avatar"
+                  />
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pictures">
+      <div class="conatiner">
+        <div class="pictures__content">
+          <div class="pictures__header">
+            <h2 class="pictures__title">Фотографии путешествий</h2>
+            <div class="pictures__subtitle">
+              Идейные соображения высшего порядка, а также рамки и место
+              обучения кадров
+            </div>
+          </div>
+
+          <div class="images">
+            <div class="images__row">
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-1.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-2.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-3.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-4.jpg"
+                alt="image"
+              />
+            </div>
+
+            <div class="images__row">
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-5.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-6.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-7.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-8.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-13.jpg"
+                alt="image"
+              />
+            </div>
+
+            <div class="images__row">
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-9.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-10.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-11.jpg"
+                alt="image"
+              />
+              <img
+                class="images__item"
+                src="./assets/images/travel/travel%20photo-12.jpg"
+                alt="image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 
   <script src="/assets/js/script.js"></script>
