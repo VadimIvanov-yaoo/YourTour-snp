@@ -127,7 +127,7 @@ body {
   &__header-block {
     @include mixins.flex-column;
     gap: 35px;
-    margin-bottom: 100px;
+    margin-bottom: 105px;
   }
 
   &__title {
@@ -276,6 +276,423 @@ body {
     &-content {
       @include mixins.p-big;
       color: colors.$white;
+    }
+  }
+}
+
+.tour-form {
+  background-color: colors.$beige100;
+  padding-top: 135px;
+
+  &__content {
+    @include mixins.flex-column;
+    padding-bottom: 100px;
+  }
+
+  &__header {
+    @include mixins.flex-column;
+    gap: 30px;
+    padding-bottom: 100px;
+  }
+
+  &__subtitle {
+    @include mixins.p-normal;
+    color: colors.$gray300;
+    text-align: center;
+    width: 400px;
+  }
+
+  &__title {
+    @include mixins.h2-pc;
+  }
+
+  &__form {
+    background-color: colors.$white;
+    border-radius: 50px;
+    width: 100%;
+  }
+
+  &__wrapper {
+    padding: 70px;
+    border-radius: 50px;
+  }
+
+  &__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    column-gap: 33px;
+  }
+
+  &__field {
+    @include mixins.flex-column;
+    align-items: start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__label {
+    @include mixins.p-normal;
+  }
+
+  &__input {
+    @include mixins.p-normal;
+    background-color: colors.$beige100;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+
+    &::placeholder {
+      @include mixins.p-normal;
+      color: colors.$gray300;
+    }
+  }
+
+  &__select-item {
+    background-color: colors.$beige200;
+  }
+
+  &__textarea {
+    max-height: 152px;
+  }
+
+  &__comment-block {
+    margin-top: 33px;
+  }
+
+  &__radio {
+    @include mixins.flex-column;
+    align-items: start;
+    gap: 8px;
+    margin: 33px 0px;
+    &-name {
+      @include mixins.p-normal;
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 31px;
+    }
+
+    &-option {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      gap: 11px;
+    }
+
+    &-text {
+      @include mixins.p-normal;
+    }
+  }
+
+  &__radio-input {
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border: 2px solid #aaa;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    margin: 0;
+
+    &:checked {
+      border-color: colors.$black;
+    }
+
+    &:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: colors.$black;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__checkbox {
+    margin-bottom: 33px;
+    &-label {
+      display: flex;
+      align-items: center;
+      gap: 19px;
+    }
+
+    &-input {
+      appearance: none;
+      width: 26px;
+      height: 26px;
+      border: 2px solid colors.$black;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 0;
+      position: relative;
+      display: inline-block;
+
+      &:checked {
+        background: colors.$white;
+        border-color: colors.$black;
+      }
+
+      &:checked::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        height: 12px;
+        border-right: 2px solid colors.$black;
+        border-bottom: 2px solid colors.$black;
+        transform: rotate(45deg);
+        top: 4px;
+        left: 8px;
+      }
+    }
+
+    &-text {
+      @include mixins.p-small;
+      color: colors.$gray300;
+      letter-spacing: -0.165px;
+    }
+
+    &-link {
+      text-decoration: none;
+      color: colors.$black;
+
+      &:hover {
+        text-decoration: black underline;
+      }
+    }
+  }
+
+  &__button-block {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__button {
+    @include mixins.p-normal;
+    font-family: Roboto, sans-serif;
+    padding: 15px 70px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    &-cyan-btn {
+      background-color: colors.$green400;
+      color: colors.$white;
+
+      &:hover {
+        background-color: colors.$green300;
+      }
+
+      &:active {
+        background-color: colors.$green200;
+      }
+    }
+
+    &-lightgreen-btn {
+      background-color: colors.$green100;
+      color: colors.$green400;
+
+      &:hover {
+        background-color: colors.$gray100;
+      }
+
+      &:active {
+        background-color: colors.$gray200;
+      }
+    }
+  }
+}
+
+.feedback {
+  background-color: colors.$beige100;
+  padding-top: 135px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 135px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 529px;
+    margin-bottom: 100px;
+    width: 100%;
+
+    &-title {
+      @include mixins.h2-pc;
+      text-align: center;
+    }
+
+    &-subtitle {
+      @include mixins.p-normal;
+      text-align: center;
+      color: colors.$gray300;
+      max-width: 400px;
+    }
+  }
+
+  &__card-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 30px;
+    height: 673px;
+  }
+
+  &__card {
+    width: 100%;
+    background-color: colors.$beige200;
+    border-radius: 50px;
+    height: 100%;
+    display: flex;
+  }
+
+  &__card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+  }
+
+  &__card-text {
+    @include mixins.p-big;
+  }
+
+  &__card-info {
+    width: 100%;
+    @include mixins.flex-center-between;
+  }
+
+  &__card-username {
+    @include mixins.h3-pc;
+    margin-bottom: 8px;
+  }
+
+  &__card-tour {
+    color: colors.$gray300;
+  }
+
+  &__card-user-avatar {
+    mix-blend-mode: multiply;
+    width: 75px;
+    height: 75px;
+  }
+}
+
+.gallery {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 135px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 100px;
+
+    &-title {
+      @include mixins.h2-pc;
+      text-align: center;
+    }
+
+    &-subtitle {
+      @include mixins.p-normal;
+      color: colors.$gray300;
+      text-align: center;
+      width: 418px;
+    }
+  }
+
+  &__photo-wrapper {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &__row {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      & > img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 50px;
+        display: block;
+      }
+    }
+  }
+}
+
+.pictures {
+  background-color: colors.$beige100;
+  padding-bottom: 135px;
+
+  &__header {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  &__title {
+    @include mixins.h2-pc;
+    text-align: center;
+  }
+
+  &__subtitle {
+    @include mixins.p-normal;
+    color: colors.$gray300;
+    text-align: center;
+    width: 400px;
+  }
+
+  .images {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &__row {
+      display: grid;
+      gap: 30px;
+      &:nth-child(1) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      &:nth-child(2) {
+        grid-template-columns: repeat(5, 1fr);
+      }
+      &:nth-child(3) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    &__item {
+      width: 100%;
+      height: 301px;
+      object-fit: cover;
+      border-radius: 50px;
     }
   }
 }
