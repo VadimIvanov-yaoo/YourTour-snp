@@ -8,6 +8,10 @@ body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .container {
   max-width: 1170px;
   width: 100%;
@@ -268,6 +272,9 @@ body {
     border: none;
     border-radius: 50px;
     cursor: pointer;
+    transition:
+      width 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
 
     &:hover {
       background-color: colors.$green400;
@@ -276,6 +283,9 @@ body {
     &-content {
       @include mixins.p-big;
       color: colors.$white;
+    }
+    &:active {
+      background: colors.$orange200;
     }
   }
 }
@@ -286,7 +296,6 @@ body {
 
   &__content {
     @include mixins.flex-column;
-    padding-bottom: 100px;
   }
 
   &__header {
@@ -326,6 +335,7 @@ body {
 
   &__field {
     @include mixins.flex-column;
+    position: relative;
     align-items: start;
     gap: 8px;
     width: 100%;
@@ -335,6 +345,22 @@ body {
     @include mixins.p-normal;
   }
 
+  &__select {
+    appearance: none;
+    padding-right: 48px;
+  }
+
+  &__field:has(.tour-form__select)::after {
+    content: '';
+    position: absolute;
+    right: 21px;
+    top: 58%;
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+    background: url(/assets/images/svg/select-arrow.svg) no-repeat center /
+      contain;
+  }
   &__input {
     @include mixins.p-normal;
     background-color: colors.$beige100;
@@ -694,6 +720,296 @@ body {
       object-fit: cover;
       border-radius: 50px;
     }
+  }
+}
+
+.history {
+  background-color: colors.$beige100;
+  padding-bottom: 135px;
+
+  &__header {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  &__title {
+    @include mixins.h2-pc;
+    text-align: center;
+  }
+
+  &__subtitle {
+    @include mixins.p-normal;
+    color: colors.$gray300;
+    text-align: center;
+    width: 400px;
+  }
+
+  &__card-wrapper {
+    @include mixins.flex-column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  &__card {
+    position: relative;
+    @include mixins.flex-column;
+    justify-content: space-between;
+    align-items: start;
+    height: 100vh;
+    border-radius: 50px;
+    overflow: hidden;
+    z-index: 4;
+    width: 100%;
+    max-width: 1170px;
+    max-height: 567px;
+    background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+
+    &-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0) 0.01%,
+        rgba(0, 0, 0, 0.2) 100%
+      );
+      object-position: center;
+      transition: transform 300ms ease;
+      transform: scale(1);
+      z-index: -99;
+    }
+
+    &-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.2) 100%
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
+    &:hover &-background {
+      transform: scale(1.2);
+    }
+
+    &-title {
+      @include mixins.h3-pc;
+      color: colors.$white;
+      margin-bottom: 37px;
+    }
+
+    &-subtitle {
+      @include mixins.p-normal;
+      color: colors.$white;
+      margin-bottom: 25px;
+      max-width: 554px;
+    }
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      gap: 15px;
+      padding: 7px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition:
+        width 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: colors.$green400;
+      }
+
+      &-content {
+        @include mixins.p-big;
+        color: colors.$white;
+      }
+      &:active {
+        background: colors.$orange200;
+      }
+    }
+
+    &-bottom-block {
+      width: 100%;
+      padding: 60px;
+      @include mixins.flex-center-between;
+    }
+  }
+  &__card-list-wrapper {
+    padding-left: 30px;
+  }
+  &__card-list {
+    list-style-type: disc;
+    @include mixins.p-normal;
+    color: colors.$white;
+  }
+  &__card-top-block {
+    padding: 60px;
+  }
+  &__links {
+    @include mixins.flex-center-between;
+    gap: 35px;
+  }
+  &__link-item {
+    position: relative;
+    @include mixins.p-normal;
+    text-decoration: none;
+    color: colors.$white;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background-color: colors.$white;
+      transition:
+        width 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+
+    &:active {
+      color: colors.$orange200;
+
+      &:after {
+        width: 100%;
+        background-color: colors.$orange200;
+      }
+    }
+  }
+}
+
+.mail {
+  background-color: colors.$beige100;
+  //padding-top: 135px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    border-radius: 50px;
+    max-width: 370px;
+    max-height: 370px;
+  }
+
+  &__text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 371px;
+  }
+
+  &__centered-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 135px;
+  }
+
+  &__title {
+    @include mixins.h3-pc;
+  }
+  &__subtitle {
+    @include mixins.p-normal;
+    color: colors.$gray300;
+
+    > span {
+      color: colors.$black;
+    }
+  }
+}
+
+.footer {
+  background-color: colors.$beige200;
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+  }
+
+  &__link-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  &__link-logo {
+    width: 26px;
+    height: 26px;
+  }
+
+  &__link-item {
+    text-decoration: none;
+    @include mixins.p-normal;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: colors.$black;
+      transition:
+        width 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+    }
+
+    &:hover:after {
+      display: block;
+    }
+
+    &:active {
+      color: colors.$orange200;
+
+      &:after {
+        background-color: colors.$orange200;
+      }
+    }
+  }
+
+  &__text {
+    @include mixins.p-normal;
+    color: colors.$gray300;
   }
 }
 

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/images/svg/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="/assets/styles/styles.scss" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,10 +27,10 @@
             </a>
             <nav class="header__nav">
               <ul class="header__nav-list">
-                <li><a class="header__link" href="/">Туры</a></li>
-                <li><a class="header__link" href="/">Создать тур</a></li>
-                <li><a class="header__link" href="/">Отзывы</a></li>
-                <li><a class="header__link" href="/">Истории</a></li>
+                <li><a class="header__link" href="#tour">Туры</a></li>
+                <li><a class="header__link" href="#createTour">Создать тур</a></li>
+                <li><a class="header__link" href="#feedback">Отзывы</a></li>
+                <li><a class="header__link" href="#history">Истории</a></li>
               </ul>
             </nav>
             <a href="tel:79999999999" class="header__phone">+7 999 999 99 99</a>
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <section class="tour">
+    <section id="tour" class="tour">
       <div class="container">
         <div class="tour__content">
           <div class="tour__header-block">
@@ -90,7 +90,7 @@
               <img
                 class="tour__card-bg"
                 src="./assets/images/tour/card-tour-photo-1.jpg"
-                alt=""
+                alt="tour photo"
               />
               <div class="tour__card-overlay"></div>
 
@@ -111,7 +111,7 @@
               <img
                 class="tour__card-bg"
                 src="./assets/images/tour/card-tour-photo-2.jpg"
-                alt=""
+                alt="tour photo"
               />
               <div class="tour__card-overlay"></div>
 
@@ -136,7 +136,7 @@
               <img
                 class="tour__card-bg"
                 src="./assets/images/tour/card-tour-photo-3.jpg"
-                alt=""
+                alt="tour photo"
               />
               <div class="tour__card-overlay"></div>
 
@@ -157,7 +157,7 @@
               <img
                 class="tour__card-bg"
                 src="./assets/images/tour/card-tour-photo-4.jpg"
-                alt=""
+                alt="tour photo"
               />
               <div class="tour__card-overlay"></div>
 
@@ -178,7 +178,7 @@
               <img
                 class="tour__card-bg"
                 src="./assets/images/tour/card-tour-photo-5.jpg"
-                alt=""
+                alt="tour photo"
               />
               <div class="tour__card-overlay"></div>
 
@@ -199,7 +199,7 @@
               <img
                 class="tour__card-bg"
                 src="./assets/images/tour/card-tour-photo-6.jpg"
-                alt=""
+                alt="tour photo"
               />
               <div class="tour__card-overlay"></div>
               <div class="tour__card-header">
@@ -219,7 +219,7 @@
       </div>
     </section>
 
-    <section class="tour-form">
+    <section id="createTour" class="tour-form">
       <div class="container">
         <div class="tour-form__content">
           <div class="tour-form__header">
@@ -246,7 +246,11 @@
 
                   <div class="tour-form__field">
                     <label class="tour-form__label">Направление</label>
-                    <select class="tour-form__input" name="tour" id="tour">
+                    <select
+                      class="tour-form__input tour-form__select"
+                      name="tour"
+                      id="tour"
+                    >
                       <option selected disabled>Куда хотите ехать?</option>
                       <option value="America">Америка</option>
                       <option value="France">Франция</option>
@@ -371,7 +375,7 @@
       </div>
     </section>
 
-    <section class="feedback">
+    <section id="feedback" class="feedback">
       <div class="container">
         <div class="feedback__content">
           <div class="feedback__header">
@@ -533,7 +537,195 @@
         </div>
       </div>
     </section>
-  </body>
 
+    <section id="history" class="history">
+      <div class="container">
+        <div class="history__content">
+          <div class="history__header">
+            <h2 class="history__title">Истории путешествий</h2>
+            <div class="history__subtitle">
+              Идейные соображения высшего порядка, а также рамки и место
+              обучения кадров
+            </div>
+          </div>
+
+          <div class="history__card-wrapper">
+            <article class="history__card">
+              <img
+                class="history__card-background"
+                src="./assets/images/story/story%20photo-1.jpg"
+                alt="background"
+              />
+              <div class="history__card-overlay"></div>
+
+              <div class="history__card-top-block">
+                <h3 class="history__card-title">Автостопом в Стамбул</h3>
+                <p class="history__card-subtitle">
+                  Идейные соображения высшего порядка, а также рамки и место
+                  обучения кадров обеспечивает широкому кругу (специалистов)
+                  участие в формировании новых предложений:
+                </p>
+                <ul class="history__card-list-wrapper">
+                  <li class="history__card-list">вкусная еда</li>
+                  <li class="history__card-list">дешевый транспорт</li>
+                  <li class="history__card-list">красивый город.</li>
+                </ul>
+              </div>
+              <div class="history__card-bottom-block">
+                <button class="history__card-btn">
+                  <span class="history__card-btn-content">Подробнее</span>
+                  <img src="/assets/images/svg/arrow.svg" alt="arrow" />
+                </button>
+                <div class="history__links">
+                  <a class="history__link-item" href="">telegram</a>
+                  <a class="history__link-item" href="">facebook</a>
+                  <a class="history__link-item" href="">YouTube</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="history__card">
+              <img
+                class="history__card-background"
+                src="./assets/images/story/story%20photo-2.jpg"
+                alt="background"
+              />
+              <div class="history__card-overlay"></div>
+
+              <div class="history__card-top-block">
+                <h3 class="history__card-title">Автостопом в Стамбул</h3>
+                <p class="history__card-subtitle">
+                  Идейные соображения высшего порядка, а также рамки и место
+                  обучения кадров обеспечивает широкому кругу (специалистов)
+                  участие в формировании новых предложений:
+                </p>
+              </div>
+              <div class="history__card-bottom-block">
+                <button class="history__card-btn">
+                  <span class="history__card-btn-content">Подробнее</span>
+                  <img src="/assets/images/svg/arrow.svg" alt="arrow" />
+                </button>
+                <div class="history__links">
+                  <a
+                    target="_blank"
+                    class="history__link-item"
+                    href="https://web.telegram.org/a/"
+                  >
+                    telegram
+                  </a>
+                  <a
+                    target="_blank"
+                    class="history__link-item"
+                    href="https://www.facebook.com/"
+                  >
+                    facebook
+                  </a>
+                  <a
+                    target="_blank"
+                    class="history__link-item"
+                    href="https://www.youtube.com/"
+                  >
+                    YouTube
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="history__card">
+              <img
+                class="history__card-background"
+                src="./assets/images/story/story%20photo-3.jpg"
+                alt="background"
+              />
+              <div class="history__card-overlay"></div>
+
+              <div class="history__card-top-block">
+                <h3 class="history__card-title">Автостопом в Стамбул</h3>
+                <p class="history__card-subtitle">
+                  Идейные соображения высшего порядка, а также рамки и место
+                  обучения кадров обеспечивает широкому кругу (специалистов)
+                  участие в формировании новых предложений:
+                </p>
+              </div>
+              <div class="history__card-bottom-block">
+                <button class="history__card-btn">
+                  <span class="history__card-btn-content">Подробнее</span>
+                  <img src="/assets/images/svg/arrow.svg" alt="arrow" />
+                </button>
+                <div class="history__links">
+                  <a class="history__link-item" href="">telegram</a>
+                  <a class="history__link-item" href="">facebook</a>
+                  <a class="history__link-item" href="">YouTube</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mail">
+      <div class="container">
+        <div class="mail__content">
+          <div class="mail__centered-wrapper">
+            <img
+              class="mail__image"
+              src="./assets/images/footer-photo.jpg"
+              alt="footer image"
+            />
+            <div class="mail__text-content">
+              <h3 class="mail__title">Пора в путешествие вместе с нами!</h3>
+              <p class="mail__subtitle">
+                Напиши на почту и узнай подробности на
+                <span>yourtour@gmail.com</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__content">
+          <p class="footer__text">Наши социальные сети</p>
+
+          <div class="footer__link-list">
+            <div>
+              <img
+                class="footer__link-logo"
+                src="./assets/images/social/telegram.svg"
+                alt="tg"
+              />
+              <a class="footer__link-item" href="https://web.telegram.org/">
+                telegram
+              </a>
+            </div>
+
+            <div>
+              <img
+                class="footer__link-logo"
+                src="./assets/images/social/fb.svg"
+                alt="fb"
+              />
+              <a class="footer__link-item" href="https://facebook.com/">
+                facebook
+              </a>
+            </div>
+
+            <div>
+              <img
+                class="footer__link-logo"
+                src="./assets/images/social/vk.svg"
+                alt="vk"
+              />
+              <a class="footer__link-item" href="https://vk.com/">vkontakte</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
   <script src="/assets/js/script.js"></script>
 </html>
