@@ -12,6 +12,26 @@ html {
   scroll-behavior: smooth;
 }
 
+.header-fixed {
+  background-color: colors.$beige200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  animation: headerAnimation 0.5s ease forwards;
+
+  a {
+    color: colors.$black !important;
+    transition: color 0.3s ease;
+  }
+
+  svg path {
+    fill: colors.$black !important;
+    transition: fill 0.3s ease;
+  }
+}
+
 .container {
   max-width: 1170px;
   width: 100%;
@@ -19,10 +39,6 @@ html {
 }
 
 .backgroundWrapper {
-  //background:
-  //  linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 39.9%),
-  //  linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
-  //  url('../images/hero-background.jpg') lightgray 10% / cover no-repeat;
   background-size: cover;
   background:
     linear-gradient(
@@ -1010,6 +1026,17 @@ html {
   &__text {
     @include mixins.p-normal;
     color: colors.$gray300;
+  }
+}
+
+@keyframes headerAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

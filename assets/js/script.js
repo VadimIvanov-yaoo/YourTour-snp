@@ -8,3 +8,18 @@ links.forEach((link) => {
     link.classList.add('tour__list-link-active')
   })
 })
+
+const header = document.querySelector('.header')
+const header__link = document.querySelector('.header__link')
+const a = 450
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY
+
+  if (scrollPosition >= a) {
+    header.classList.add('header-fixed')
+    header.classList.add('header__link-fixed')
+  } else {
+    header.classList.remove('header-fixed')
+  }
+})
