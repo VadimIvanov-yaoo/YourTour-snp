@@ -18,7 +18,8 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 9999;
+  transform: translateY(-100%);
   animation: headerAnimation 0.5s ease forwards;
 
   a {
@@ -51,6 +52,10 @@ html {
 
   .header {
     padding: 28px 0px;
+    &__logo {
+      height: 30px;
+      width: 181px;
+    }
     &__content {
       @include mixins.flex-center-between;
     }
