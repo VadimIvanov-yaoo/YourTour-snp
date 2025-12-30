@@ -11,15 +11,27 @@ links.forEach((link) => {
 
 const header = document.querySelector('.header')
 const header__link = document.querySelector('.header__link')
-const a = 450
+const height = 450
 
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY
 
-  if (scrollPosition >= a) {
+  if (scrollPosition >= height) {
     header.classList.add('header-fixed')
     header.classList.add('header__link-fixed')
   } else {
     header.classList.remove('header-fixed')
   }
 })
+
+//validation
+
+document.getElementById('tourForm').addEventListener('submit', function(e) {
+  const dateFrom = document.getElementById("tour-form__input__from").value;
+  const dateTo = document.getElementById("tour-form__input__to").value;
+
+  if(dateFrom > dateTo) {
+    alert(`Значение "Дата от" не должно превышать "Дата до"`);
+    e.preventDefault();
+  }
+});
