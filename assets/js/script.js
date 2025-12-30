@@ -1,3 +1,5 @@
+import '../styles/styles.scss'
+
 const links = document.querySelectorAll(
   '#tour__link1, #tour__link2, #tour__link3, #tour__link4, #tour__link5'
 )
