@@ -12,7 +12,7 @@ links.forEach((link) => {
 })
 
 const header = document.querySelector('.header')
-const header__link = document.querySelector('.header__link')
+const headerHeight = header.offsetHeight
 const height = 450
 
 window.addEventListener('scroll', () => {
@@ -20,9 +20,10 @@ window.addEventListener('scroll', () => {
 
   if (scrollPosition >= height) {
     header.classList.add('header-fixed')
-    header.classList.add('header__link-fixed')
+    document.body.style.paddingTop = headerHeight + 'px'
   } else {
     header.classList.remove('header-fixed')
+    document.body.style.paddingTop = '0'
   }
 })
 

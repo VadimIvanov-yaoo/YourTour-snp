@@ -102,11 +102,12 @@ html {
   transform: translateX(0%);
   text-align: center;
   margin: 118px auto 0;
-  padding-bottom: 113px;
+  padding-bottom: 118px;
 
   &__title {
     @include mixins.h1-pc;
     max-width: 768px;
+    letter-spacing: 2.2px;
     color: colors.$white;
   }
 
