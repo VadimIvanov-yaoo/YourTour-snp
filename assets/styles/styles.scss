@@ -12,6 +12,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  padding-top: 135px;
+}
+
 .header-fixed {
   background-color: colors.$beige200;
   position: fixed;
@@ -143,7 +147,6 @@ html {
 
 .tour {
   background-color: colors.$beige100;
-  padding-top: 135px;
 
   &__content {
     @include mixins.flex-column;
@@ -314,7 +317,6 @@ html {
 
 .tour-form {
   background-color: colors.$beige100;
-  padding-top: 135px;
 
   &__content {
     @include mixins.flex-column;
@@ -563,13 +565,11 @@ html {
 
 .feedback {
   background-color: colors.$beige100;
-  padding-top: 135px;
 
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 135px;
   }
 
   &__header {
@@ -647,7 +647,6 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 135px;
   }
 
   &__header {
@@ -694,7 +693,6 @@ html {
 
 .pictures {
   background-color: colors.$beige100;
-  padding-bottom: 135px;
 
   &__header {
     margin-bottom: 100px;
@@ -747,7 +745,6 @@ html {
 
 .history {
   background-color: colors.$beige100;
-  padding-bottom: 135px;
 
   &__header {
     margin-bottom: 100px;
@@ -929,7 +926,7 @@ html {
 
 .mail {
   background-color: colors.$beige100;
-  //padding-top: 135px;
+  padding-bottom: 135px;
 
   &__content {
     display: flex;
@@ -954,7 +951,6 @@ html {
     display: flex;
     align-items: center;
     gap: 30px;
-    padding-bottom: 135px;
   }
 
   &__title {
