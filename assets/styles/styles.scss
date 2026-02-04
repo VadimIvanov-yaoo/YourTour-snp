@@ -12,6 +12,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  padding-top: 135px;
+}
+
 .header-fixed {
   background-color: colors.$beige200;
   position: fixed;
@@ -143,7 +147,6 @@ html {
 
 .tour {
   background-color: colors.$beige100;
-  padding-top: 135px;
 
   &__content {
     @include mixins.flex-column;
@@ -310,11 +313,14 @@ html {
       background: colors.$orange200;
     }
   }
+
+  &__card:hover &__card-btn {
+    background-color: colors.$green400;
+  }
 }
 
 .tour-form {
   background-color: colors.$beige100;
-  padding-top: 135px;
 
   &__content {
     @include mixins.flex-column;
@@ -395,6 +401,14 @@ html {
       @include mixins.p-normal;
       color: colors.$gray300;
     }
+
+    &:hover {
+      background-color: colors.$beige200;
+    }
+
+    &:focus {
+      border: 1px solid colors.$gray300;
+    }
   }
 
   &__select-item {
@@ -402,7 +416,9 @@ html {
   }
 
   &__textarea {
-    max-height: 152px;
+    height: 0;
+    min-height: 152px;
+    resize: vertical;
   }
 
   &__comment-block {
@@ -441,7 +457,7 @@ html {
     appearance: none;
     width: 26px;
     height: 26px;
-    border: 2px solid #aaa;
+    border: 2px solid #1b1f2b;
     border-radius: 50%;
     display: inline-block;
     position: relative;
@@ -530,6 +546,7 @@ html {
     font-family: Roboto, sans-serif;
     padding: 15px 70px;
     border-radius: 10px;
+    text-decoration: none;
     border: none;
     cursor: pointer;
 
@@ -563,13 +580,11 @@ html {
 
 .feedback {
   background-color: colors.$beige100;
-  padding-top: 135px;
 
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 135px;
   }
 
   &__header {
@@ -647,7 +662,6 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 135px;
   }
 
   &__header {
@@ -694,7 +708,6 @@ html {
 
 .pictures {
   background-color: colors.$beige100;
-  padding-bottom: 135px;
 
   &__header {
     margin-bottom: 100px;
@@ -747,7 +760,6 @@ html {
 
 .history {
   background-color: colors.$beige100;
-  padding-bottom: 135px;
 
   &__header {
     margin-bottom: 100px;
@@ -929,7 +941,7 @@ html {
 
 .mail {
   background-color: colors.$beige100;
-  //padding-top: 135px;
+  padding-bottom: 135px;
 
   &__content {
     display: flex;
@@ -954,7 +966,6 @@ html {
     display: flex;
     align-items: center;
     gap: 30px;
-    padding-bottom: 135px;
   }
 
   &__title {
@@ -964,7 +975,8 @@ html {
     @include mixins.p-normal;
     color: colors.$gray300;
 
-    > span {
+    > a {
+      text-decoration: none;
       color: colors.$black;
     }
   }
@@ -984,21 +996,15 @@ html {
     align-items: center;
     justify-content: center;
     gap: 25px;
-
-    > div {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-  }
-
-  &__link-logo {
-    width: 26px;
-    height: 26px;
   }
 
   &__link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
     text-decoration: none;
+    color: inherit;
     @include mixins.p-normal;
     position: relative;
 
@@ -1027,6 +1033,11 @@ html {
         background-color: colors.$orange200;
       }
     }
+  }
+
+  &__link-logo {
+    width: 26px;
+    height: 26px;
   }
 
   &__text {
