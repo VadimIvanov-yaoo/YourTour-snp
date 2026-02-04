@@ -313,6 +313,10 @@ section {
       background: colors.$orange200;
     }
   }
+
+  &__card:hover &__card-btn {
+    background-color: colors.$green400;
+  }
 }
 
 .tour-form {
@@ -397,6 +401,14 @@ section {
       @include mixins.p-normal;
       color: colors.$gray300;
     }
+
+    &:hover {
+      background-color: colors.$beige200;
+    }
+
+    &:focus {
+      border: 1px solid colors.$gray300;
+    }
   }
 
   &__select-item {
@@ -404,7 +416,9 @@ section {
   }
 
   &__textarea {
-    max-height: 152px;
+    height: 0;
+    min-height: 152px;
+    resize: vertical;
   }
 
   &__comment-block {
@@ -443,7 +457,7 @@ section {
     appearance: none;
     width: 26px;
     height: 26px;
-    border: 2px solid #aaa;
+    border: 2px solid #1b1f2b;
     border-radius: 50%;
     display: inline-block;
     position: relative;
@@ -532,6 +546,7 @@ section {
     font-family: Roboto, sans-serif;
     padding: 15px 70px;
     border-radius: 10px;
+    text-decoration: none;
     border: none;
     cursor: pointer;
 
@@ -960,7 +975,8 @@ section {
     @include mixins.p-normal;
     color: colors.$gray300;
 
-    > span {
+    > a {
+      text-decoration: none;
       color: colors.$black;
     }
   }
@@ -980,21 +996,15 @@ section {
     align-items: center;
     justify-content: center;
     gap: 25px;
-
-    > div {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-  }
-
-  &__link-logo {
-    width: 26px;
-    height: 26px;
   }
 
   &__link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
     text-decoration: none;
+    color: inherit;
     @include mixins.p-normal;
     position: relative;
 
@@ -1023,6 +1033,11 @@ section {
         background-color: colors.$orange200;
       }
     }
+  }
+
+  &__link-logo {
+    width: 26px;
+    height: 26px;
   }
 
   &__text {
