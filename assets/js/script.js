@@ -27,14 +27,51 @@ window.addEventListener('scroll', () => {
   }
 })
 
-//validation
+function formattedDate(e) {
+  const MAX_DAY = 31
+  const MAX_MONTH = 12
+  const MAX_YEAR = 9999
+  const digits = e.target.value.replace(/\D/g, '').slice(0, 8)
 
-document.getElementById('tourForm').addEventListener('submit', function(e) {
-  const dateFrom = document.getElementById("tour-form__input__from").value;
-  const dateTo = document.getElementById("tour-form__input__to").value;
+  let day, month, year
 
-  if(dateFrom > dateTo) {
-    alert(`Значение "Дата от" не должно превышать "Дата до"`);
-    e.preventDefault();
+  if (digits.length >= 1) {
+    day = digits.slice(0, 2)
+    if (day.length === 2 && parseInt(day, 10) > MAX_DAY) day = MAX_DAY
   }
-});
+
+  if (digits.length >= 3) {
+    month = digits.slice(2, 4)
+    if (month.length === 2 && parseInt(month, 10) > MAX_MONTH) month = MAX_MONTH
+  }
+
+  if (digits.length >= 5) {
+    year = digits.slice(4, 8)
+    if (year.length === 4 && parseInt(year, 10) > MAX_YEAR) year = MAX_YEAR
+  }
+
+  let formatted = day
+  if (month) formatted += '.' + month
+  if (year) formatted += '.' + year
+
+  if (typeof formatted === 'undefined') formatted = ''
+  e.target.value = formatted
+}
+
+document
+  .getElementById('tour-form__input__to')
+  .addEventListener('input', formattedDate)
+document
+  .getElementById('tour-form__input__from')
+  .addEventListener('input', formattedDate)
+
+//validation
+document.getElementById('tourForm').addEventListener('submit', function (e) {
+  const dateFrom = document.getElementById('tour-form__input__from').value
+  const dateTo = document.getElementById('tour-form__input__to').value
+
+  if (dateFrom > dateTo) {
+    alert(`Значение "Дата от" не должно превышать "Дата до"`)
+    e.preventDefault()
+  }
+})
