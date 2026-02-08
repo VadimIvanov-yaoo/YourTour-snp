@@ -64,6 +64,11 @@
     letter-spacing: -0.3px;
   }
 
+  .history__card-bottom-block{
+    position: absolute;
+    bottom: 2px;
+  }
+
   .history__card-subtitle {
     letter-spacing: -0.1px;
   }
@@ -205,6 +210,8 @@
   }
 
   .tour__card-btn {
+    bottom: 15px;
+    left: 13px;
     padding: 5px 15px;
   }
 
@@ -436,12 +443,24 @@
 @media (max-width: 360px) {
   .header {
     max-height: 88px;
-    padding: 32px 0 !important;
+    padding: 27px 0 !important;
 
     &__logo {
       width: 133px;
       height: 22px;
     }
+  }
+
+  .tour__card-btn{
+    left: 8px;
+    bottom: 20px
+  }
+
+  .history__card-btn{
+    position: absolute;
+    left: 31px;
+    bottom: 19px !important;
+    letter-spacing: -0.4px;
   }
 
   .mail__image {
