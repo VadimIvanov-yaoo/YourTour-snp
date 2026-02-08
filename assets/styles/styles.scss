@@ -843,6 +843,10 @@ section {
       transform: scale(1.2);
     }
 
+    &:hover &-btn {
+      background-color: colors.$green400;
+    }
+
     &-title {
       @include mixins.h3-pc;
       color: colors.$white;
@@ -1006,32 +1010,28 @@ section {
     text-decoration: none;
     color: inherit;
     @include mixins.p-normal;
-    position: relative;
 
-    &:after {
-      content: '';
-      display: none;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      width: 100%;
-      background-color: colors.$black;
-      transition:
-        width 0.3s ease-in-out,
-        background-color 0.3s ease-in-out;
-    }
-
-    &:hover:after {
-      display: block;
-    }
-
-    &:active {
-      color: colors.$orange200;
+    span {
+      position: relative;
 
       &:after {
-        background-color: colors.$orange200;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background-color: colors.$black;
+        transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
       }
+
+      &:hover:after {
+        width: 100%;
+      }
+    }
+
+    &:active span:after {
+      background-color: colors.$orange200;
     }
   }
 
