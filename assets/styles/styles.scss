@@ -978,10 +978,27 @@ section {
   &__subtitle {
     @include mixins.p-normal;
     color: colors.$gray300;
-
     > a {
+
       text-decoration: none;
       color: colors.$black;
+      position: relative;
+      display: inline-block;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 0;
+        background-color: colors.$black;
+        transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      }
+
+      &:hover:after {
+        width: 100%;
+      }
     }
   }
 }
