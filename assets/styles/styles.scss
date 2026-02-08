@@ -288,10 +288,14 @@ section {
     }
   }
   &__card-btn {
+    position: absolute;
+    bottom: 43px;
+    left: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
+    letter-spacing: -0.7px;
     gap: 15px;
     padding: 7px 20px;
     border: none;
@@ -866,6 +870,8 @@ section {
       justify-content: center;
       background-color: transparent;
       gap: 15px;
+      letter-spacing: -1px;
+      margin-left: -20px;
       padding: 7px 20px;
       border: none;
       border-radius: 50px;
@@ -889,7 +895,7 @@ section {
 
     &-bottom-block {
       width: 100%;
-      padding: 60px;
+      padding: 0 60px 50px 60px;
       @include mixins.flex-center-between;
     }
   }
@@ -1002,7 +1008,6 @@ section {
     }
   }
 }
-
 .footer {
   background-color: colors.$beige200;
   &__content {
