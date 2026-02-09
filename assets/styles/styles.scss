@@ -44,6 +44,9 @@ section {
 }
 
 .backgroundWrapper {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background-size: cover;
   background:
     linear-gradient(
@@ -55,7 +58,7 @@ section {
     url('../images/hero-background.jpg') no-repeat center/cover lightgray;
 
   .header {
-    padding: 28px 0px;
+    padding: 28px 0;
     &__logo {
       height: 30px;
       width: 181px;
@@ -101,12 +104,13 @@ section {
 
 .hero {
   position: relative;
+  flex: 1;
+
   @include mixins.flex-column;
   gap: 50px;
-  transform: translateX(0%);
+
   text-align: center;
-  margin: 118px auto 0;
-  padding-bottom: 118px;
+  justify-content: center;
 
   &__title {
     @include mixins.h1-pc;
