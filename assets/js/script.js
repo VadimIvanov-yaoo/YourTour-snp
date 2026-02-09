@@ -20,10 +20,11 @@ window.addEventListener('scroll', () => {
 
   if (scrollPosition >= height) {
     header.classList.add('header-fixed')
-    document.body.style.paddingTop = headerHeight + 'px'
+    document.querySelector('.backgroundWrapper').style.paddingTop =
+      headerHeight + 'px'
   } else {
     header.classList.remove('header-fixed')
-    document.body.style.paddingTop = '0'
+    document.querySelector('.backgroundWrapper').style.paddingTop = '0'
   }
 })
 
