@@ -295,7 +295,7 @@
                 <select
                   class="tour-form__input tour-form__select"
                   name="tour"
-                  id="tour"
+                  id="tours"
                 >
                   <option selected disabled>Куда хотите ехать?</option>
                   <option value="America">Америка</option>
@@ -307,6 +307,7 @@
               <div class="tour-form__field">
                 <label class="tour-form__label">Email</label>
                 <input
+                  id="email"
                   class="tour-form__input"
                   placeholder="example@mail.com"
                   type="email"
@@ -317,6 +318,7 @@
               <div class="tour-form__field">
                 <label class="tour-form__label">Телефон</label>
                 <input
+                  id="phone"
                   class="tour-form__input"
                   placeholder="+ 7 (_ _ _) _ _ _ - _ _ - _ _"
                   type="tel"
@@ -404,7 +406,7 @@
               </label>
             </div>
 
-            <div class="tour-form__button-block">
+            <div id="submitBtn" class="tour-form__button-block">
               <a
                 href="#createTour"
                 class="tour-form__button tour-form__button-cyan-btn"
