@@ -27,8 +27,23 @@ section {
   animation: headerAnimation 0.5s ease forwards;
 
   a {
+    position: relative;
     color: colors.$black !important;
     transition: color 0.3s ease;
+
+    &:after {
+      background-color: black !important;
+      display: block;
+      content: '';
+      height: 1.4px;
+      width: 0%;
+      -webkit-transition: width 0.1s ease-in-out;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
   }
 
   svg path {
@@ -318,12 +333,16 @@ section {
       color: colors.$white;
     }
     &:active {
-      background: colors.$orange200;
+      background: colors.$orange200 !important;
     }
   }
 
   &__card:hover &__card-btn {
     background-color: colors.$green400;
+  }
+
+  &__card:active &__card-btn {
+    background: colors.$orange200 !important;
   }
 }
 
@@ -855,6 +874,10 @@ section {
       background-color: colors.$green400;
     }
 
+    &:active &-btn {
+      background-color: colors.$orange200 !important;
+    }
+
     &-title {
       @include mixins.h3-pc;
       color: colors.$white;
@@ -893,7 +916,7 @@ section {
         color: colors.$white;
       }
       &:active {
-        background: colors.$orange200;
+        background: colors.$orange200 !important;
       }
     }
 

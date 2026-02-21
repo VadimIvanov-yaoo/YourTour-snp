@@ -28,6 +28,9 @@ window.addEventListener('scroll', () => {
   }
 })
 
+//validation
+const phoneInput = document.getElementById('phone')
+
 function formattedDate(e) {
   const MAX_DAY = 31
   const MAX_MONTH = 12
@@ -59,6 +62,34 @@ function formattedDate(e) {
   e.target.value = formatted
 }
 
+function validatePhone(value) {
+  if (value.startsWith('7')) {
+    value = value.substring(1)
+  }
+  value = value.substring(0, 10)
+  let formattedTel = ''
+
+  if (value.length > 0) {
+    formattedTel += '+7 (' + value.substring(0, 3)
+  }
+  if (value.length >= 4) {
+    formattedTel += ') ' + value.substring(3, 6)
+  }
+  if (value.length >= 7) {
+    formattedTel += '-' + value.substring(6, 8)
+  }
+  if (value.length >= 9) {
+    formattedTel += '-' + value.substring(8, 10)
+  }
+
+  return formattedTel
+}
+
+function validateEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return regex.test(email)
+}
+
 document
   .getElementById('tour-form__input__to')
   .addEventListener('input', formattedDate)
@@ -66,13 +97,45 @@ document
   .getElementById('tour-form__input__from')
   .addEventListener('input', formattedDate)
 
-//validation
-document.getElementById('tourForm').addEventListener('submit', function (e) {
+phoneInput.addEventListener('input', (e) => {
+  let value = e.target.value.replace(/\D/g, '')
+  e.target.value = validatePhone(value)
+})
+
+function validateForm(e) {
   const dateFrom = document.getElementById('tour-form__input__from').value
   const dateTo = document.getElementById('tour-form__input__to').value
+  const emailInput = document.getElementById('email').value
+
+  const day = new Date().getDate()
+  const month = new Date().getMonth() + 1
+  const year = new Date().getFullYear()
+  const currentDate = `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}`
+
+  if (!validateEmail(emailInput)) {
+    alert('Некорректный email')
+    return
+  }
+
+  if (dateTo < currentDate) {
+    alert('Дата "до" не может быть прошедшей')
+    return
+  }
+
+  if (dateFrom < currentDate) {
+    alert('Дата "от" не может быть прошедшей')
+    return
+  }
 
   if (dateFrom > dateTo) {
-    alert(`Значение "Дата от" не должно превышать "Дата до"`)
-    e.preventDefault()
+    alert('Значение "Дата от" не должно превышать "Дата до"')
+    return
   }
+}
+document.getElementById('tourForm').addEventListener('submit', function (e) {
+  validateForm(e)
+})
+
+document.getElementById('submitBtn').addEventListener('click', function (e) {
+  validateForm(e)
 })
