@@ -103,27 +103,26 @@ phoneInput.addEventListener('input', (e) => {
 })
 
 function validateForm(e) {
-  const dateFrom = document.getElementById('tour-form__input__from').value
-  const dateTo = document.getElementById('tour-form__input__to').value
+  const dateFromValue = document.getElementById('tour-form__input__from').value
+  const dateToValue = document.getElementById('tour-form__input__to').value
   const emailInput = document.getElementById('email').value
-
-  const day = new Date().getDate()
-  const month = new Date().getMonth() + 1
-  const year = new Date().getFullYear()
-  const currentDate = `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}`
 
   if (!validateEmail(emailInput)) {
     alert('Некорректный email')
     return
   }
 
-  if (dateTo < currentDate) {
-    alert('Дата "до" не может быть прошедшей')
-    return
-  }
+  const [fromDay, fromMonth, fromYear] = dateFromValue.split('.')
+  const dateFrom = new Date(fromYear, fromMonth - 1, fromDay)
 
-  if (dateFrom < currentDate) {
-    alert('Дата "от" не может быть прошедшей')
+  const [toDay, toMonth, toYear] = dateToValue.split('.')
+  const dateTo = new Date(toYear, toMonth - 1, toDay)
+
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+
+  if (dateFrom < today || dateTo < today) {
+    alert('Дата не может быть прошедшей')
     return
   }
 
