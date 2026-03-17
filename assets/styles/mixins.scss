@@ -104,3 +104,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+@mixin customHoverMixin($style: all, $time: 0.3s, $method: ease, $cursor: pointer) {
+  transition: $style $time $method;
+  cursor: $cursor;
+}
