@@ -12,16 +12,84 @@
   }
 }
 
+
+
+@media (max-width: 1245px) and (min-width: 1024px) {
+  .pictures .images__row {
+    gap: 20px;
+  }
+
+  .pictures .images__row:nth-child(1) {
+    grid-template-columns: repeat(3, 314px);
+
+    .images__item:nth-child(2) {
+      display: none;
+    }
+  }
+
+  .pictures .images__row:nth-child(2) {
+    grid-template-columns: repeat(4, 231px);
+
+    .images__item:nth-child(3) {
+      display: none;
+    }
+  }
+
+  .pictures .images__row:nth-child(3) {
+    grid-template-columns: repeat(3, 314px);
+
+    .images__item:nth-child(4) {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1245px) {
+  .tour__card-wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px;
+  }
+
+  .tour__card {
+    width: 450px;
+  }
+
+  .tour__card-header {
+    width: 100% !important;
+  }
+
+  .tour__card-title {
+    max-width: 350px;
+    width: 100% !important;
+  }
+
+  .feedback__card-wrapper {
+    height: 841px;
+    gap: 18px;
+  }
+  .feedback__card {
+    max-height: 841px;
+    width: 450px;
+  }
+
+  .feedback__card-tour {
+    letter-spacing: 0.4px;
+  }
+  .images {
+    align-items: center;
+  }
+}
+
 @media (max-width: 1024px) {
   .backgroundWrapper {
     background:
-      linear-gradient(
-        360deg,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(0, 0, 0, 0.06) 48.44%,
-        rgba(0, 0, 0, 0.5) 100%
-      ),
-      url('../images/medium-hero-bg.jpg') no-repeat center/cover lightgray;
+            linear-gradient(
+                            360deg,
+                            rgba(0, 0, 0, 0.4) 0%,
+                            rgba(0, 0, 0, 0.06) 48.44%,
+                            rgba(0, 0, 0, 0.5) 100%
+            ),
+            url('../images/medium-hero-bg.jpg') no-repeat center/cover lightgray;
   }
 
   .container {
@@ -73,6 +141,14 @@
     letter-spacing: -0.1px;
   }
 }
+@media (max-width: 1023px) {
+  .pictures {
+    .images__row {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+  }
+}
 
 @media (max-width: 940px) {
   section {
@@ -88,97 +164,7 @@
   .tour-form__form {
     width: auto;
   }
-}
 
-@media (max-width: 920px) {
-  .container {
-    padding: 0 40px;
-  }
-
-  .header__nav-list {
-    gap: 20px !important;
-  }
-
-  .hero__title {
-    font-size: 72px;
-  }
-}
-
-@media (max-width: 1245px) {
-  .tour__card-wrapper {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 18px;
-  }
-
-  .tour__card {
-    width: 450px;
-  }
-
-  .tour__card-header {
-    width: 100% !important;
-  }
-
-  .tour__card-title {
-    max-width: 350px;
-    width: 100% !important;
-  }
-
-  .feedback__card-wrapper {
-    height: 841px;
-    gap: 18px;
-  }
-  .feedback__card {
-    max-height: 841px;
-    width: 450px;
-  }
-
-  .feedback__card-tour {
-    letter-spacing: 0.4px;
-  }
-  .images {
-    align-items: center;
-  }
-}
-@media (max-width: 1245px) and (min-width: 1024px) {
-  .pictures .images__row {
-    gap: 20px;
-  }
-
-  .pictures .images__row:nth-child(1) {
-    grid-template-columns: repeat(3, 314px);
-
-    .images__item:nth-child(2) {
-      display: none;
-    }
-  }
-
-  .pictures .images__row:nth-child(2) {
-    grid-template-columns: repeat(4, 231px);
-
-    .images__item:nth-child(3) {
-      display: none;
-    }
-  }
-
-  .pictures .images__row:nth-child(3) {
-    grid-template-columns: repeat(3, 314px);
-
-    .images__item:nth-child(4) {
-      display: none;
-    }
-  }
-}
-
-@media (max-width: 1023px) {
-  .pictures {
-    .images__row {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-  }
-}
-
-@media (max-width: 940px) {
   .tour__list {
     flex-wrap: wrap;
     gap: 15px;
@@ -376,6 +362,22 @@
     }
   }
 }
+
+@media (max-width: 920px) {
+  .container {
+    padding: 0 40px;
+  }
+
+  .header__nav-list {
+    gap: 20px !important;
+  }
+
+  .hero__title {
+    font-size: 72px;
+  }
+}
+
+
 @media (max-width: 844px) {
   .container {
     padding: 0 20px;
@@ -508,6 +510,11 @@
     @include mixins.p-big-mobile;
   }
 
+  .tour__list-link-active {
+    color: colors.$orange200;
+    position: relative;
+  }
+
   .tour-form__title {
     @include mixins.h2-mobile;
   }
@@ -595,6 +602,8 @@
 
   .tour-form__checkbox-text {
     max-width: 248px;
+    color: colors.$gray300;
+    letter-spacing: -0.165px;
   }
 
   .tour-form__button {

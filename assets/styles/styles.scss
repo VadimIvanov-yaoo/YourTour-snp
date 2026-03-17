@@ -15,10 +15,10 @@ html {
 section {
   padding-top: 135px;
 }
-
 .header-fixed {
   background-color: colors.$beige200;
   position: fixed;
+  backdrop-filter: blur(54px);
   top: 0;
   left: 0;
   width: 100%;
@@ -29,7 +29,7 @@ section {
   a {
     position: relative;
     color: colors.$black !important;
-    transition: color 0.3s ease;
+    @include mixins.customHoverMixin(color);
 
     &:after {
       background-color: black !important;
@@ -37,8 +37,7 @@ section {
       content: '';
       height: 1.4px;
       width: 0%;
-      -webkit-transition: width 0.1s ease-in-out;
-      transition: width 0.3s ease-in-out;
+      @include mixins.customHoverMixin(width);
     }
 
     &:hover:after {
@@ -48,7 +47,7 @@ section {
 
   svg path {
     fill: colors.$black !important;
-    transition: fill 0.3s ease;
+    @include mixins.customHoverMixin(fill);
   }
 }
 
@@ -64,13 +63,13 @@ section {
   flex-direction: column;
   background-size: cover;
   background:
-    linear-gradient(
-      360deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.06) 48.44%,
-      rgba(0, 0, 0, 0.5) 100%
-    ),
-    url('../images/hero-background.jpg') no-repeat center/cover lightgray;
+          linear-gradient(
+                          360deg,
+                          rgba(0, 0, 0, 0.4) 0%,
+                          rgba(0, 0, 0, 0.06) 48.44%,
+                          rgba(0, 0, 0, 0.5) 100%
+          ),
+          url('../images/hero-background.jpg') no-repeat center/cover lightgray;
 
   .header {
     padding: 28px 0;
@@ -103,8 +102,7 @@ section {
               content: '';
               height: 1.4px;
               width: 0%;
-              -webkit-transition: width 0.1s ease-in-out;
-              transition: width 0.3s ease-in-out;
+              @include mixins.customHoverMixin(width);
             }
 
             &:hover:after {
@@ -144,11 +142,9 @@ section {
     border-radius: 10px;
     padding: 5px 20px;
     background-color: colors.$white;
-    cursor: pointer;
     border: 1px solid colors.$white;
-    transition:
-      background 0.25s ease,
-      color 0.25s ease;
+    @include mixins.customHoverMixin(background-color, 0.25s);
+    @include mixins.customHoverMixin(color, 0.25s);
 
     &:hover {
       background-color: colors.$orange200;
@@ -188,8 +184,10 @@ section {
   }
 
   &__list-link {
+    display: inline-flex;
     text-decoration: none;
     @include mixins.p-big;
+    @include mixins.customHoverMixin(width);
 
     &:after {
       background-color: colors.$black;
@@ -197,8 +195,7 @@ section {
       content: '';
       height: 2px;
       width: 0%;
-      -webkit-transition: width 0.1s ease-in-out;
-      transition: width 0.3s ease-in-out;
+      @include mixins.customHoverMixin(width);
     }
 
     &:hover:after {
@@ -220,7 +217,7 @@ section {
       position: absolute;
       bottom: -2px;
       left: 0;
-      transition: width 0.3s ease-in-out;
+      @include mixins.customHoverMixin(width);
     }
   }
 
@@ -241,10 +238,10 @@ section {
     border-radius: 50px;
     overflow: hidden;
     background: linear-gradient(
-      360deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.06) 48.44%,
-      rgba(0, 0, 0, 0.5) 100%
+                    360deg,
+                    rgba(0, 0, 0, 0.4) 0%,
+                    rgba(0, 0, 0, 0.06) 48.44%,
+                    rgba(0, 0, 0, 0.5) 100%
     );
     z-index: 1;
 
@@ -255,8 +252,8 @@ section {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 300ms ease;
       transform: scale(1);
+      @include mixins.customHoverMixin(transform, 0.3s);
       z-index: 0;
     }
 
@@ -268,10 +265,10 @@ section {
       width: 100%;
       height: 100%;
       background: linear-gradient(
-        360deg,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(0, 0, 0, 0.06) 48.44%,
-        rgba(0, 0, 0, 0.5) 100%
+                      360deg,
+                      rgba(0, 0, 0, 0.4) 0%,
+                      rgba(0, 0, 0, 0.06) 48.44%,
+                      rgba(0, 0, 0, 0.5) 100%
       );
       z-index: 1;
       pointer-events: none;
@@ -320,9 +317,8 @@ section {
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    transition:
-      width 0.3s ease-in-out,
-      background-color 0.3s ease-in-out;
+    @include mixins.customHoverMixin(width, 0.3s);
+    @include mixins.customHoverMixin(background-color, 0.3s);
 
     &:hover {
       background-color: colors.$green400;
@@ -403,6 +399,10 @@ section {
   &__select {
     appearance: none;
     padding-right: 48px;
+
+    &:invalid {
+      color: colors.$gray300 !important;
+    }
   }
 
   &__field:has(.tour-form__select)::after {
@@ -421,7 +421,7 @@ section {
     background-color: colors.$beige100;
     padding: 20px;
     border-radius: 10px;
-    border: none;
+    border: 1px solid colors.$beige200;
     width: 100%;
 
     &::placeholder {
@@ -435,6 +435,8 @@ section {
 
     &:focus {
       border: 1px solid colors.$gray300;
+      transform: none;
+      outline: none;
     }
   }
 
@@ -445,7 +447,7 @@ section {
   &__textarea {
     height: 0;
     min-height: 152px;
-    resize: vertical;
+    resize: none;
   }
 
   &__comment-block {
@@ -489,7 +491,7 @@ section {
     display: inline-block;
     position: relative;
     cursor: pointer;
-    transition: border-color 0.2s ease;
+    @include mixins.customHoverMixin(border-color, 0.3s);
     margin: 0;
 
     &:checked {
@@ -555,6 +557,7 @@ section {
     &-link {
       text-decoration: none;
       color: colors.$black;
+      text-underline-offset: 3px;
 
       &:hover {
         text-decoration: black underline;
@@ -574,6 +577,8 @@ section {
     padding: 15px 70px;
     border-radius: 10px;
     text-decoration: none;
+    width: 100%;
+    max-width: 235px;
     border: none;
     cursor: pointer;
 
@@ -829,9 +834,9 @@ section {
     max-width: 1170px;
     max-height: 567px;
     background: linear-gradient(
-      270deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.2) 100%
+                    270deg,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0.2) 100%
     );
 
     &-background {
@@ -842,13 +847,13 @@ section {
       height: 100%;
       object-fit: cover;
       background: linear-gradient(
-        270deg,
-        rgba(0, 0, 0, 0) 0.01%,
-        rgba(0, 0, 0, 0.2) 100%
+                      270deg,
+                      rgba(0, 0, 0, 0) 0.01%,
+                      rgba(0, 0, 0, 0.2) 100%
       );
       object-position: center;
-      transition: transform 300ms ease;
       transform: scale(1);
+      @include mixins.customHoverMixin(transform, 0.3s);
       z-index: -99;
     }
 
@@ -859,9 +864,9 @@ section {
       width: 100%;
       height: 100%;
       background: linear-gradient(
-        270deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.2) 100%
+                      270deg,
+                      rgba(0, 0, 0, 0) 0%,
+                      rgba(0, 0, 0, 0.2) 100%
       );
       z-index: -1;
       pointer-events: none;
@@ -903,9 +908,8 @@ section {
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      transition:
-        width 0.3s ease-in-out,
-        background-color 0.3s ease-in-out;
+      @include mixins.customHoverMixin(width, 0.3s);
+      @include mixins.customHoverMixin(background-color, 0.3s);
 
       &:hover {
         background-color: colors.$green400;
@@ -956,9 +960,8 @@ section {
       height: 2px;
       width: 0;
       background-color: colors.$white;
-      transition:
-        width 0.3s ease-in-out,
-        background-color 0.3s ease-in-out;
+      @include mixins.customHoverMixin(width, 0.3s);
+      @include mixins.customHoverMixin(background-color, 0.3s);
     }
 
     &:hover:after {
@@ -1026,7 +1029,8 @@ section {
         height: 1px;
         width: 0;
         background-color: colors.$black;
-        transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        @include mixins.customHoverMixin(width, 0.3s);
+        @include mixins.customHoverMixin(background-color, 0.3s);
       }
 
       &:hover:after {
@@ -1071,7 +1075,8 @@ section {
         height: 2px;
         width: 0;
         background-color: colors.$black;
-        transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        @include mixins.customHoverMixin(width, 0.3s);
+        @include mixins.customHoverMixin(background-color, 0.3s);
       }
 
       &:hover:after {

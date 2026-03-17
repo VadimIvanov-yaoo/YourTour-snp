@@ -283,6 +283,7 @@
               <div class="tour-form__field">
                 <label class="tour-form__label">Имя</label>
                 <input
+                  id="name"
                   class="tour-form__input"
                   placeholder="Введите Ваше имя"
                   type="text"
@@ -296,8 +297,9 @@
                   class="tour-form__input tour-form__select"
                   name="tour"
                   id="tours"
+                  required
                 >
-                  <option selected disabled>Куда хотите ехать?</option>
+                  <option value=""  selected disabled>Куда хотите ехать?</option>
                   <option value="America">Америка</option>
                   <option value="France">Франция</option>
                   <option value="Asia">Азия</option>
