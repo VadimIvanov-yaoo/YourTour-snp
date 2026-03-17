@@ -24,9 +24,8 @@ section {
   width: 100%;
   z-index: 9999;
   transform: translateY(-100%);
-  animation: headerAnimation 0.5s ease forwards;
 
-  a {
+  .header__link  {
     position: relative;
     color: colors.$black !important;
     @include mixins.customHoverMixin(color);
@@ -45,11 +44,24 @@ section {
     }
   }
 
+  .header__phone {
+    color: colors.$black !important;
+  }
+
   svg path {
     fill: colors.$black !important;
     @include mixins.customHoverMixin(fill);
   }
 }
+
+.header-show {
+  animation: headerShow 0.5s ease forwards;
+}
+
+.header-hide {
+  animation: headerHide 0.5s ease forwards;
+}
+
 
 .container {
   max-width: 1170px;
@@ -741,6 +753,12 @@ section {
 .pictures {
   background-color: colors.$beige100;
 
+  &__container {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
   &__header {
     margin-bottom: 100px;
     display: flex;
@@ -1100,14 +1118,21 @@ section {
   }
 }
 
-@keyframes headerAnimation {
+@keyframes headerShow {
   from {
-    opacity: 0;
     transform: translateY(-100%);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes headerHide {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
   }
 }
 

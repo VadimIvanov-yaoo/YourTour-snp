@@ -14,17 +14,30 @@ links.forEach((link) => {
 const header = document.querySelector('.header')
 const headerHeight = header.offsetHeight
 const height = 450
+const bg = document.querySelector('.backgroundWrapper')
+
+let isFixed = false
 
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY
 
-  if (scrollPosition >= height) {
-    header.classList.add('header-fixed')
-    document.querySelector('.backgroundWrapper').style.paddingTop =
-      headerHeight + 'px'
-  } else {
-    header.classList.remove('header-fixed')
-    document.querySelector('.backgroundWrapper').style.paddingTop = '0'
+  if (scrollPosition >= height && !isFixed) {
+    header.classList.remove('header-hide')
+    header.classList.add('header-fixed', 'header-show')
+    bg.style.paddingTop = headerHeight + 'px'
+    isFixed = true
+  }
+
+  if (scrollPosition < height && isFixed) {
+    header.classList.remove('header-show')
+    header.classList.add('header-hide')
+
+    setTimeout(() => {
+      header.classList.remove('header-fixed', 'header-hide')
+      bg.style.paddingTop = '0'
+    }, 250)
+
+    isFixed = false
   }
 })
 //validation
