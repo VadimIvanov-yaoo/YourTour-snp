@@ -1,85 +1,6 @@
 @use 'mixins';
 @use 'colors';
 
-@media (max-width: 1224px) {
-  .container {
-    max-width: 100%;
-    padding: 0 57px;
-  }
-
-  .header__nav-list {
-    gap: 30px;
-  }
-}
-
-
-
-@media (max-width: 1245px) and (min-width: 1024px) {
-  .pictures .images__row {
-    gap: 20px;
-  }
-
-  .pictures .images__row:nth-child(1) {
-    grid-template-columns: repeat(3, 314px);
-
-    .images__item:nth-child(2) {
-      display: none;
-    }
-  }
-
-  .pictures .images__row:nth-child(2) {
-    grid-template-columns: repeat(4, 231px);
-
-    .images__item:nth-child(3) {
-      display: none;
-    }
-  }
-
-  .pictures .images__row:nth-child(3) {
-    grid-template-columns: repeat(3, 314px);
-
-    .images__item:nth-child(4) {
-      display: none;
-    }
-  }
-}
-
-@media (max-width: 1245px) {
-  .tour__card-wrapper {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 18px;
-  }
-
-  .tour__card {
-    width: 450px;
-  }
-
-  .tour__card-header {
-    width: 100% !important;
-  }
-
-  .tour__card-title {
-    max-width: 350px;
-    width: 100% !important;
-  }
-
-  .feedback__card-wrapper {
-    height: 841px;
-    gap: 18px;
-  }
-  .feedback__card {
-    max-height: 841px;
-    width: 450px;
-  }
-
-  .feedback__card-tour {
-    letter-spacing: 0.4px;
-  }
-  .images {
-    align-items: center;
-  }
-}
-
 @media (max-width: 1024px) {
   .backgroundWrapper {
     background:
@@ -93,31 +14,42 @@
   }
 
   .container {
-    padding: 0 57px;
+    padding: 0 clamp(20px, 5%, 57px);
   }
 
   .header__nav-list {
-    gap: 30px !important;
+    gap: clamp(20px, 3%, 30px);
   }
 
   .hero__title {
     letter-spacing: 0.7px;
+    font-size: clamp(34px, 7vw, 72px);
   }
 
   .hero__subtitle {
-    max-width: 400px !important;
+    max-width: clamp(310px, 90%, 400px);
   }
+
+  section {
+    padding-top: clamp(50px, 10vw, 75px);
+  }
+
   .tour-form__form {
-    width: 918px;
+    width: 100%;
+    max-width: 918px;
   }
 
   .tour-form__wrapper {
-    padding: 60px;
+    padding: clamp(20px, 5%, 60px);
   }
 
   .tour-form__fields {
-    margin-bottom: 35px;
-    column-gap: 20px !important;
+    margin-bottom: clamp(20px, 5%, 35px);
+    column-gap: clamp(15px, 3%, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 5%, 30px);
+    min-width: 0;
   }
 
   .tour-form__radio {
@@ -125,7 +57,8 @@
   }
 
   .tour-form__input {
-    min-width: 390px;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .history__card-title {
@@ -140,54 +73,31 @@
   .history__card-subtitle {
     letter-spacing: -0.1px;
   }
-}
-@media (max-width: 1023px) {
-  .pictures {
-    .images__row {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-  }
-}
 
-@media (max-width: 940px) {
-  section {
-    padding-top: 75px;
-  }
-  .tour-form__fields {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    min-width: 0;
-  }
-
-  .tour-form__form {
-    width: auto;
-  }
-
-  .tour__list {
-    flex-wrap: wrap;
-    gap: 15px;
+  .tour__card-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(15px, 3%, 30px);
   }
 
   .tour__card {
-    width: 318px;
-    height: 318px;
-    border-radius: 20px;
+    max-height: clamp(318px, 50vw, 531px);
+    border-radius: clamp(20px, 3%, 50px);
   }
 
-  .tour__card-header,
-  .tour__card-footer {
-    padding: 25px;
+  .tour__card-header {
+    padding: clamp(20px, 4%, 50px);
+    width: 100%;
   }
 
   .tour__card-footer {
-    gap: 13px;
+    padding: clamp(20px, 4%, 50px);
+    gap: clamp(10px, 2%, 16px);
   }
 
   .tour__card-title {
     @include mixins.h3-mobile;
     color: colors.$white;
+    max-width: 100%;
   }
 
   .tour__card-price {
@@ -196,9 +106,9 @@
   }
 
   .tour__card-btn {
-    bottom: 15px;
-    left: 13px;
-    padding: 5px 15px;
+    bottom: clamp(15px, 3%, 43px);
+    left: clamp(8px, 3%, 30px);
+    padding: clamp(5px, 1%, 7px) clamp(10px, 2%, 20px);
   }
 
   .tour__card-btn-content {
@@ -207,95 +117,90 @@
   }
 
   .feedback__header {
-    gap: 20px;
-    margin-bottom: 50px;
-    max-width: 360px;
+    gap: clamp(15px, 3%, 20px);
+    margin-bottom: clamp(35px, 7%, 50px);
+    max-width: 100%;
   }
 
   .feedback__header-title {
     letter-spacing: 0.7px;
   }
+
   .feedback__header-subtitle {
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px);
   }
+
   .feedback__card-content {
-    padding: 20px;
+    padding: clamp(15px, 3%, 20px);
   }
+
   .feedback__card {
-    border-radius: 20px;
-  }
-
-  .feedback__card-wrapper {
-    flex-direction: column;
-  }
-
-  .feedback__card-text {
-    @include mixins.p-big-mobile;
-    padding-bottom: 52px;
-  }
-
-  .feedback__card-username {
-    @include mixins.h3-mobile;
-  }
-  .feedback__card-tour {
-    @include mixins.p-small-mobile;
-    color: colors.$gray300;
-  }
-
-  .feedback__card-info {
-    align-items: center;
+    border-radius: clamp(15px, 3%, 20px);
+    max-height: clamp(408px, 50vw, 841px);
+    width: 100%;
   }
 
   .feedback__card-wrapper {
     flex-direction: column;
     height: auto;
     max-height: none;
-    gap: 18px;
+    gap: clamp(15px, 3%, 18px);
   }
+
+  .feedback__card-text {
+    @include mixins.p-big-mobile;
+    padding-bottom: clamp(40px, 8%, 52px);
+  }
+
+  .feedback__card-username {
+    @include mixins.h3-mobile;
+  }
+
   .feedback__card-tour {
+    @include mixins.p-small-mobile;
+    color: colors.$gray300;
     letter-spacing: -0.1px;
   }
 
-  .feedback__card:first-child {
-    max-height: 408px;
-  }
-
-  .feedback__card {
-    height: auto;
-    max-height: 592px;
+  .feedback__card-info {
+    align-items: center;
   }
 
   .history__card {
-    max-height: 455px;
-    border-radius: 20px;
+    max-height: clamp(300px, 40vw, 455px);
+    border-radius: clamp(15px, 3%, 20px);
   }
 
   .pictures .images__row {
-    gap: 20px;
+    gap: clamp(10px, 2%, 20px);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .images__item {
+    height: clamp(100px, 20vw, 110px);
+    border-radius: clamp(15px, 3%, 20px);
   }
 
   .history__header {
-    margin-bottom: 50px;
+    margin-bottom: clamp(35px, 7%, 50px);
+    gap: clamp(15px, 3%, 20px);
   }
 
   .history__card-top-block,
   .history__card-bottom-block {
-    padding: 30px;
+    padding: clamp(20px, 4%, 30px);
   }
 
   .history__card-wrapper {
-    gap: 20px;
-  }
-
-  .history__card-title {
-    max-width: 140px;
-    letter-spacing: 1px;
+    gap: clamp(15px, 3%, 20px);
   }
 
   .history__card-title {
     @include mixins.h3-mobile;
     color: colors.$white;
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 3%, 20px);
+    max-width: 100%;
+    letter-spacing: clamp(-0.3px, 0.2vw, 1px);
   }
 
   .history__card-subtitle,
@@ -308,211 +213,30 @@
     @include mixins.p-big-mobile;
     color: colors.$white;
   }
-}
-
-@media (max-width: 940px) and (min-width: 360px) {
-  .images {
-    gap: 18px !important;
-  }
-
-  .images__row:nth-child(2),
-  .images__row:nth-child(3) {
-    gap: 10px !important;
-    padding: 0 21px !important;
-  }
-  .images__row:nth-child(1) {
-    gap: 18px !important;
-    padding: 0 21px !important;
-  }
-
-  .images__item {
-    height: 110px !important;
-    border-radius: 20px !important;
-  }
 
   .pictures__header {
-    margin-bottom: 50px;
-    gap: 20px;
-  }
-
-  .pictures .images__row:nth-child(1) {
-    grid-template-columns: repeat(2, 150px);
-
-    .images__item:nth-child(2),
-    .images__item:nth-child(3) {
-      display: none;
-    }
-  }
-
-  .pictures .images__row:nth-child(2) {
-    grid-template-columns: repeat(3, 99px);
-
-    .images__item:nth-child(2),
-    .images__item:nth-child(3) {
-      display: none;
-    }
-  }
-
-  .pictures .images__row:nth-child(3) {
-    grid-template-columns: repeat(2, 150px);
-
-    .images__item:nth-child(4),
-    .images__item:nth-child(3) {
-      display: none;
-    }
-  }
-}
-
-@media (max-width: 920px) {
-  .container {
-    padding: 0 40px;
-  }
-
-  .header__nav-list {
-    gap: 20px !important;
-  }
-
-  .hero__title {
-    font-size: 72px;
-  }
-}
-
-
-@media (max-width: 844px) {
-  .container {
-    padding: 0 20px;
-  }
-
-  .header__nav {
-    display: none;
-  }
-
-  .hero__title {
-    font-size: 72px;
-  }
-
-  .history__header {
-    gap: 20px;
-  }
-
-  .header__phone {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 580px) {
-  .container {
-    padding: 0 20px;
-  }
-
-  .header__logo {
-    max-width: 133px;
-    object-fit: cover;
-  }
-
-  .hero {
-    flex: 0;
-    //margin: 0;
-    gap: 40px !important;
-    margin-top: 52px !important;
-    padding-bottom: 52px;
-  }
-
-  .backgroundWrapper {
-    margin: 0;
-    min-height: 360px;
-  }
-
-  .hero__title {
-    font-size: 34px;
-    max-width: 360px;
-  }
-
-  .hero__subtitle {
-    font-size: 16px;
-    max-width: 310px !important;
-  }
-
-  .header__phone {
-    font-size: 16px !important;
-  }
-
-  .header__nav {
-    display: none;
-  }
-  .history__links {
-    display: none;
-  }
-
-  .feedback__card {
-    width: 318px;
-  }
-}
-
-@media (max-width: 360px) {
-  .header {
-    max-height: 88px;
-    padding: 27px 0 !important;
-
-    &__logo {
-      width: 133px;
-      height: 22px;
-    }
-  }
-
-  .tour__card-btn{
-    left: 8px;
-    bottom: 20px
-  }
-
-  .history__card-btn{
-    position: absolute;
-    left: 31px;
-    bottom: 19px !important;
-    letter-spacing: -0.4px;
-  }
-
-  .mail__image {
-    max-width: 130px;
-    max-height: 133px;
-    border-radius: 20px;
-  }
-}
-
-@media (max-width: 680px) {
-  .container {
-    padding: 0 21px;
+    margin-bottom: clamp(35px, 7%, 50px);
+    gap: clamp(15px, 3%, 20px);
   }
 
   .tour__header-block {
-    margin-bottom: 45px;
-    gap: 30px !important;
-  }
-
-  .tour__card-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 18px;
+    margin-bottom: clamp(40px, 8%, 105px);
+    gap: clamp(20px, 4%, 35px);
   }
 
   .tour__list {
-    display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 10px !important;
+    gap: clamp(10px, 2%, 30px);
+    justify-content: center;
   }
 
   .tour__title {
     @include mixins.h2-mobile;
-    letter-spacing: 0.9px;
+    letter-spacing: clamp(0.7px, 0.2vw, 0.9px);
   }
 
   .tour__list-link {
     @include mixins.p-big-mobile;
-  }
-
-  .tour__list-link-active {
-    color: colors.$orange200;
-    position: relative;
   }
 
   .tour-form__title {
@@ -521,7 +245,7 @@
 
   .tour-form__subtitle {
     @include mixins.p-normal-mobile;
-    max-width: 318px;
+    max-width: 100%;
     color: colors.$gray300;
   }
 
@@ -538,32 +262,22 @@
   }
 
   .tour-form__header {
-    padding-bottom: 40px;
-    gap: 20px;
+    padding-bottom: clamp(25px, 5%, 40px);
+    gap: clamp(15px, 3%, 20px);
   }
 
   .tour-form__wrapper {
-    width: 318px;
-    padding: 20px;
-    border-radius: 30px;
-  }
-
-  .tour-form__fields {
-    gap: 31px;
-    margin-bottom: 31px;
-  }
-
-  .tour-form__comment-block {
-    margin: 0;
-    padding: 0;
+    width: 100%;
+    max-width: 318px;
+    padding: clamp(15px, 3%, 20px);
+    border-radius: clamp(20px, 3%, 30px);
   }
 
   .tour-form__input {
     @include mixins.p-normal-mobile;
-    padding: 10px;
-    max-width: 278px;
-    height: 43px;
-    min-width: 0;
+    padding: clamp(8px, 2%, 10px);
+    max-width: 100%;
+    height: clamp(38px, 8vw, 43px);
 
     &::placeholder {
       @include mixins.p-normal-mobile;
@@ -572,10 +286,11 @@
   }
 
   .tour-form__textarea {
-    min-height: 132px !important;
+    min-height: clamp(120px, 25vw, 132px);
   }
+
   .tour-form__radio {
-    margin: 30px 0;
+    margin: clamp(20px, 4%, 30px) 0;
   }
 
   .tour-form__radio-input {
@@ -587,12 +302,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: clamp(20px, 4%, 30px);
   }
 
   .tour-form__checkbox-label {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: clamp(8px, 2%, 10px);
   }
 
   .tour-form__checkbox-input {
@@ -601,14 +317,14 @@
   }
 
   .tour-form__checkbox-text {
-    max-width: 248px;
+    max-width: 100%;
     color: colors.$gray300;
     letter-spacing: -0.165px;
   }
 
   .tour-form__button {
     @include mixins.p-normal-mobile;
-    padding: 12px 29px;
+    padding: clamp(10px, 2%, 12px) clamp(25px, 5%, 29px);
   }
 
   .tour-form__button-cyan-btn {
@@ -616,48 +332,37 @@
   }
 
   .tour-form__button-block {
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 3%, 20px);
+    gap: clamp(8px, 2%, 10px);
   }
 
   .tour__card-header {
-    padding: 27px 25px 0;
+    padding: clamp(20px, 4%, 27px) clamp(20px, 4%, 25px) 0;
   }
 
   .tour__card-footer {
-    padding: 24px;
+    padding: clamp(20px, 4%, 24px);
   }
 
   .tour__card-title {
-    letter-spacing: 1px;
-  }
-
-  .tour-form__checkbox {
-    margin-bottom: 30px;
-  }
-
-  .tour-form__button-block {
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .tour-form__button {
-    max-width: 134px;
+    letter-spacing: clamp(0.7px, 0.2vw, 1px);
   }
 
   .pictures__title {
     @include mixins.h2-mobile;
-    max-width: 318px;
+    max-width: 100%;
   }
 
   .pictures__subtitle {
     @include mixins.p-normal-mobile;
     color: colors.$gray300;
-    max-width: 318px;
+    max-width: 100%;
   }
 
   .feedback__header-title {
     @include mixins.h2-mobile;
   }
+
   .feedback__header-subtitle {
     @include mixins.p-normal-mobile;
     color: colors.$gray300;
@@ -665,77 +370,54 @@
 
   .history__subtitle {
     @include mixins.p-normal-mobile;
-    max-width: 318px;
+    max-width: 100%;
     color: colors.$gray300;
   }
+
   .history__title {
     @include mixins.h2-mobile;
-    max-width: 318px;
-    gap: 20px;
+    max-width: 100%;
+    gap: clamp(15px, 3%, 20px);
   }
 
   .mail {
-    padding-bottom: 75px;
+    padding-bottom: clamp(50px, 10%, 75px);
   }
 
   .mail__image {
-    max-width: 230px;
-    max-height: 230px;
-    border-radius: 20px;
+    max-width: clamp(100px, 25vw, 230px);
+    max-height: clamp(100px, 25vw, 230px);
+    border-radius: clamp(15px, 3%, 20px);
   }
 
   .mail__centered-wrapper {
     flex-direction: column;
+    gap: clamp(25px, 5%, 36px);
   }
 
   .mail__text-content {
-    max-width: 292px;
+    max-width: clamp(250px, 90%, 292px);
+    gap: clamp(15px, 3%, 20px);
   }
 
   .mail__title {
     @include mixins.h3-mobile;
     text-align: center;
-    max-width: 292px;
+    max-width: 100%;
+    letter-spacing: clamp(0.7px, 0.2vw, 1px);
   }
 
   .mail__subtitle {
     @include mixins.p-normal-mobile;
     color: colors.$gray300;
     text-align: center;
-    max-width: 292px;
-  }
-  .mail__image {
-    max-width: 130px;
-    max-height: 230px;
-    border-radius: 20px;
-  }
-
-  .mail__centered-wrapper {
-    flex-direction: column;
-    gap: 36px;
-  }
-
-  .mail__text-content {
-    max-width: 292px;
-    gap: 20px;
-  }
-
-  .mail__title {
-    @include mixins.h3-mobile;
-    text-align: center;
-    letter-spacing: 1px;
-  }
-
-  .mail__subtitle {
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-    text-align: center;
+    max-width: 100%;
   }
 
   .footer__content {
     flex-direction: column;
-    gap: 8px;
-    padding: 21px;
+    gap: clamp(6px, 1%, 8px);
+    padding: clamp(15px, 3%, 21px);
   }
 
   .footer__text {
@@ -748,10 +430,104 @@
   }
 
   .footer__link-list {
-    gap: 15px;
+    gap: clamp(10px, 2%, 15px);
 
     > div {
-      gap: 6px;
+      gap: clamp(4px, 1%, 6px);
     }
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .history__links {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    max-height: 88px;
+    padding: 27px 0 !important;
+
+    &__logo {
+      width: 133px;
+      height: 22px;
+    }
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .header__logo {
+    max-width: 133px;
+    object-fit: cover;
+  }
+
+  .hero {
+    flex: 0;
+    gap: 40px !important;
+    margin-top: 52px !important;
+    padding-bottom: 52px;
+  }
+
+  .backgroundWrapper {
+    margin: 0;
+    min-height: 360px;
+  }
+
+  .hero__title {
+    font-size: 34px;
+    max-width: 100%;
+  }
+
+  .hero__subtitle {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .header__phone {
+    font-size: 16px !important;
+  }
+
+  .tour__card-btn {
+    left: 8px;
+    bottom: 20px;
+  }
+
+  .history__card-btn {
+    position: absolute;
+    left: 31px;
+    bottom: 19px !important;
+    letter-spacing: -0.4px;
+  }
+
+  .mail__image {
+    max-width: 130px;
+    max-height: 133px;
+    border-radius: 20px;
+  }
+
+  .tour-form__wrapper {
+    width: 100%;
+    max-width: 318px;
+    padding: 20px;
+  }
+
+  .images {
+    gap: 18px !important;
+  }
+
+  .images__row {
+    gap: 10px !important;
+    padding: 0 21px !important;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+
+  .images__item {
+    height: 110px !important;
+    border-radius: 20px !important;
   }
 }
