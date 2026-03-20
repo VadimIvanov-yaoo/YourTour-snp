@@ -13,7 +13,7 @@ html {
 }
 
 section {
-  padding-top: clamp(50px, 10vw, 135px);
+  padding-top: 135px;
 }
 .header-fixed {
   background-color: colors.$beige200;
@@ -67,7 +67,6 @@ section {
   max-width: 1170px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(20px, 5%, 60px);
 }
 
 .backgroundWrapper {
@@ -85,10 +84,10 @@ section {
           url('../images/hero-background.jpg') no-repeat center/cover lightgray;
 
   .header {
-    padding: clamp(20px, 3%, 28px) 0;
+    padding: 28px 0;
     &__logo {
-      height: clamp(22px, 3vw, 30px);
-      width: clamp(140px, 15vw, 181px);
+      height: 30px;
+      width: 181px;
     }
     &__content {
       @include mixins.flex-center-between;
@@ -102,7 +101,7 @@ section {
     &__nav {
       &-list {
         @include mixins.flex-center-between;
-        gap: clamp(20px, 4vw, 50px);
+        gap: 50px;
         li {
           .header__link {
             @include mixins.p-normal;
@@ -133,21 +132,21 @@ section {
   flex: 1;
 
   @include mixins.flex-column;
-  gap: clamp(30px, 8vw, 50px);
+  gap: 50px;
 
   text-align: center;
   justify-content: center;
 
   &__title {
     @include mixins.h1-pc;
-    max-width: clamp(310px, 90%, 768px);
+    max-width: 768px;
     letter-spacing: 2.2px;
     color: colors.$white;
   }
 
   &__subtitle {
     @include mixins.p-normal;
-    max-width: clamp(310px, 90%, 562px);
+    max-width: 562px;
     color: colors.$white;
   }
   &__btn {
@@ -183,8 +182,8 @@ section {
 
   &__header-block {
     @include mixins.flex-column;
-    gap: clamp(20px, 4%, 35px);
-    margin-bottom: clamp(60px, 12%, 105px);
+    gap: 35px;
+    margin-bottom: 105px;
   }
 
   &__title {
@@ -193,8 +192,7 @@ section {
 
   &__list {
     @include mixins.flex-center-between;
-    gap: clamp(15px, 3%, 30px);
-    flex-wrap: wrap;
+    gap: 30px;
   }
 
   &__list-link {
@@ -237,9 +235,9 @@ section {
 
   &__card-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 28%, 370px), 1fr));
-    grid-template-rows: auto;
-    gap: clamp(20px, 3%, 30px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
   }
 
   &__card {
@@ -247,8 +245,8 @@ section {
     @include mixins.flex-column;
     justify-content: space-between;
     align-items: start;
-    height: 100%;
-    min-height: clamp(318px, 50vw, 531px);
+    height: 100vh;
+    max-height: 531px;
     border-radius: 50px;
     overflow: hidden;
     background: linear-gradient(
@@ -296,15 +294,15 @@ section {
       position: relative;
       @include mixins.flex-column;
       align-items: start;
-      gap: clamp(12px, 2%, 16px);
-      padding: clamp(35px, 5%, 50px);
-      width: 100%;
+      gap: 16px;
+      padding: 50px;
+      width: 370px;
       z-index: 2;
     }
     &-title {
       @include mixins.h3-pc;
       color: colors.$white;
-      max-width: clamp(180px, 85%, 240px);
+      max-width: 240px;
     }
     &-price {
       @include mixins.p-small;
@@ -313,21 +311,21 @@ section {
 
     &-footer {
       position: relative;
-      padding: clamp(35px, 5%, 50px);
+      padding: 50px;
       z-index: 2;
     }
   }
   &__card-btn {
     position: absolute;
-    bottom: clamp(15px, 3%, 43px);
-    left: clamp(10px, 2%, 30px);
+    bottom: 43px;
+    left: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
     letter-spacing: -0.7px;
-    gap: clamp(10px, 2%, 15px);
-    padding: clamp(5px, 1%, 7px) clamp(15px, 3%, 20px);
+    gap: 15px;
+    padding: 7px 20px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -365,15 +363,15 @@ section {
 
   &__header {
     @include mixins.flex-column;
-    gap: clamp(20px, 4%, 30px);
-    padding-bottom: clamp(60px, 12%, 100px);
+    gap: 30px;
+    padding-bottom: 100px;
   }
 
   &__subtitle {
     @include mixins.p-normal;
     color: colors.$gray300;
     text-align: center;
-    max-width: clamp(300px, 90%, 400px);
+    width: 400px;
   }
 
   &__title {
@@ -387,22 +385,22 @@ section {
   }
 
   &__wrapper {
-    padding: clamp(35px, 6%, 70px);
+    padding: 70px;
     border-radius: 50px;
   }
 
   &__fields {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: clamp(20px, 4%, 30px);
-    column-gap: clamp(25px, 5%, 33px);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    column-gap: 33px;
   }
 
   &__field {
     @include mixins.flex-column;
     position: relative;
     align-items: start;
-    gap: clamp(6px, 1%, 8px);
+    gap: 8px;
     width: 100%;
   }
 
@@ -412,7 +410,7 @@ section {
 
   &__select {
     appearance: none;
-    padding-right: clamp(35px, 5%, 48px);
+    padding-right: 48px;
 
     &:invalid {
       color: colors.$gray300 !important;
@@ -422,10 +420,10 @@ section {
   &__field:has(.tour-form__select)::after {
     content: '';
     position: absolute;
-    right: clamp(15px, 3%, 21px);
+    right: 21px;
     top: 58%;
-    width: clamp(22px, 3%, 26px);
-    height: clamp(22px, 3%, 26px);
+    width: 26px;
+    height: 26px;
     pointer-events: none;
     background: url(/assets/images/svg/select-arrow.svg) no-repeat center /
       contain;
@@ -433,7 +431,7 @@ section {
   &__input {
     @include mixins.p-normal;
     background-color: colors.$beige100;
-    padding: clamp(15px, 3%, 20px);
+    padding: 20px;
     border-radius: 10px;
     border: 1px solid colors.$beige200;
     width: 100%;
@@ -460,19 +458,19 @@ section {
 
   &__textarea {
     height: 0;
-    min-height: clamp(120px, 20vw, 152px);
+    min-height: 152px;
     resize: none;
   }
 
   &__comment-block {
-    margin-top: clamp(20px, 4%, 33px);
+    margin-top: 33px;
   }
 
   &__radio {
     @include mixins.flex-column;
     align-items: start;
-    gap: clamp(6px, 1%, 8px);
-    margin: clamp(20px, 4%, 33px) 0;
+    gap: 8px;
+    margin: 33px 0px;
     &-name {
       @include mixins.p-normal;
     }
@@ -481,15 +479,14 @@ section {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(20px, 4%, 31px);
-      flex-wrap: wrap;
+      gap: 31px;
     }
 
     &-option {
       display: flex;
       align-items: start;
       justify-content: center;
-      gap: clamp(8px, 1%, 11px);
+      gap: 11px;
     }
 
     &-text {
@@ -499,8 +496,8 @@ section {
 
   &__radio-input {
     appearance: none;
-    width: clamp(20px, 3%, 26px);
-    height: clamp(20px, 3%, 26px);
+    width: 26px;
+    height: 26px;
     border: 2px solid #1b1f2b;
     border-radius: 50%;
     display: inline-block;
@@ -518,8 +515,8 @@ section {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: clamp(8px, 2%, 12px);
-      height: clamp(8px, 2%, 12px);
+      width: 12px;
+      height: 12px;
       background: colors.$black;
       border-radius: 50%;
       transform: translate(-50%, -50%);
@@ -527,17 +524,17 @@ section {
   }
 
   &__checkbox {
-    margin-bottom: clamp(20px, 4%, 33px);
+    margin-bottom: 33px;
     &-label {
       display: flex;
       align-items: center;
-      gap: clamp(15px, 3%, 19px);
+      gap: 19px;
     }
 
     &-input {
       appearance: none;
-      width: clamp(20px, 3%, 26px);
-      height: clamp(20px, 3%, 26px);
+      width: 26px;
+      height: 26px;
       border: 2px solid colors.$black;
       border-radius: 6px;
       cursor: pointer;
@@ -553,13 +550,13 @@ section {
       &:checked::after {
         content: '';
         position: absolute;
-        width: clamp(4px, 1%, 6px);
-        height: clamp(8px, 1%, 12px);
+        width: 6px;
+        height: 12px;
         border-right: 2px solid colors.$black;
         border-bottom: 2px solid colors.$black;
         transform: rotate(45deg);
-        top: clamp(2px, 0.5%, 4px);
-        left: clamp(6px, 1%, 8px);
+        top: 4px;
+        left: 8px;
       }
     }
 
@@ -583,18 +580,17 @@ section {
   &__button-block {
     display: flex;
     align-items: center;
-    gap: clamp(20px, 4%, 30px);
-    flex-wrap: wrap;
+    gap: 30px;
   }
 
   &__button {
     @include mixins.p-normal;
     font-family: Roboto, sans-serif;
-    padding: clamp(12px, 2%, 15px) clamp(50px, 10%, 70px);
+    padding: 15px 70px;
     border-radius: 10px;
     text-decoration: none;
     width: 100%;
-    max-width: clamp(150px, 40%, 235px);
+    max-width: 235px;
     border: none;
     cursor: pointer;
 
@@ -639,9 +635,9 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(20px, 4%, 30px);
-    max-width: clamp(300px, 90%, 529px);
-    margin-bottom: clamp(60px, 12%, 100px);
+    gap: 30px;
+    max-width: 529px;
+    margin-bottom: 100px;
     width: 100%;
 
     &-title {
@@ -653,25 +649,22 @@ section {
       @include mixins.p-normal;
       text-align: center;
       color: colors.$gray300;
-      max-width: clamp(280px, 90%, 400px);
+      max-width: 400px;
     }
   }
 
   &__card-wrapper {
     display: flex;
     align-items: stretch;
-    gap: clamp(15px, 3%, 30px);
-    height: auto;
-    flex-direction: column;
-    min-height: clamp(400px, 50vw, 673px);
+    gap: 30px;
+    height: 673px;
   }
 
   &__card {
     width: 100%;
     background-color: colors.$beige200;
     border-radius: 50px;
-    height: auto;
-    min-height: clamp(300px, 40vw, 100%);
+    height: 100%;
     display: flex;
   }
 
@@ -680,7 +673,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: clamp(25px, 4%, 40px);
+    padding: 40px;
   }
 
   &__card-text {
@@ -694,7 +687,7 @@ section {
 
   &__card-username {
     @include mixins.h3-pc;
-    margin-bottom: clamp(5px, 1%, 8px);
+    margin-bottom: 8px;
   }
 
   &__card-tour {
@@ -703,9 +696,8 @@ section {
 
   &__card-user-avatar {
     mix-blend-mode: multiply;
-    width: clamp(60px, 10vw, 75px);
-    height: clamp(60px, 10vw, 75px);
-    flex-shrink: 0;
+    width: 75px;
+    height: 75px;
   }
 }
 
@@ -720,8 +712,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(20px, 4%, 30px);
-    padding-bottom: clamp(60px, 12%, 100px);
+    gap: 30px;
+    padding-bottom: 100px;
 
     &-title {
       @include mixins.h2-pc;
@@ -732,24 +724,24 @@ section {
       @include mixins.p-normal;
       color: colors.$gray300;
       text-align: center;
-      max-width: clamp(300px, 90%, 418px);
+      width: 418px;
     }
   }
 
   &__photo-wrapper {
-    padding: 0 clamp(15px, 3%, 30px);
+    padding: 0 30px;
     display: flex;
     flex-direction: column;
-    gap: clamp(20px, 4%, 30px);
+    gap: 30px;
 
     &__row {
       display: grid;
-      gap: clamp(20px, 4%, 30px);
-      grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 20%, 250px), 1fr));
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
       & > img {
         width: 100%;
-        height: clamp(200px, 30vw, 300px);
+        height: 300px;
         object-fit: cover;
         border-radius: 50px;
         display: block;
@@ -768,12 +760,12 @@ section {
   }
 
   &__header {
-    margin-bottom: clamp(60px, 12%, 100px);
+    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: clamp(20px, 4%, 30px);
+    gap: 30px;
   }
 
   &__title {
@@ -785,23 +777,31 @@ section {
     @include mixins.p-normal;
     color: colors.$gray300;
     text-align: center;
-    max-width: clamp(300px, 90%, 400px);
+    width: 400px;
   }
 
   .images {
-    padding: 0 clamp(15px, 3%, 30px);
+    padding: 0 30px;
     display: flex;
     flex-direction: column;
-    gap: clamp(20px, 4%, 30px);
+    gap: 30px;
 
     &__row {
       display: grid;
-      gap: clamp(20px, 4%, 30px);
-      grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 22%, 320px), 1fr));
+      gap: 30px;
+      &:nth-child(1) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      &:nth-child(2) {
+        grid-template-columns: repeat(5, 1fr);
+      }
+      &:nth-child(3) {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
     &__item {
       width: 100%;
-      height: clamp(200px, 25vw, 320px);
+      height: 301px;
       object-fit: cover;
       border-radius: 50px;
     }
@@ -812,12 +812,12 @@ section {
   background-color: colors.$beige100;
 
   &__header {
-    margin-bottom: clamp(60px, 12%, 100px);
+    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: clamp(20px, 4%, 30px);
+    gap: 30px;
   }
 
   &__title {
@@ -829,14 +829,14 @@ section {
     @include mixins.p-normal;
     color: colors.$gray300;
     text-align: center;
-    max-width: clamp(300px, 90%, 400px);
+    width: 400px;
   }
 
   &__card-wrapper {
     @include mixins.flex-column;
     align-items: center;
     justify-content: center;
-    gap: clamp(30px, 8%, 50px);
+    gap: 50px;
   }
 
   &__card {
@@ -844,13 +844,13 @@ section {
     @include mixins.flex-column;
     justify-content: space-between;
     align-items: start;
-    min-height: clamp(350px, 50vw, 567px);
+    height: 100vh;
     border-radius: 50px;
     overflow: hidden;
     z-index: 4;
     width: 100%;
     max-width: 1170px;
-    max-height: auto;
+    max-height: 567px;
     background: linear-gradient(
                     270deg,
                     rgba(0, 0, 0, 0) 0%,
@@ -904,14 +904,14 @@ section {
     &-title {
       @include mixins.h3-pc;
       color: colors.$white;
-      margin-bottom: clamp(25px, 5%, 37px);
+      margin-bottom: 37px;
     }
 
     &-subtitle {
       @include mixins.p-normal;
       color: colors.$white;
-      margin-bottom: clamp(15px, 3%, 25px);
-      max-width: clamp(300px, 90%, 554px);
+      margin-bottom: 25px;
+      max-width: 554px;
     }
 
     &-btn {
@@ -919,10 +919,10 @@ section {
       align-items: center;
       justify-content: center;
       background-color: transparent;
-      gap: clamp(10px, 2%, 15px);
+      gap: 15px;
       letter-spacing: -1px;
-      margin-left: clamp(-25px, -3%, -20px);
-      padding: clamp(5px, 1%, 7px) clamp(15px, 3%, 20px);
+      margin-left: -20px;
+      padding: 7px 20px;
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -944,12 +944,12 @@ section {
 
     &-bottom-block {
       width: 100%;
-      padding: clamp(30px, 4%, 50px) clamp(30px, 4%, 60px);
+      padding: 0 60px 50px 60px;
       @include mixins.flex-center-between;
     }
   }
   &__card-list-wrapper {
-    padding-left: clamp(15px, 3%, 30px);
+    padding-left: 30px;
   }
   &__card-list {
     list-style-type: disc;
@@ -957,12 +957,11 @@ section {
     color: colors.$white;
   }
   &__card-top-block {
-    padding: clamp(40px, 6%, 60px);
+    padding: 60px;
   }
   &__links {
     @include mixins.flex-center-between;
-    gap: clamp(25px, 5%, 35px);
-    flex-wrap: wrap;
+    gap: 35px;
   }
   &__link-item {
     position: relative;
@@ -1000,46 +999,39 @@ section {
 
 .mail {
   background-color: colors.$beige100;
-  padding-bottom: clamp(75px, 15%, 135px);
+  padding-bottom: 135px;
 
   &__content {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: clamp(20px, 4%, 30px);
   }
 
   &__image {
     border-radius: 50px;
-    max-width: clamp(220px, 40vw, 370px);
-    max-height: clamp(220px, 40vw, 370px);
+    max-width: 370px;
+    max-height: 370px;
   }
 
   &__text-content {
     display: flex;
     flex-direction: column;
-    gap: clamp(15px, 3%, 20px);
-    max-width: clamp(280px, 90%, 371px);
+    gap: 20px;
+    max-width: 371px;
   }
 
   &__centered-wrapper {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    gap: clamp(20px, 4%, 30px);
+    gap: 30px;
   }
 
   &__title {
     @include mixins.h3-pc;
-    text-align: center;
-    max-width: clamp(280px, 90%, 100%);
   }
   &__subtitle {
     @include mixins.p-normal;
     color: colors.$gray300;
-    text-align: center;
-    max-width: 100%;
     > a {
 
       text-decoration: none;
@@ -1071,23 +1063,20 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: clamp(20px, 4%, 30px) 0;
-    flex-wrap: wrap;
-    gap: clamp(15px, 3%, 20px);
+    padding: 30px 0;
   }
 
   &__link-list {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(20px, 4%, 25px);
-    flex-wrap: wrap;
+    gap: 25px;
   }
 
   &__link-item {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 2%, 10px);
+    gap: 10px;
 
     text-decoration: none;
     color: inherit;
@@ -1119,9 +1108,8 @@ section {
   }
 
   &__link-logo {
-    width: clamp(20px, 3%, 26px);
-    height: clamp(20px, 3%, 26px);
-    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
   }
 
   &__text {
