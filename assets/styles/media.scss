@@ -23,33 +23,23 @@
 
   .hero__title {
     letter-spacing: 0.7px;
-    font-size: clamp(34px, 7vw, 72px);
   }
 
   .hero__subtitle {
     max-width: clamp(310px, 90%, 400px);
   }
 
-  section {
-    padding-top: clamp(50px, 10vw, 75px);
-  }
-
   .tour-form__form {
     width: 100%;
-    max-width: 918px;
   }
 
   .tour-form__wrapper {
-    padding: clamp(20px, 5%, 60px);
+    padding: clamp(35px, 6%, 60px);
   }
 
   .tour-form__fields {
-    margin-bottom: clamp(20px, 5%, 35px);
-    column-gap: clamp(15px, 3%, 20px);
-    display: flex;
-    flex-direction: column;
-    gap: clamp(20px, 5%, 30px);
-    min-width: 0;
+    margin-bottom: clamp(20px, 4%, 35px);
+    column-gap: clamp(20px, 3%, 20px);
   }
 
   .tour-form__radio {
@@ -58,383 +48,19 @@
 
   .tour-form__input {
     min-width: 0;
-    max-width: 100%;
   }
 
   .history__card-title {
     letter-spacing: -0.3px;
   }
 
-  .history__card-bottom-block{
+  .history__card-bottom-block {
     position: absolute;
     bottom: 2px;
   }
 
   .history__card-subtitle {
     letter-spacing: -0.1px;
-  }
-
-  .tour__card-wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: clamp(15px, 3%, 30px);
-  }
-
-  .tour__card {
-    max-height: clamp(318px, 50vw, 531px);
-    border-radius: clamp(20px, 3%, 50px);
-  }
-
-  .tour__card-header {
-    padding: clamp(20px, 4%, 50px);
-    width: 100%;
-  }
-
-  .tour__card-footer {
-    padding: clamp(20px, 4%, 50px);
-    gap: clamp(10px, 2%, 16px);
-  }
-
-  .tour__card-title {
-    @include mixins.h3-mobile;
-    color: colors.$white;
-    max-width: 100%;
-  }
-
-  .tour__card-price {
-    @include mixins.p-small-mobile;
-    color: colors.$white;
-  }
-
-  .tour__card-btn {
-    bottom: clamp(15px, 3%, 43px);
-    left: clamp(8px, 3%, 30px);
-    padding: clamp(5px, 1%, 7px) clamp(10px, 2%, 20px);
-  }
-
-  .tour__card-btn-content {
-    @include mixins.p-big-mobile;
-    color: colors.$white;
-  }
-
-  .feedback__header {
-    gap: clamp(15px, 3%, 20px);
-    margin-bottom: clamp(35px, 7%, 50px);
-    max-width: 100%;
-  }
-
-  .feedback__header-title {
-    letter-spacing: 0.7px;
-  }
-
-  .feedback__header-subtitle {
-    font-size: clamp(16px, 4vw, 20px);
-  }
-
-  .feedback__card-content {
-    padding: clamp(15px, 3%, 20px);
-  }
-
-  .feedback__card {
-    border-radius: clamp(15px, 3%, 20px);
-    max-height: clamp(408px, 50vw, 841px);
-    width: 100%;
-  }
-
-  .feedback__card-wrapper {
-    flex-direction: column;
-    height: auto;
-    max-height: none;
-    gap: clamp(15px, 3%, 18px);
-  }
-
-  .feedback__card-text {
-    @include mixins.p-big-mobile;
-    padding-bottom: clamp(40px, 8%, 52px);
-  }
-
-  .feedback__card-username {
-    @include mixins.h3-mobile;
-  }
-
-  .feedback__card-tour {
-    @include mixins.p-small-mobile;
-    color: colors.$gray300;
-    letter-spacing: -0.1px;
-  }
-
-  .feedback__card-info {
-    align-items: center;
-  }
-
-  .history__card {
-    max-height: clamp(300px, 40vw, 455px);
-    border-radius: clamp(15px, 3%, 20px);
-  }
-
-  .pictures .images__row {
-    gap: clamp(10px, 2%, 20px);
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
-
-  .images__item {
-    height: clamp(100px, 20vw, 110px);
-    border-radius: clamp(15px, 3%, 20px);
-  }
-
-  .history__header {
-    margin-bottom: clamp(35px, 7%, 50px);
-    gap: clamp(15px, 3%, 20px);
-  }
-
-  .history__card-top-block,
-  .history__card-bottom-block {
-    padding: clamp(20px, 4%, 30px);
-  }
-
-  .history__card-wrapper {
-    gap: clamp(15px, 3%, 20px);
-  }
-
-  .history__card-title {
-    @include mixins.h3-mobile;
-    color: colors.$white;
-    margin-bottom: clamp(15px, 3%, 20px);
-    max-width: 100%;
-    letter-spacing: clamp(-0.3px, 0.2vw, 1px);
-  }
-
-  .history__card-subtitle,
-  .history__card-list {
-    @include mixins.p-normal-mobile;
-    color: colors.$white;
-  }
-
-  .history__card-btn-content {
-    @include mixins.p-big-mobile;
-    color: colors.$white;
-  }
-
-  .pictures__header {
-    margin-bottom: clamp(35px, 7%, 50px);
-    gap: clamp(15px, 3%, 20px);
-  }
-
-  .tour__header-block {
-    margin-bottom: clamp(40px, 8%, 105px);
-    gap: clamp(20px, 4%, 35px);
-  }
-
-  .tour__list {
-    flex-wrap: wrap;
-    gap: clamp(10px, 2%, 30px);
-    justify-content: center;
-  }
-
-  .tour__title {
-    @include mixins.h2-mobile;
-    letter-spacing: clamp(0.7px, 0.2vw, 0.9px);
-  }
-
-  .tour__list-link {
-    @include mixins.p-big-mobile;
-  }
-
-  .tour-form__title {
-    @include mixins.h2-mobile;
-  }
-
-  .tour-form__subtitle {
-    @include mixins.p-normal-mobile;
-    max-width: 100%;
-    color: colors.$gray300;
-  }
-
-  .tour-form__label,
-  .tour-form__radio-name,
-  .tour-form__radio-text,
-  .tour-form__button,
-  .tour-form__checkbox-text {
-    @include mixins.p-normal-mobile;
-  }
-
-  .tour-form__content {
-    padding-bottom: 0px;
-  }
-
-  .tour-form__header {
-    padding-bottom: clamp(25px, 5%, 40px);
-    gap: clamp(15px, 3%, 20px);
-  }
-
-  .tour-form__wrapper {
-    width: 100%;
-    max-width: 318px;
-    padding: clamp(15px, 3%, 20px);
-    border-radius: clamp(20px, 3%, 30px);
-  }
-
-  .tour-form__input {
-    @include mixins.p-normal-mobile;
-    padding: clamp(8px, 2%, 10px);
-    max-width: 100%;
-    height: clamp(38px, 8vw, 43px);
-
-    &::placeholder {
-      @include mixins.p-normal-mobile;
-      color: colors.$gray300;
-    }
-  }
-
-  .tour-form__textarea {
-    min-height: clamp(120px, 25vw, 132px);
-  }
-
-  .tour-form__radio {
-    margin: clamp(20px, 4%, 30px) 0;
-  }
-
-  .tour-form__radio-input {
-    width: 20px;
-    height: 20px;
-  }
-
-  .tour-form__checkbox {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: clamp(20px, 4%, 30px);
-  }
-
-  .tour-form__checkbox-label {
-    display: flex;
-    align-items: flex-start;
-    gap: clamp(8px, 2%, 10px);
-  }
-
-  .tour-form__checkbox-input {
-    width: 20px !important;
-    height: 20px !important;
-  }
-
-  .tour-form__checkbox-text {
-    max-width: 100%;
-    color: colors.$gray300;
-    letter-spacing: -0.165px;
-  }
-
-  .tour-form__button {
-    @include mixins.p-normal-mobile;
-    padding: clamp(10px, 2%, 12px) clamp(25px, 5%, 29px);
-  }
-
-  .tour-form__button-cyan-btn {
-    color: colors.$white;
-  }
-
-  .tour-form__button-block {
-    margin-bottom: clamp(15px, 3%, 20px);
-    gap: clamp(8px, 2%, 10px);
-  }
-
-  .tour__card-header {
-    padding: clamp(20px, 4%, 27px) clamp(20px, 4%, 25px) 0;
-  }
-
-  .tour__card-footer {
-    padding: clamp(20px, 4%, 24px);
-  }
-
-  .tour__card-title {
-    letter-spacing: clamp(0.7px, 0.2vw, 1px);
-  }
-
-  .pictures__title {
-    @include mixins.h2-mobile;
-    max-width: 100%;
-  }
-
-  .pictures__subtitle {
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-    max-width: 100%;
-  }
-
-  .feedback__header-title {
-    @include mixins.h2-mobile;
-  }
-
-  .feedback__header-subtitle {
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-  }
-
-  .history__subtitle {
-    @include mixins.p-normal-mobile;
-    max-width: 100%;
-    color: colors.$gray300;
-  }
-
-  .history__title {
-    @include mixins.h2-mobile;
-    max-width: 100%;
-    gap: clamp(15px, 3%, 20px);
-  }
-
-  .mail {
-    padding-bottom: clamp(50px, 10%, 75px);
-  }
-
-  .mail__image {
-    max-width: clamp(100px, 25vw, 230px);
-    max-height: clamp(100px, 25vw, 230px);
-    border-radius: clamp(15px, 3%, 20px);
-  }
-
-  .mail__centered-wrapper {
-    flex-direction: column;
-    gap: clamp(25px, 5%, 36px);
-  }
-
-  .mail__text-content {
-    max-width: clamp(250px, 90%, 292px);
-    gap: clamp(15px, 3%, 20px);
-  }
-
-  .mail__title {
-    @include mixins.h3-mobile;
-    text-align: center;
-    max-width: 100%;
-    letter-spacing: clamp(0.7px, 0.2vw, 1px);
-  }
-
-  .mail__subtitle {
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .footer__content {
-    flex-direction: column;
-    gap: clamp(6px, 1%, 8px);
-    padding: clamp(15px, 3%, 21px);
-  }
-
-  .footer__text {
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-  }
-
-  .footer__link-item {
-    @include mixins.p-normal-mobile;
-  }
-
-  .footer__link-list {
-    gap: clamp(10px, 2%, 15px);
-
-    > div {
-      gap: clamp(4px, 1%, 6px);
-    }
   }
 
   .header__nav {
