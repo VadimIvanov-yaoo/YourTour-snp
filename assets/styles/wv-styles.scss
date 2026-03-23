@@ -2,6 +2,12 @@
 @use 'colors';
 @use 'reset';
 
+$fullHD-width: 1920;
+
+@function vw($px) {
+  @return calc($px / $fullHD-width * 100vw);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -13,12 +19,12 @@ body {
 }
 
 section {
-  padding-top: 135px;
+  padding-top: vw(135);
 }
 
 .container {
   width: 100%;
-  max-width: 1170px;
+  max-width: vw(1170);
   margin: 0 auto;
 }
 
@@ -30,11 +36,11 @@ section {
   background-size: cover;
 
   .header {
-    padding: 28px 0;
+    padding: vw(28) 0;
 
     &__logo {
-      width: 181px;
-      height: 30px;
+      width: vw(181);
+      height: vw(30);
     }
 
     &__content {
@@ -49,7 +55,7 @@ section {
 
     &__nav {
       &-list {
-        gap: 50px;
+        gap: vw(50);
         @include mixins.flex-center-between;
 
         li {
@@ -62,7 +68,7 @@ section {
             &:after {
               display: block;
               width: 0%;
-              height: 1.4px;
+              height: vw(1.4);
               content: '';
               background-color: white;
               @include mixins.customHoverMixin(width);
@@ -82,10 +88,10 @@ section {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 9999;
   width: 100%;
   background-color: colors.$beige200;
-  backdrop-filter: blur(54px);
+  backdrop-filter: blur(vw(54));
   transform: translateY(-100%);
 
   .header__link {
@@ -96,7 +102,7 @@ section {
     &:after {
       display: block;
       width: 0%;
-      height: 1.4px;
+      height: vw(1.4);
       content: '';
       background-color: black !important;
       @include mixins.customHoverMixin(width);
@@ -128,30 +134,30 @@ section {
 .hero {
   position: relative;
   flex: 1;
-  gap: 50px;
+  gap: vw(50);
   padding-top: 0;
   text-align: center;
   justify-content: center;
   @include mixins.flex-column;
 
   &__title {
-    max-width: 768px;
-    letter-spacing: 2.2px;
+    max-width: vw(768);
+    letter-spacing: vw(2.2);
     @include mixins.h1-pc;
     color: colors.$white;
   }
 
   &__subtitle {
-    max-width: 562px;
+    max-width: vw(562);
     @include mixins.p-normal;
     color: colors.$white;
   }
 
   &__btn {
-    padding: 5px 20px;
+    padding: vw(5) vw(20);
     background-color: colors.$white;
-    border: 1px solid colors.$white;
-    border-radius: 10px;
+    border: vw(1) solid colors.$white;
+    border-radius: vw(10);
     @include mixins.p-small;
     @include mixins.customHoverMixin(background-color, 0.25s);
     @include mixins.customHoverMixin(color, 0.25s);
@@ -159,13 +165,13 @@ section {
     &:hover {
       background-color: colors.$orange200;
       color: colors.$white;
-      border: 1px solid colors.$orange200;
+      border: vw(1) solid colors.$orange200;
     }
 
     &:active {
       background-color: colors.$orange100;
       color: colors.$black;
-      border: 1px solid colors.$orange100;
+      border: vw(1) solid colors.$orange100;
     }
   }
 }
@@ -179,8 +185,8 @@ section {
   }
 
   &__header-block {
-    gap: 35px;
-    margin-bottom: 105px;
+    gap: vw(35);
+    margin-bottom: vw(105);
     @include mixins.flex-column;
   }
 
@@ -189,7 +195,7 @@ section {
   }
 
   &__list {
-    gap: 30px;
+    gap: vw(30);
     @include mixins.flex-center-between;
   }
 
@@ -199,14 +205,14 @@ section {
     background: none;
     border: none;
     text-decoration: none;
-    letter-spacing: -0.73px;
+    letter-spacing: vw(-0.73);
     @include mixins.p-big;
     @include mixins.customHoverMixin(width);
 
     &:after {
       display: block;
       width: 0%;
-      height: 2px;
+      height: vw(2);
       content: '';
       background-color: colors.$black;
       @include mixins.customHoverMixin(width);
@@ -225,11 +231,11 @@ section {
 
     &:after {
       position: absolute;
-      bottom: -2px;
+      bottom: vw(-2);
       left: 0;
       display: block;
       width: 100%;
-      height: 2px;
+      height: vw(2);
       content: '';
       background-color: colors.$orange200;
       @include mixins.customHoverMixin(width);
@@ -238,7 +244,7 @@ section {
 
   &__card-wrapper {
     display: grid;
-    gap: 30px;
+    gap: vw(30);
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
   }
@@ -252,9 +258,9 @@ section {
     align-items: start;
     justify-content: space-between;
     height: 100vh;
-    max-height: 531px;
+    max-height: vw(531);
     background: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%);
-    border-radius: 50px;
+    border-radius: vw(50);
 
     &-bg {
       position: absolute;
@@ -290,13 +296,13 @@ section {
       display: flex;
       flex-direction: column;
       align-items: start;
-      gap: 16px;
-      width: 370px;
-      padding: 50px;
+      gap: vw(16);
+      width: vw(370);
+      padding: vw(50);
     }
 
     &-title {
-      max-width: 240px;
+      max-width: vw(240);
       @include mixins.h3-pc;
       color: colors.$white;
     }
@@ -309,24 +315,24 @@ section {
     &-footer {
       position: relative;
       z-index: 2;
-      padding: 50px;
+      padding: vw(50);
     }
   }
 
   &__card-btn {
     position: absolute;
-    bottom: 43px;
-    left: 30px;
+    bottom: vw(43);
+    left: vw(30);
     display: flex;
-    gap: 15px;
+    gap: vw(15);
     align-items: center;
     justify-content: center;
-    padding: 7px 20px;
+    padding: vw(7) vw(20);
     cursor: pointer;
     background-color: transparent;
     border: none;
-    border-radius: 50px;
-    letter-spacing: -0.7px;
+    border-radius: vw(50);
+    letter-spacing: vw(-0.7);
     @include mixins.customHoverMixin(width, 0.3s);
     @include mixins.customHoverMixin(background-color, 0.3s);
 
@@ -361,8 +367,8 @@ section {
   }
 
   &__header {
-    gap: 30px;
-    padding-bottom: 100px;
+    gap: vw(30);
+    padding-bottom: vw(100);
     @include mixins.flex-column;
   }
 
@@ -371,7 +377,7 @@ section {
   }
 
   &__subtitle {
-    width: 400px;
+    width: vw(400);
     text-align: center;
     @include mixins.p-normal;
     color: colors.$gray300;
@@ -380,18 +386,18 @@ section {
   &__form {
     width: 100%;
     background-color: colors.$white;
-    border-radius: 50px;
+    border-radius: vw(50);
   }
 
   &__wrapper {
-    padding: 70px;
-    border-radius: 50px;
+    padding: vw(70);
+    border-radius: vw(50);
   }
 
   &__fields {
     display: grid;
-    gap: 30px;
-    column-gap: 33px;
+    gap: vw(30);
+    column-gap: vw(33);
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -400,7 +406,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 8px;
+    gap: vw(8);
     width: 100%;
   }
 
@@ -410,10 +416,10 @@ section {
 
   &__input {
     width: 100%;
-    padding: 20px;
+    padding: vw(20);
     background-color: colors.$beige100;
-    border: 1px solid colors.$beige200;
-    border-radius: 10px;
+    border: vw(1) solid colors.$beige200;
+    border-radius: vw(10);
     @include mixins.p-normal;
 
     &::placeholder {
@@ -428,13 +434,13 @@ section {
     &:focus {
       transform: none;
       outline: none;
-      border: 1px solid colors.$gray300;
+      border: vw(1) solid colors.$gray300;
     }
   }
 
   &__select {
     appearance: none;
-    padding-right: 48px;
+    padding-right: vw(48);
 
     &:invalid {
       color: colors.$gray300 !important;
@@ -444,9 +450,9 @@ section {
   &__field:has(.tour-form__select)::after {
     position: absolute;
     top: 58%;
-    right: 21px;
-    width: 26px;
-    height: 26px;
+    right: vw(21);
+    width: vw(26);
+    height: vw(26);
     pointer-events: none;
     content: '';
     background: url(/assets/images/svg/select-arrow.svg) no-repeat center / contain;
@@ -457,21 +463,21 @@ section {
   }
 
   &__textarea {
-    min-height: 152px;
+    min-height: vw(152);
     height: 0;
     resize: none;
   }
 
   &__comment-block {
-    margin-top: 33px;
+    margin-top: vw(33);
   }
 
   &__radio {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 8px;
-    margin: 33px 0px;
+    gap: vw(8);
+    margin: vw(33) 0;
 
     &-name {
       @include mixins.p-normal;
@@ -479,14 +485,14 @@ section {
 
     &-wrapper {
       display: flex;
-      gap: 31px;
+      gap: vw(31);
       align-items: center;
       justify-content: center;
     }
 
     &-option {
       display: flex;
-      gap: 11px;
+      gap: vw(11);
       align-items: start;
       justify-content: center;
     }
@@ -499,12 +505,12 @@ section {
   &__radio-input {
     position: relative;
     display: inline-block;
-    width: 26px;
-    height: 26px;
+    width: vw(26);
+    height: vw(26);
     margin: 0;
     cursor: pointer;
     appearance: none;
-    border: 2px solid #1b1f2b;
+    border: vw(2) solid #1b1f2b;
     border-radius: 50%;
     @include mixins.customHoverMixin(border-color, 0.3s);
 
@@ -516,8 +522,8 @@ section {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 12px;
-      height: 12px;
+      width: vw(12);
+      height: vw(12);
       content: '';
       transform: translate(-50%, -50%);
       background: colors.$black;
@@ -526,24 +532,24 @@ section {
   }
 
   &__checkbox {
-    margin-bottom: 33px;
+    margin-bottom: vw(33);
 
     &-label {
       display: flex;
-      gap: 19px;
+      gap: vw(19);
       align-items: center;
     }
 
     &-input {
       position: relative;
       display: inline-block;
-      width: 26px;
-      height: 26px;
+      width: vw(26);
+      height: vw(26);
       margin: 0;
       cursor: pointer;
       appearance: none;
-      border: 2px solid colors.$black;
-      border-radius: 6px;
+      border: vw(2) solid colors.$black;
+      border-radius: vw(6);
 
       &:checked {
         background: colors.$white;
@@ -552,19 +558,19 @@ section {
 
       &:checked::after {
         position: absolute;
-        top: 4px;
-        left: 8px;
-        width: 6px;
-        height: 12px;
+        top: vw(4);
+        left: vw(8);
+        width: vw(6);
+        height: vw(12);
         content: '';
         transform: rotate(45deg);
-        border-right: 2px solid colors.$black;
-        border-bottom: 2px solid colors.$black;
+        border-right: vw(2) solid colors.$black;
+        border-bottom: vw(2) solid colors.$black;
       }
     }
 
     &-text {
-      letter-spacing: -0.165px;
+      letter-spacing: vw(-0.165);
       @include mixins.p-small;
       color: colors.$gray300;
     }
@@ -573,7 +579,7 @@ section {
       background: none;
       border: none;
       text-decoration: none;
-      text-underline-offset: 3px;
+      text-underline-offset: vw(3);
       @include mixins.p-small;
       color: colors.$black;
 
@@ -585,19 +591,19 @@ section {
 
   &__button-block {
     display: flex;
-    gap: 30px;
+    gap: vw(30);
     align-items: center;
   }
 
   &__button {
     width: 100%;
-    max-width: 235px;
-    padding: 15px 70px;
+    max-width: vw(235);
+    padding: vw(15) vw(70);
     cursor: pointer;
     font-family: Roboto, sans-serif;
     text-decoration: none;
     border: none;
-    border-radius: 10px;
+    border-radius: vw(10);
     @include mixins.p-normal;
 
     &-cyan-btn {
@@ -641,10 +647,10 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: vw(30);
     width: 100%;
-    max-width: 529px;
-    margin-bottom: 100px;
+    max-width: vw(529);
+    margin-bottom: vw(100);
 
     &-title {
       text-align: center;
@@ -652,7 +658,7 @@ section {
     }
 
     &-subtitle {
-      max-width: 400px;
+      max-width: vw(400);
       text-align: center;
       @include mixins.p-normal;
       color: colors.$gray300;
@@ -661,9 +667,9 @@ section {
 
   &__card-wrapper {
     display: flex;
-    gap: 30px;
+    gap: vw(30);
     align-items: stretch;
-    height: 673px;
+    height: vw(673);
   }
 
   &__card {
@@ -671,7 +677,7 @@ section {
     width: 100%;
     height: 100%;
     background-color: colors.$beige200;
-    border-radius: 50px;
+    border-radius: vw(50);
   }
 
   &__card-content {
@@ -679,7 +685,7 @@ section {
     flex: 1;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px;
+    padding: vw(40);
   }
 
   &__card-text {
@@ -694,7 +700,7 @@ section {
   }
 
   &__card-username {
-    margin-bottom: 8px;
+    margin-bottom: vw(8);
     @include mixins.h3-pc;
   }
 
@@ -703,8 +709,8 @@ section {
   }
 
   &__card-user-avatar {
-    width: 75px;
-    height: 75px;
+    width: vw(75);
+    height: vw(75);
     mix-blend-mode: multiply;
   }
 }
@@ -720,8 +726,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
-    padding-bottom: 100px;
+    gap: vw(30);
+    padding-bottom: vw(100);
 
     &-title {
       text-align: center;
@@ -729,7 +735,7 @@ section {
     }
 
     &-subtitle {
-      width: 418px;
+      width: vw(418);
       text-align: center;
       @include mixins.p-normal;
       color: colors.$gray300;
@@ -739,20 +745,20 @@ section {
   &__photo-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding: 0 30px;
+    gap: vw(30);
+    padding: 0 vw(30);
 
     &__row {
       display: grid;
-      gap: 30px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: vw(30);
+      grid-template-columns: repeat(auto-fit, minmax(vw(250), 1fr));
 
       & > img {
         display: block;
         width: 100%;
-        height: 300px;
+        height: vw(300);
         object-fit: cover;
-        border-radius: 50px;
+        border-radius: vw(50);
       }
     }
   }
@@ -763,7 +769,7 @@ section {
 
   &__container {
     width: 100%;
-    max-width: 1920px;
+    max-width: vw(1920);
     margin: 0 auto;
   }
 
@@ -772,8 +778,8 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    margin-bottom: 100px;
+    gap: vw(30);
+    margin-bottom: vw(100);
   }
 
   &__title {
@@ -782,7 +788,7 @@ section {
   }
 
   &__subtitle {
-    width: 400px;
+    width: vw(400);
     text-align: center;
     @include mixins.p-normal;
     color: colors.$gray300;
@@ -791,12 +797,12 @@ section {
   .images {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding: 0 30px;
+    gap: vw(30);
+    padding: 0 vw(30);
 
     &__row {
       display: grid;
-      gap: 30px;
+      gap: vw(30);
 
       &:nth-child(1) {
         grid-template-columns: repeat(4, 1fr);
@@ -813,9 +819,9 @@ section {
 
     &__item {
       width: 100%;
-      height: 301px;
+      height: vw(301);
       object-fit: cover;
-      border-radius: 50px;
+      border-radius: vw(50);
     }
   }
 }
@@ -828,8 +834,8 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    margin-bottom: 100px;
+    gap: vw(30);
+    margin-bottom: vw(100);
   }
 
   &__title {
@@ -838,14 +844,14 @@ section {
   }
 
   &__subtitle {
-    width: 400px;
+    width: vw(400);
     text-align: center;
     @include mixins.p-normal;
     color: colors.$gray300;
   }
 
   &__card-wrapper {
-    gap: 50px;
+    gap: vw(50);
     align-items: center;
     justify-content: center;
     @include mixins.flex-column;
@@ -860,11 +866,11 @@ section {
     align-items: start;
     justify-content: space-between;
     width: 100%;
-    max-width: 1170px;
-    max-height: 567px;
+    max-width: vw(1170);
+    max-height: vw(567);
     height: 100vh;
     background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
-    border-radius: 50px;
+    border-radius: vw(50);
 
     &-background {
       position: absolute;
@@ -904,18 +910,18 @@ section {
     }
 
     &-top-block {
-      padding: 60px;
+      padding: vw(60);
     }
 
     &-title {
-      margin-bottom: 37px;
+      margin-bottom: vw(37);
       @include mixins.h3-pc;
       color: colors.$white;
     }
 
     &-subtitle {
-      max-width: 554px;
-      margin-bottom: 25px;
+      max-width: vw(554);
+      margin-bottom: vw(25);
       @include mixins.p-normal;
       color: colors.$white;
     }
@@ -925,21 +931,21 @@ section {
       width: 100%;
       align-items: center;
       justify-content: space-between;
-      padding: 0 60px 50px 60px;
+      padding: 0 vw(60) vw(50) vw(60);
     }
 
     &-btn {
       display: flex;
-      gap: 15px;
+      gap: vw(15);
       align-items: center;
       justify-content: center;
-      margin-left: -20px;
-      padding: 7px 20px;
+      margin-left: vw(-20);
+      padding: vw(7) vw(20);
       cursor: pointer;
       background-color: transparent;
       border: none;
-      border-radius: 50px;
-      letter-spacing: -1px;
+      border-radius: vw(50);
+      letter-spacing: vw(-1);
       @include mixins.customHoverMixin(width, 0.3s);
       @include mixins.customHoverMixin(background-color, 0.3s);
 
@@ -959,7 +965,7 @@ section {
   }
 
   &__card-list-wrapper {
-    padding-left: 30px;
+    padding-left: vw(30);
   }
 
   &__card-list {
@@ -969,7 +975,7 @@ section {
   }
 
   &__links {
-    gap: 35px;
+    gap: vw(35);
     @include mixins.flex-center-between;
   }
 
@@ -985,7 +991,7 @@ section {
       left: 0;
       display: block;
       width: 0;
-      height: 2px;
+      height: vw(2);
       content: '';
       background-color: colors.$white;
       @include mixins.customHoverMixin(width, 0.3s);
@@ -1008,7 +1014,7 @@ section {
 }
 
 .mail {
-  padding-bottom: 135px;
+  padding-bottom: vw(135);
   background-color: colors.$beige100;
 
   &__content {
@@ -1019,21 +1025,21 @@ section {
 
   &__centered-wrapper {
     display: flex;
-    gap: 30px;
+    gap: vw(30);
     align-items: center;
   }
 
   &__image {
-    max-width: 370px;
-    max-height: 370px;
-    border-radius: 50px;
+    max-width: vw(370);
+    max-height: vw(370);
+    border-radius: vw(50);
   }
 
   &__text-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    max-width: 371px;
+    gap: vw(20);
+    max-width: vw(371);
   }
 
   &__title {
@@ -1056,7 +1062,7 @@ section {
         bottom: 0;
         left: 0;
         width: 0;
-        height: 1px;
+        height: vw(1);
         content: '';
         background-color: colors.$black;
         @include mixins.customHoverMixin(width, 0.3s);
@@ -1077,19 +1083,19 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 0;
+    padding: vw(30) 0;
   }
 
   &__link-list {
     display: flex;
-    gap: 25px;
+    gap: vw(25);
     align-items: center;
     justify-content: center;
   }
 
   &__link-item {
     display: flex;
-    gap: 10px;
+    gap: vw(10);
     align-items: center;
     text-decoration: none;
     @include mixins.p-normal;
@@ -1103,7 +1109,7 @@ section {
         bottom: 0;
         left: 0;
         width: 0;
-        height: 2px;
+        height: vw(2);
         content: '';
         background-color: colors.$black;
         @include mixins.customHoverMixin(width, 0.3s);
@@ -1121,8 +1127,8 @@ section {
   }
 
   &__link-logo {
-    width: 26px;
-    height: 26px;
+    width: vw(26);
+    height: vw(26);
   }
 
   &__text {

@@ -508,7 +508,7 @@
     @include mixins.p-big-mobile;
   }
 
-  .tour__list-link-active {
+  .tour__list-link_active {
     color: colors.$orange200;
     position: relative;
   }

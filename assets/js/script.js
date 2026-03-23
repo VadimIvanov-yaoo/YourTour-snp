@@ -6,15 +6,15 @@ const links = document.querySelectorAll(
 links.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault()
-    links.forEach((el) => el.classList.remove('tour__list-link-active'))
-    link.classList.add('tour__list-link-active')
+    links.forEach((el) => el.classList.remove('tour__list-link_active'))
+    link.classList.add('tour__list-link_active')
   })
 })
 
 const header = document.querySelector('.header')
 const headerHeight = header.offsetHeight
 const height = 450
-const bg = document.querySelector('.backgroundWrapper')
+const bg = document.querySelector('.background-wrapper')
 
 let isFixed = false
 
