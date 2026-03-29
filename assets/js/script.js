@@ -24,7 +24,7 @@ window.addEventListener('scroll', () => {
     requestAnimationFrame(() => {
       header.classList.add('header-show')
     })
-    logo.src = '/assets/images/svg/logo-black.svg'
+    logo.src = '/logo-black.svg'
     isFixed = true
   }
 
@@ -34,7 +34,7 @@ window.addEventListener('scroll', () => {
 
     setTimeout(() => {
       header.classList.remove('header-fixed', 'header-hide')
-      logo.src = '/assets/images/svg/logo.svg'
+      logo.src = '/logo.svg'
     }, 250)
 
     isFixed = false
