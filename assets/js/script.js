@@ -1,30 +1,31 @@
 import '../styles/styles.scss'
 
-const links = document.querySelectorAll(
-  '#tour__link1, #tour__link2, #tour__link3, #tour__link4, #tour__link5'
-)
+const links = document.querySelectorAll('.find-tour__list-link')
+
 links.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault()
-    links.forEach((el) => el.classList.remove('tour__list-link-active'))
-    link.classList.add('tour__list-link-active')
+    links.forEach((el) => el.classList.remove('find-tour__list-link_active'))
+    link.classList.add('find-tour__list-link_active')
   })
 })
 
 const header = document.querySelector('.header')
-const headerHeight = header.offsetHeight
-const height = 450
-const bg = document.querySelector('.backgroundWrapper')
+const logo = document.getElementById('logo')
 
+const height = 450
 let isFixed = false
 
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY
 
   if (scrollPosition >= height && !isFixed) {
+    header.classList.add('header-fixed')
     header.classList.remove('header-hide')
-    header.classList.add('header-fixed', 'header-show')
-    bg.style.paddingTop = headerHeight + 'px'
+    requestAnimationFrame(() => {
+      header.classList.add('header-show')
+    })
+    logo.src = './assets/images/svg/logo-black.svg'
     isFixed = true
   }
 
@@ -34,12 +35,13 @@ window.addEventListener('scroll', () => {
 
     setTimeout(() => {
       header.classList.remove('header-fixed', 'header-hide')
-      bg.style.paddingTop = '0'
+      logo.src = './assets/images/svg/logo.svg'
     }, 250)
 
     isFixed = false
   }
 })
+
 //validation
 const phoneInput = document.getElementById('phone')
 phoneInput.addEventListener('focus', (e) => {
@@ -96,17 +98,10 @@ function validatePhone(value) {
   return formattedTel
 }
 
-function validateEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return regex.test(email)
-}
-function validateName(name) {
-  return /^[А-Яа-яЁё\s]+$/.test(name)
-}
-
-function validatePhoneNumber(phone) {
-  return /\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}/.test(phone)
-}
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+const validateName = (name) => /^[А-Яа-яЁё\s]+$/.test(name)
+const validatePhoneNumber = (phone) =>
+  /\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}/.test(phone)
 
 document
   .getElementById('tour-form__input__to')
