@@ -1,59 +1,73 @@
 import '../styles/styles.scss'
 
-const links = document.querySelectorAll(
-  '#tour__link1, #tour__link2, #tour__link3, #tour__link4, #tour__link5'
-)
+const links = document.querySelectorAll('.find-tour__list-link')
+
 links.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault()
-    links.forEach((el) => el.classList.remove('tour__list-link-active'))
-    link.classList.add('tour__list-link-active')
+    links.forEach((el) => el.classList.remove('find-tour__list-link_active'))
+    link.classList.add('find-tour__list-link_active')
   })
 })
 
 const header = document.querySelector('.header')
-const headerHeight = header.offsetHeight
+const logo = document.getElementById('logo')
+
 const height = 450
+let isFixed = false
 
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY
 
-  if (scrollPosition >= height) {
+  if (scrollPosition >= height && !isFixed) {
     header.classList.add('header-fixed')
-    document.querySelector('.backgroundWrapper').style.paddingTop =
-      headerHeight + 'px'
-  } else {
-    header.classList.remove('header-fixed')
-    document.querySelector('.backgroundWrapper').style.paddingTop = '0'
+    header.classList.remove('header-hide')
+    requestAnimationFrame(() => {
+      header.classList.add('header-show')
+    })
+    logo.src = './assets/images/svg/logo-black.svg'
+    isFixed = true
+  }
+
+  if (scrollPosition < height && isFixed) {
+    header.classList.remove('header-show')
+    header.classList.add('header-hide')
+
+    setTimeout(() => {
+      header.classList.remove('header-fixed', 'header-hide')
+      logo.src = './assets/images/svg/logo.svg'
+    }, 250)
+
+    isFixed = false
   }
 })
 
 //validation
 const phoneInput = document.getElementById('phone')
-
+phoneInput.addEventListener('focus', (e) => {
+  if (!e.target.value) {
+    e.target.value = '+7 ('
+  }
+})
 function formattedDate(e) {
   const MAX_DAY = 31
   const MAX_MONTH = 12
   const MAX_YEAR = 9999
   const digits = e.target.value.replace(/\D/g, '').slice(0, 8)
-
   let day, month, year
 
   if (digits.length >= 1) {
     day = digits.slice(0, 2)
     if (day.length === 2 && parseInt(day, 10) > MAX_DAY) day = MAX_DAY
   }
-
   if (digits.length >= 3) {
     month = digits.slice(2, 4)
     if (month.length === 2 && parseInt(month, 10) > MAX_MONTH) month = MAX_MONTH
   }
-
   if (digits.length >= 5) {
     year = digits.slice(4, 8)
     if (year.length === 4 && parseInt(year, 10) > MAX_YEAR) year = MAX_YEAR
   }
-
   let formatted = day
   if (month) formatted += '.' + month
   if (year) formatted += '.' + year
@@ -81,14 +95,13 @@ function validatePhone(value) {
   if (value.length >= 9) {
     formattedTel += '-' + value.substring(8, 10)
   }
-
   return formattedTel
 }
 
-function validateEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return regex.test(email)
-}
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+const validateName = (name) => /^[А-Яа-яЁё\s]+$/.test(name)
+const validatePhoneNumber = (phone) =>
+  /\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}/.test(phone)
 
 document
   .getElementById('tour-form__input__to')
@@ -103,12 +116,38 @@ phoneInput.addEventListener('input', (e) => {
 })
 
 function validateForm(e) {
+  e.preventDefault()
   const dateFromValue = document.getElementById('tour-form__input__from').value
   const dateToValue = document.getElementById('tour-form__input__to').value
   const emailInput = document.getElementById('email').value
+  const name = document.getElementById('name').value.trim()
+  const phone = document.getElementById('phone').value.trim()
+  const select = document.getElementById('tours').value
+
+  if (
+    !name ||
+    !emailInput ||
+    !dateFromValue ||
+    !dateToValue ||
+    !phone ||
+    !select
+  ) {
+    alert('Введите все поля')
+    return
+  }
+
+  if (!validateName(name)) {
+    alert('Имя должно содержать только русские буквы')
+    return
+  }
 
   if (!validateEmail(emailInput)) {
     alert('Некорректный email')
+    return
+  }
+
+  if (!validatePhoneNumber(phone)) {
+    alert('Не правильный формат номера телефона')
     return
   }
 

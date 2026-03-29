@@ -2,114 +2,73 @@
 @use 'colors';
 @use 'reset';
 
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 section {
   padding-top: 135px;
 }
 
-.header-fixed {
-  background-color: colors.$beige200;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-  transform: translateY(-100%);
-  animation: headerAnimation 0.5s ease forwards;
-
-  a {
-    position: relative;
-    color: colors.$black !important;
-    transition: color 0.3s ease;
-
-    &:after {
-      background-color: black !important;
-      display: block;
-      content: '';
-      height: 1.4px;
-      width: 0%;
-      -webkit-transition: width 0.1s ease-in-out;
-      transition: width 0.3s ease-in-out;
-    }
-
-    &:hover:after {
-      width: 100%;
-    }
-  }
-
-  svg path {
-    fill: colors.$black !important;
-    transition: fill 0.3s ease;
-  }
-}
-
 .container {
-  max-width: 1170px;
   width: 100%;
+  max-width: 1170px;
   margin: 0 auto;
 }
 
-.backgroundWrapper {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  background-size: cover;
-  background:
-    linear-gradient(
-      360deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.06) 48.44%,
-      rgba(0, 0, 0, 0.5) 100%
-    ),
-    url('../images/hero-background.jpg') no-repeat center/cover lightgray;
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 28px 0;
 
-  .header {
-    padding: 28px 0;
-    &__logo {
-      height: 30px;
-      width: 181px;
-    }
-    &__content {
+  &__logo {
+    width: 181px;
+    height: 30px;
+  }
+
+  &__content {
+    @include mixins.flex-center-between;
+  }
+
+  &__phone {
+    text-decoration: none;
+    @include mixins.p-normal;
+    font-size: clamp(16px, 1.95vw, 20px);
+    color: colors.$white;
+  }
+
+  &__nav {
+    &-list {
+      gap: 50px;
       @include mixins.flex-center-between;
-    }
-    &__phone {
-      @include mixins.p-normal;
-      text-decoration: none;
-      color: colors.$white;
-    }
 
-    &__nav {
-      &-list {
-        @include mixins.flex-center-between;
-        gap: 50px;
-        li {
-          .header__link {
-            @include mixins.p-normal;
-            text-decoration: none;
-            color: colors.$white;
+      li {
+        .header__link {
+          text-decoration: none;
+          @include mixins.p-normal;
+          color: colors.$white;
+          @include mixins.customHoverMixin(color);
 
-            &:after {
-              background-color: white;
-              display: block;
-              content: '';
-              height: 1.4px;
-              width: 0%;
-              -webkit-transition: width 0.1s ease-in-out;
-              transition: width 0.3s ease-in-out;
-            }
+          &:after {
+            display: block;
+            width: 0%;
+            height: 1.4px;
+            content: '';
+            background-color: white;
+            @include mixins.customHoverMixin(width);
+          }
 
-            &:hover:after {
-              width: 100%;
-            }
+          &:hover:after {
+            width: 100%;
           }
         }
       }
@@ -117,38 +76,90 @@ section {
   }
 }
 
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: colors.$beige200;
+  backdrop-filter: blur(54px);
+  transform: translateY(-100%);
+
+  .header__link {
+    position: relative;
+    @include mixins.customHoverMixin(color);
+    color: colors.$black !important;
+
+    &:after {
+      display: block;
+      width: 0;
+      height: 1.4px;
+      content: '';
+      background: black !important;
+      @include mixins.customHoverMixin(width);
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+  }
+
+  .header__phone {
+    color: colors.$black !important;
+  }
+}
+
+.header-show {
+  animation: headerShow 0.5s ease forwards;
+}
+
+.header-hide {
+  animation: headerHide 0.5s ease forwards;
+}
+
 .hero {
   position: relative;
+  display: flex;
   flex: 1;
-
-  @include mixins.flex-column;
-  gap: 50px;
-
-  text-align: center;
+  height: 100vh;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding-top: 0;
+  text-align: center;
+
+  background:
+          linear-gradient(
+                          360deg,
+                          rgba(0, 0, 0, 0.4) 0%,
+                          rgba(0, 0, 0, 0.06) 48.44%,
+                          rgba(0, 0, 0, 0.5) 100%
+          ),
+          url('../images/hero-background.jpg') no-repeat center/cover;
 
   &__title {
-    @include mixins.h1-pc;
     max-width: 768px;
     letter-spacing: 2.2px;
+    @include mixins.h1-pc;
     color: colors.$white;
   }
 
   &__subtitle {
-    @include mixins.p-normal;
     max-width: 562px;
-    color: colors.$white;
+    @include mixins.p-normal;
+    color: colors.$white ;
   }
+
   &__btn {
-    @include mixins.p-small;
-    border-radius: 10px;
     padding: 5px 20px;
     background-color: colors.$white;
-    cursor: pointer;
     border: 1px solid colors.$white;
-    transition:
-      background 0.25s ease,
-      color 0.25s ease;
+    border-radius: 10px;
+    @include mixins.p-small;
+    @include mixins.customHoverMixin(background-color, 0.25s);
+    @include mixins.customHoverMixin(color, 0.25s);
 
     &:hover {
       background-color: colors.$orange200;
@@ -164,18 +175,19 @@ section {
   }
 }
 
-.tour {
+.find-tour {
   background-color: colors.$beige100;
 
   &__content {
-    @include mixins.flex-column;
     align-items: center;
+    @include mixins.flex-column;
   }
 
   &__header-block {
-    @include mixins.flex-column;
+    width: 100%;
     gap: 35px;
     margin-bottom: 105px;
+    @include mixins.flex-column;
   }
 
   &__title {
@@ -183,98 +195,95 @@ section {
   }
 
   &__list {
-    @include mixins.flex-center-between;
     gap: 30px;
+    @include mixins.flex-center-between;
   }
 
   &__list-link {
+    display: inline-flex;
+    padding: 0;
+    background: none;
+    border: none;
     text-decoration: none;
+    letter-spacing: -1.1px;
     @include mixins.p-big;
+    @include mixins.customHoverMixin(width);
 
     &:after {
-      background-color: colors.$black;
       display: block;
-      content: '';
-      height: 2px;
       width: 0%;
-      -webkit-transition: width 0.1s ease-in-out;
-      transition: width 0.3s ease-in-out;
+      height: 2px;
+      content: '';
+      background-color: colors.$black;
+      @include mixins.customHoverMixin(width);
     }
 
     &:hover:after {
       width: 100%;
     }
   }
-  &__list-link-active {
+  &__list-link_active {
+    position: relative;
     text-decoration: none;
     @include mixins.p-big;
-    position: relative;
     color: colors.$orange200;
 
     &:after {
-      content: '';
-      display: block;
-      height: 2px;
-      width: 100%;
-      background-color: colors.$orange200;
       position: absolute;
       bottom: -2px;
       left: 0;
-      transition: width 0.3s ease-in-out;
+      display: block;
+      width: 100%;
+      height: 2px;
+      content: '';
+      background-color: colors.$orange200;
+      @include mixins.customHoverMixin(width);
     }
   }
 
   &__card-wrapper {
     display: grid;
+    gap: 30px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 30px;
+    width: 100%;
   }
 
   &__card {
     position: relative;
-    @include mixins.flex-column;
-    justify-content: space-between;
+    z-index: 1;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
     align-items: start;
+    justify-content: space-between;
     height: 100vh;
     max-height: 531px;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%);
     border-radius: 50px;
-    overflow: hidden;
-    background: linear-gradient(
-      360deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.06) 48.44%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-    z-index: 1;
 
     &-bg {
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 300ms ease;
       transform: scale(1);
-      z-index: 0;
+      @include mixins.customHoverMixin(transform, 0.3s);
     }
 
     &-overlay {
-      content: '';
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 1;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        360deg,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(0, 0, 0, 0.06) 48.44%,
-        rgba(0, 0, 0, 0.5) 100%
-      );
-      z-index: 1;
       pointer-events: none;
+      content: '';
+      background: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%);
     }
 
     &:hover &-bg {
@@ -283,18 +292,21 @@ section {
 
     &-header {
       position: relative;
-      @include mixins.flex-column;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
       align-items: start;
       gap: 16px;
+      width: 100%;
       padding: 50px;
-      width: 370px;
-      z-index: 2;
     }
+
     &-title {
+      max-width: 240px;
       @include mixins.h3-pc;
       color: colors.$white;
-      max-width: 240px;
     }
+
     &-price {
       @include mixins.p-small;
       color: colors.$white;
@@ -302,27 +314,28 @@ section {
 
     &-footer {
       position: relative;
+      width: 100%;
       padding: 50px;
       z-index: 2;
     }
   }
+
   &__card-btn {
     position: absolute;
     bottom: 43px;
     left: 30px;
     display: flex;
+    gap: 15px;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
-    letter-spacing: -0.7px;
-    gap: 15px;
     padding: 7px 20px;
+    cursor: pointer;
+    background-color: transparent;
     border: none;
     border-radius: 50px;
-    cursor: pointer;
-    transition:
-      width 0.3s ease-in-out,
-      background-color 0.3s ease-in-out;
+    letter-spacing: -0.7px;
+    @include mixins.customHoverMixin(width, 0.3s);
+    @include mixins.customHoverMixin(background-color, 0.3s);
 
     &:hover {
       background-color: colors.$green400;
@@ -333,7 +346,7 @@ section {
       color: colors.$white;
     }
     &:active {
-      background: colors.$orange200 !important;
+      background: colors.$orange200 ;
     }
   }
 
@@ -342,7 +355,7 @@ section {
   }
 
   &__card:active &__card-btn {
-    background: colors.$orange200 !important;
+    background: colors.$orange200 ;
   }
 }
 
@@ -354,26 +367,26 @@ section {
   }
 
   &__header {
-    @include mixins.flex-column;
     gap: 30px;
     padding-bottom: 100px;
-  }
-
-  &__subtitle {
-    @include mixins.p-normal;
-    color: colors.$gray300;
-    text-align: center;
-    width: 400px;
+    @include mixins.flex-column;
   }
 
   &__title {
     @include mixins.h2-pc;
   }
 
+  &__subtitle {
+    width: 400px;
+    text-align: center;
+    @include mixins.p-normal;
+    color: colors.$gray300;
+  }
+
   &__form {
+    width: 100%;
     background-color: colors.$white;
     border-radius: 50px;
-    width: 100%;
   }
 
   &__wrapper {
@@ -383,14 +396,15 @@ section {
 
   &__fields {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     column-gap: 33px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   &__field {
-    @include mixins.flex-column;
     position: relative;
+    display: flex;
+    flex-direction: column;
     align-items: start;
     gap: 8px;
     width: 100%;
@@ -400,29 +414,13 @@ section {
     @include mixins.p-normal;
   }
 
-  &__select {
-    appearance: none;
-    padding-right: 48px;
-  }
-
-  &__field:has(.tour-form__select)::after {
-    content: '';
-    position: absolute;
-    right: 21px;
-    top: 58%;
-    width: 26px;
-    height: 26px;
-    pointer-events: none;
-    background: url(/assets/images/svg/select-arrow.svg) no-repeat center /
-      contain;
-  }
   &__input {
-    @include mixins.p-normal;
-    background-color: colors.$beige100;
-    padding: 20px;
-    border-radius: 10px;
-    border: none;
     width: 100%;
+    padding: 20px;
+    background-color: colors.$beige100;
+    border: 1px solid colors.$beige200;
+    border-radius: 10px;
+    @include mixins.p-normal;
 
     &::placeholder {
       @include mixins.p-normal;
@@ -434,8 +432,30 @@ section {
     }
 
     &:focus {
+      transform: none;
+      outline: none;
       border: 1px solid colors.$gray300;
     }
+  }
+
+  &__select {
+    appearance: none;
+    padding-right: 48px;
+
+    &:invalid {
+      color: colors.$gray300 ;
+    }
+  }
+
+  &__field:has(.tour-form__select)::after {
+    position: absolute;
+    top: 52%;
+    right: 20px;
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+    content: '';
+    background: url(/assets/images/svg/select-arrow.svg) no-repeat center / contain;
   }
 
   &__select-item {
@@ -443,36 +463,38 @@ section {
   }
 
   &__textarea {
-    height: 0;
     min-height: 152px;
-    resize: vertical;
+    height: 0;
+    resize: none;
   }
 
   &__comment-block {
-    margin-top: 33px;
+    margin-top: 30px;
   }
 
   &__radio {
-    @include mixins.flex-column;
+    display: flex;
+    flex-direction: column;
     align-items: start;
     gap: 8px;
-    margin: 33px 0px;
+    margin: 33px 0;
+
     &-name {
       @include mixins.p-normal;
     }
 
     &-wrapper {
       display: flex;
+      gap: 31px;
       align-items: center;
       justify-content: center;
-      gap: 31px;
     }
 
     &-option {
       display: flex;
+      gap: 11px;
       align-items: start;
       justify-content: center;
-      gap: 11px;
     }
 
     &-text {
@@ -481,52 +503,54 @@ section {
   }
 
   &__radio-input {
-    appearance: none;
+    position: relative;
+    display: inline-block;
     width: 26px;
     height: 26px;
+    margin: 0;
+    cursor: pointer;
+    appearance: none;
     border: 2px solid #1b1f2b;
     border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-    margin: 0;
+    @include mixins.customHoverMixin(border-color, 0.3s);
 
     &:checked {
       border-color: colors.$black;
     }
 
     &:checked::after {
-      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
       width: 12px;
       height: 12px;
+      content: '';
+      transform: translate(-50%, -50%);
       background: colors.$black;
       border-radius: 50%;
-      transform: translate(-50%, -50%);
     }
   }
 
   &__checkbox {
     margin-bottom: 33px;
+    flex-shrink: 0;
+
     &-label {
       display: flex;
-      align-items: center;
       gap: 19px;
+      align-items: center;
     }
 
     &-input {
-      appearance: none;
-      width: 26px;
-      height: 26px;
-      border: 2px solid colors.$black;
-      border-radius: 6px;
-      cursor: pointer;
-      margin: 0;
       position: relative;
       display: inline-block;
+      width: 26px;
+      height: 26px;
+      margin: 0;
+      cursor: pointer;
+      appearance: none;
+      border: 2px solid colors.$black;
+      border-radius: 6px;
 
       &:checked {
         background: colors.$white;
@@ -534,26 +558,30 @@ section {
       }
 
       &:checked::after {
-        content: '';
         position: absolute;
-        width: 6px;
-        height: 12px;
-        border-right: 2px solid colors.$black;
-        border-bottom: 2px solid colors.$black;
-        transform: rotate(45deg);
         top: 4px;
         left: 8px;
+        width: 6px;
+        height: 12px;
+        content: '';
+        transform: rotate(45deg);
+        border-right: 2px solid colors.$black;
+        border-bottom: 2px solid colors.$black;
       }
     }
 
     &-text {
+      letter-spacing: -0.165px;
       @include mixins.p-small;
       color: colors.$gray300;
-      letter-spacing: -0.165px;
     }
 
     &-link {
+      background: none;
+      border: none;
       text-decoration: none;
+      text-underline-offset: 3px;
+      @include mixins.p-small;
       color: colors.$black;
 
       &:hover {
@@ -564,18 +592,20 @@ section {
 
   &__button-block {
     display: flex;
-    align-items: center;
     gap: 30px;
+    align-items: center;
   }
 
   &__button {
-    @include mixins.p-normal;
-    font-family: Roboto, sans-serif;
+    width: 100%;
+    max-width: 235px;
     padding: 15px 70px;
-    border-radius: 10px;
+    cursor: pointer;
+    font-family: Roboto, sans-serif;
     text-decoration: none;
     border: none;
-    cursor: pointer;
+    border-radius: 10px;
+    @include mixins.p-normal;
 
     &-cyan-btn {
       background-color: colors.$green400;
@@ -619,41 +649,42 @@ section {
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    width: 100%;
     max-width: 529px;
     margin-bottom: 100px;
-    width: 100%;
 
     &-title {
-      @include mixins.h2-pc;
       text-align: center;
+      @include mixins.h2-pc;
     }
 
     &-subtitle {
-      @include mixins.p-normal;
-      text-align: center;
-      color: colors.$gray300;
       max-width: 400px;
+      text-align: center;
+      @include mixins.p-normal;
+      color: colors.$gray300;
     }
   }
 
   &__card-wrapper {
     display: flex;
-    align-items: stretch;
     gap: 30px;
+    align-items: stretch;
     height: 673px;
   }
 
   &__card {
+    display: flex;
     width: 100%;
+    max-width: 570px;
+    height: 100%;
     background-color: colors.$beige200;
     border-radius: 50px;
-    height: 100%;
-    display: flex;
   }
 
   &__card-content {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: space-between;
     padding: 40px;
@@ -664,13 +695,15 @@ section {
   }
 
   &__card-info {
+    display: flex;
     width: 100%;
-    @include mixins.flex-center-between;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__card-username {
-    @include mixins.h3-pc;
     margin-bottom: 8px;
+    @include mixins.h3-pc;
   }
 
   &__card-tour {
@@ -678,9 +711,9 @@ section {
   }
 
   &__card-user-avatar {
-    mix-blend-mode: multiply;
     width: 75px;
     height: 75px;
+    mix-blend-mode: multiply;
   }
 }
 
@@ -699,23 +732,23 @@ section {
     padding-bottom: 100px;
 
     &-title {
-      @include mixins.h2-pc;
       text-align: center;
+      @include mixins.h2-pc;
     }
 
     &-subtitle {
+      width: 418px;
+      text-align: center;
       @include mixins.p-normal;
       color: colors.$gray300;
-      text-align: center;
-      width: 418px;
     }
   }
 
   &__photo-wrapper {
-    padding: 0 30px;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    padding: 0 30px;
 
     &__row {
       display: grid;
@@ -723,11 +756,11 @@ section {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
       & > img {
+        display: block;
         width: 100%;
         height: 300px;
         object-fit: cover;
         border-radius: 50px;
-        display: block;
       }
     }
   }
@@ -736,46 +769,57 @@ section {
 .pictures {
   background-color: colors.$beige100;
 
+  &__container {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
   &__header {
-    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 30px;
+    margin-bottom: 100px;
   }
 
   &__title {
-    @include mixins.h2-pc;
     text-align: center;
+    @include mixins.h2-pc;
   }
 
   &__subtitle {
+    width: 400px;
+    text-align: center;
     @include mixins.p-normal;
     color: colors.$gray300;
-    text-align: center;
-    width: 400px;
   }
 
   .images {
-    padding: 0 30px;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    padding: 0 30px;
 
     &__row {
       display: grid;
       gap: 30px;
+
       &:nth-child(1) {
         grid-template-columns: repeat(4, 1fr);
       }
+
       &:nth-child(2) {
         grid-template-columns: repeat(5, 1fr);
       }
+
       &:nth-child(3) {
         grid-template-columns: repeat(4, 1fr);
       }
     }
+
     &__item {
       width: 100%;
       height: 301px;
@@ -789,83 +833,73 @@ section {
   background-color: colors.$beige100;
 
   &__header {
-    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 30px;
+    margin-bottom: 100px;
   }
 
   &__title {
-    @include mixins.h2-pc;
     text-align: center;
+    @include mixins.h2-pc;
   }
 
   &__subtitle {
+    width: 400px;
+    text-align: center;
     @include mixins.p-normal;
     color: colors.$gray300;
-    text-align: center;
-    width: 400px;
   }
 
   &__card-wrapper {
-    @include mixins.flex-column;
+    gap: 50px;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    @include mixins.flex-column;
   }
 
   &__card {
     position: relative;
-    @include mixins.flex-column;
-    justify-content: space-between;
-    align-items: start;
-    height: 100vh;
-    border-radius: 50px;
-    overflow: hidden;
     z-index: 4;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
     width: 100%;
-    max-width: 1170px;
+    height: 100vh;
     max-height: 567px;
-    background: linear-gradient(
-      270deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.2) 100%
-    );
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+    border-radius: 50px;
 
     &-background {
       position: absolute;
       top: 0;
       left: 0;
+      z-index: -99;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background: linear-gradient(
-        270deg,
-        rgba(0, 0, 0, 0) 0.01%,
-        rgba(0, 0, 0, 0.2) 100%
-      );
       object-position: center;
-      transition: transform 300ms ease;
       transform: scale(1);
-      z-index: -99;
+      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.2) 100%);
+      @include mixins.customHoverMixin(transform, 0.3s);
     }
 
     &-overlay {
       position: absolute;
       top: 0;
       left: 0;
+      z-index: -1;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        270deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.2) 100%
-      );
-      z-index: -1;
       pointer-events: none;
+      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
     }
+
     &:hover &-background {
       transform: scale(1.2);
     }
@@ -875,37 +909,48 @@ section {
     }
 
     &:active &-btn {
-      background-color: colors.$orange200 !important;
+      background-color: colors.$orange200 ;
+    }
+
+    &-top-block {
+      padding: 60px;
     }
 
     &-title {
+      margin-bottom: 37px;
       @include mixins.h3-pc;
       color: colors.$white;
-      margin-bottom: 37px;
     }
 
     &-subtitle {
+      max-width: 554px;
+      margin-bottom: 25px;
       @include mixins.p-normal;
       color: colors.$white;
-      margin-bottom: 25px;
-      max-width: 554px;
+    }
+
+    &-bottom-block {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px 50px 60px;
     }
 
     &-btn {
       display: flex;
+      gap: 15px;
       align-items: center;
       justify-content: center;
-      background-color: transparent;
-      gap: 15px;
-      letter-spacing: -1px;
       margin-left: -20px;
       padding: 7px 20px;
+      cursor: pointer;
+      background-color: transparent;
       border: none;
       border-radius: 50px;
-      cursor: pointer;
-      transition:
-        width 0.3s ease-in-out,
-        background-color 0.3s ease-in-out;
+      letter-spacing: -1px;
+      @include mixins.customHoverMixin(width, 0.3s);
+      @include mixins.customHoverMixin(background-color, 0.3s);
 
       &:hover {
         background-color: colors.$green400;
@@ -915,50 +960,45 @@ section {
         @include mixins.p-big;
         color: colors.$white;
       }
+
       &:active {
-        background: colors.$orange200 !important;
+        background: colors.$orange200 ;
       }
     }
-
-    &-bottom-block {
-      width: 100%;
-      padding: 0 60px 50px 60px;
-      @include mixins.flex-center-between;
-    }
   }
+
   &__card-list-wrapper {
     padding-left: 30px;
   }
+
   &__card-list {
     list-style-type: disc;
     @include mixins.p-normal;
     color: colors.$white;
   }
-  &__card-top-block {
-    padding: 60px;
-  }
+
   &__links {
-    @include mixins.flex-center-between;
     gap: 35px;
+    @include mixins.flex-center-between;
   }
+
   &__link-item {
     position: relative;
-    @include mixins.p-normal;
     text-decoration: none;
+    @include mixins.p-normal;
     color: colors.$white;
 
     &:after {
-      content: '';
-      display: block;
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 2px;
+      display: block;
       width: 0;
+      height: 2px;
+      content: '';
       background-color: colors.$white;
-      transition:
-        width 0.3s ease-in-out,
-        background-color 0.3s ease-in-out;
+      @include mixins.customHoverMixin(width, 0.3s);
+      @include mixins.customHoverMixin(background-color, 0.3s);
     }
 
     &:hover:after {
@@ -977,8 +1017,8 @@ section {
 }
 
 .mail {
-  background-color: colors.$beige100;
   padding-bottom: 135px;
+  background-color: colors.$beige100;
 
   &__content {
     display: flex;
@@ -986,10 +1026,16 @@ section {
     justify-content: center;
   }
 
+  &__centered-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
   &__image {
-    border-radius: 50px;
     max-width: 370px;
     max-height: 370px;
+    border-radius: 50px;
   }
 
   &__text-content {
@@ -999,34 +1045,31 @@ section {
     max-width: 371px;
   }
 
-  &__centered-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-
   &__title {
     @include mixins.h3-pc;
   }
+
   &__subtitle {
     @include mixins.p-normal;
     color: colors.$gray300;
-    > a {
 
-      text-decoration: none;
-      color: colors.$black;
+    > a {
       position: relative;
       display: inline-block;
+      text-decoration: none;
+      @include mixins.p-normal;
+      color: colors.$black;
 
       &:after {
-        content: '';
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 1px;
         width: 0;
+        height: 1px;
+        content: '';
         background-color: colors.$black;
-        transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        @include mixins.customHoverMixin(width, 0.3s);
+        @include mixins.customHoverMixin(background-color, 0.3s);
       }
 
       &:hover:after {
@@ -1035,8 +1078,10 @@ section {
     }
   }
 }
+
 .footer {
   background-color: colors.$beige200;
+
   &__content {
     display: flex;
     align-items: center;
@@ -1071,7 +1116,8 @@ section {
         height: 2px;
         width: 0;
         background-color: colors.$black;
-        transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        @include mixins.customHoverMixin(width, 0.3s);
+        @include mixins.customHoverMixin(background-color, 0.3s);
       }
 
       &:hover:after {
@@ -1095,14 +1141,22 @@ section {
   }
 }
 
-@keyframes headerAnimation {
+
+@keyframes headerShow {
   from {
-    opacity: 0;
     transform: translateY(-100%);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes headerHide {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
   }
 }
 

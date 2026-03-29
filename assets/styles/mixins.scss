@@ -104,3 +104,12 @@
   flex-direction: column;
   align-items: center;
 }
+
+@mixin customHoverMixin($style: all, $time: 0.3s, $method: ease, $cursor: pointer) {
+  transition: $style $time $method;
+  cursor: $cursor;
+}
+
+@mixin fluid-clamp($style, $min, $max, $min-vw: 360px, $max-vw: 1024px) {
+  #{$style}: clamp(#{$min}, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))), #{$max});
+}
