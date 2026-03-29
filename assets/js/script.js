@@ -12,7 +12,6 @@ links.forEach((link) => {
 
 const header = document.querySelector('.header')
 const logo = document.getElementById('logo')
-
 const height = 450
 let isFixed = false
 
@@ -25,7 +24,7 @@ window.addEventListener('scroll', () => {
     requestAnimationFrame(() => {
       header.classList.add('header-show')
     })
-    logo.src = './assets/images/svg/logo-black.svg'
+    logo.src = '/assets/images/svg/logo-black.svg'
     isFixed = true
   }
 
@@ -35,7 +34,7 @@ window.addEventListener('scroll', () => {
 
     setTimeout(() => {
       header.classList.remove('header-fixed', 'header-hide')
-      logo.src = './assets/images/svg/logo.svg'
+      logo.src = '/assets/images/svg/logo.svg'
     }, 250)
 
     isFixed = false
