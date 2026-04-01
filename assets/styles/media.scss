@@ -16,8 +16,8 @@
   .feedback__header-title,
   .pictures__title,
   .history__title {
-    @include mixins.fluid-clamp(font-size, 34px, 59px);
     text-align: center;
+    @include mixins.fluid-clamp(font-size, 34px, 59px);
   }
 
   .header {
@@ -30,9 +30,9 @@
   .pictures__subtitle,
   .history__subtitle {
     font-size: clamp(16px, 2.5vw, 20px);
-    @include mixins.fluid-clamp(width, 318px, 418px);
     text-align: center;
     letter-spacing: -0.2px;
+    @include mixins.fluid-clamp(width, 318px, 418px);
     color: colors.$gray300;
   }
 
@@ -447,16 +447,16 @@
   }
 
   .hero__title {
-    @include mixins.h1-mobile;
-    color: colors.$white;
     max-width: 360px;
     letter-spacing: 0.1px;
+    @include mixins.h1-mobile;
+    color: colors.$white;
   }
 
   .hero__subtitle {
+    max-width: 280px;
     @include mixins.p-normal-mobile;
     color: colors.$white;
-    max-width: 280px;
   }
 
   .find-tour__header-block {
@@ -539,10 +539,10 @@
   }
 
   .tour-form__subtitle {
-    @include mixins.p-normal-mobile;
     max-width: 320px;
     text-align: center;
     letter-spacing: -0.19px;
+    @include mixins.p-normal-mobile;
     color: colors.$gray300;
   }
 
@@ -656,15 +656,17 @@
   }
 
   .feedback__header-title {
-    @include mixins.h2-mobile;
     text-align: center;
+    letter-spacing: 0.8px;
+    @include mixins.h2-mobile;
+
   }
 
   .feedback__header-subtitle {
-    @include mixins.p-normal-mobile;
     max-width: 320px;
     text-align: center;
     letter-spacing: -0.2px;
+    @include mixins.p-normal-mobile;
     color: colors.$gray300;
   }
 
@@ -685,8 +687,8 @@
     }
 
     &-text {
-      @include mixins.p-big-mobile;
       padding-bottom: 20px;
+      @include mixins.p-big-mobile;
     }
 
     &-username {
@@ -704,15 +706,15 @@
   }
 
   .history__title {
-    @include mixins.h2-mobile;
     text-align: center;
+    @include mixins.h2-mobile;
   }
 
   .history__subtitle {
-    @include mixins.p-normal-mobile;
     max-width: 320px;
     text-align: center;
     letter-spacing: -0.2px;
+    @include mixins.p-normal-mobile;
     color: colors.$gray300;
   }
 
@@ -735,10 +737,10 @@
     }
 
     &-title {
-      @include mixins.h3-mobile;
       max-width: 140px;
       margin-bottom: 20px;
       letter-spacing: 0.7px;
+      @include mixins.h3-mobile;
       color: colors.$white;
     }
 
@@ -755,10 +757,10 @@
   }
 
   .pictures__subtitle {
-    @include mixins.p-normal-mobile;
     max-width: 320px;
     text-align: center;
     letter-spacing: -0.2px;
+    @include mixins.p-normal-mobile;
     color: colors.$gray300;
   }
 
