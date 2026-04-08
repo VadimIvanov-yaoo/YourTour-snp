@@ -5,8 +5,8 @@ const links = document.querySelectorAll('.find-tour__list-link')
 links.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault()
-    links.forEach((el) => el.classList.remove('find-tour__list-link_active'))
-    link.classList.add('find-tour__list-link_active')
+    links.forEach((el) => el.classList.remove('find-tour__list-link-active'))
+    link.classList.add('find-tour__list-link-active')
   })
 })
 
@@ -17,7 +17,6 @@ let isFixed = false
 
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY
-
   if (scrollPosition >= height && !isFixed) {
     header.classList.add('header-fixed')
     header.classList.remove('header-hide')

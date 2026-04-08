@@ -12,14 +12,32 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-section {
-  padding-top: 135px;
+main {
+  background-color: colors.$beige100;
 }
 
 .container {
   width: 100%;
-  max-width: 1170px;
+  max-width: 1210px;
   margin: 0 auto;
+  padding-left: 21px;
+  padding-right: 21px;
+  box-sizing: border-box;
+
+  @include mixins.tablet {
+    padding-right: 53px;
+    padding-left: 53px;
+  }
+
+  @include mixins.middle {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  @include mixins.middle {
+    padding-right: 21px;
+    padding-left: 21px;
+  }
 }
 
 .header {
@@ -30,9 +48,28 @@ section {
   z-index: 10;
   padding: 28px 0;
 
+  @include mixins.mobile {
+    padding: 25px 0;
+  }
+
   &__logo {
     width: 181px;
     height: 30px;
+
+    @include mixins.middle {
+      width: 150px;
+      height: 30px;
+    }
+
+    @include mixins.mobile {
+      width: 133px;
+      height: 22px;
+    }
+
+    > img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__content {
@@ -42,14 +79,26 @@ section {
   &__phone {
     text-decoration: none;
     @include mixins.p-normal;
-    font-size: clamp(16px, 1.95vw, 20px);
     color: colors.$white;
+
+
+    @include mixins.mobile {
+      @include mixins.p-normal-mobile;
+      color: colors.$white;
+    }
   }
 
   &__nav {
+    @include mixins.middle {
+      display: none;
+    }
     &-list {
       gap: 50px;
       @include mixins.flex-center-between;
+
+      @include mixins.tablet {
+        gap: 30px;
+      }
 
       li {
         .header__link {
@@ -60,7 +109,7 @@ section {
 
           &:after {
             display: block;
-            width: 0%;
+            width: 0;
             height: 1.4px;
             content: '';
             background-color: white;
@@ -82,21 +131,22 @@ section {
   left: 0;
   z-index: 10;
   width: 100%;
-  background-color: colors.$beige200;
+  -webkit-backdrop-filter: blur(54px);
   backdrop-filter: blur(54px);
+  background-color: colors.$beige200;
   transform: translateY(-100%);
 
-  .header__link {
+  .header__nav-list li .header__link {
     position: relative;
     @include mixins.customHoverMixin(color);
-    color: colors.$black !important;
+    color: colors.$black;
 
     &:after {
       display: block;
       width: 0;
       height: 1.4px;
       content: '';
-      background: black !important;
+      background: black;
       @include mixins.customHoverMixin(width);
     }
 
@@ -104,9 +154,8 @@ section {
       width: 100%;
     }
   }
-
   .header__phone {
-    color: colors.$black !important;
+    color: colors.$black;
   }
 }
 
@@ -121,15 +170,13 @@ section {
 .hero {
   position: relative;
   display: flex;
-  flex: 1;
   height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;
-  padding-top: 0px;
+  padding-top: 0;
   text-align: center;
-
   background:
           linear-gradient(
                           360deg,
@@ -139,17 +186,55 @@ section {
           ),
           url('../images/hero-background.jpg') no-repeat center/cover;
 
+  @include mixins.tablet {
+    padding-top: 90px;
+    @include mixins.fluid-clamp(height, 482px, 831px);
+    background: linear-gradient(
+                    360deg,
+                    rgba(0, 0, 0, 0.4) 0%,
+                    rgba(0, 0, 0, 0.06) 48.44%,
+                    rgba(0, 0, 0, 0.5) 100%
+    ),
+    url('../images/medium-hero-bg.jpg') no-repeat center/cover;
+  }
+
+  @include mixins.mobile {
+    gap: 40px;
+    padding-top: 136px;
+    padding-bottom: 52px;
+  }
+
   &__title {
     max-width: 768px;
     letter-spacing: 2.2px;
     @include mixins.h1-pc;
     color: colors.$white;
+
+    @include mixins.tablet {
+      font-size: clamp(34px, 9.375vw, 96px);
+      letter-spacing: 1px;
+    }
+
+    @include mixins.mobile {
+      @include mixins.h1-mobile;
+      color: colors.$white;
+    }
   }
 
   &__subtitle {
     max-width: 562px;
     @include mixins.p-normal;
     color: colors.$white ;
+
+    @include mixins.tablet {
+      font-size: clamp(16px, 2.5vw, 20px);
+      @include mixins.fluid-clamp(width, 310px, 400px);
+    }
+
+    @include mixins.mobile {
+      @include mixins.p-normal-mobile;
+      color: colors.$white;
+    }
   }
 
   &__btn {
@@ -176,7 +261,10 @@ section {
 }
 
 .find-tour {
-  background-color: colors.$beige100;
+  padding-top: 135px;
+  @include mixins.middle{
+    padding-top: 75px;
+  }
 
   &__content {
     align-items: center;
@@ -188,15 +276,49 @@ section {
     gap: 35px;
     margin-bottom: 105px;
     @include mixins.flex-column;
+
+    @include mixins.middle {
+      margin-bottom: 75px;
+      gap: 30px;
+    }
+
+    @include mixins.mobile {
+      text-align: center;
+      margin-bottom: 50px;
+      gap: 30px;
+    }
   }
 
   &__title {
     @include mixins.h2-pc;
+
+    @include mixins.middle {
+      text-align: center;
+      @include mixins.fluid-clamp(font-size, 34px, 59px);
+    }
+
+    @include mixins.mobile {
+      @include mixins.h2-mobile;
+      letter-spacing: 0.6px;
+    }
   }
 
   &__list {
     gap: 30px;
     @include mixins.flex-center-between;
+    @include mixins.tablet {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    @include mixins.middle {
+      gap: 20px;
+    }
+
+    @include mixins.mobile {
+      gap: 10px;
+    }
   }
 
   &__list-link {
@@ -209,9 +331,19 @@ section {
     @include mixins.p-big;
     @include mixins.customHoverMixin(width);
 
+    @include mixins.middle {
+      @include mixins.fluid-clamp(font-size, 16px, 23px);
+    }
+
+    @include mixins.mobile {
+      @include mixins.p-normal-mobile;
+      font-weight: bold;
+      letter-spacing: -0.45px;
+    }
+
     &:after {
       display: block;
-      width: 0%;
+      width: 0;
       height: 2px;
       content: '';
       background-color: colors.$black;
@@ -222,11 +354,22 @@ section {
       width: 100%;
     }
   }
-  &__list-link_active {
+  &__list-link-active {
     position: relative;
     text-decoration: none;
     @include mixins.p-big;
     color: colors.$orange200;
+
+    @include mixins.middle {
+      @include mixins.fluid-clamp(font-size, 16px, 23px);
+    }
+
+    @include mixins.mobile {
+      @include mixins.p-normal-mobile;
+      font-weight: bold;
+      letter-spacing: -0.45px;
+      color: colors.$orange200;
+    }
 
     &:after {
       position: absolute;
@@ -247,20 +390,45 @@ section {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     width: 100%;
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(auto-fit, minmax(296px, 1fr));
+      justify-items: center;
+      gap: 18px;
+    }
+
+    @include mixins.mobile {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
   }
 
   &__card {
     position: relative;
-    z-index: 1;
     display: flex;
     overflow: hidden;
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    height: 100vh;
-    max-height: 531px;
+    aspect-ratio: 9 / 12.92;
     background: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%);
     border-radius: 50px;
+
+    @include mixins.tablet {
+      max-width: 450px;
+      aspect-ratio: 10 / 14;
+      width: 100%;
+      max-height: 531px;
+      border-radius: 50px;
+    }
+
+    @include mixins.mobile {
+      max-width: 318px;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+
+    }
 
     &-bg {
       position: absolute;
@@ -299,17 +467,41 @@ section {
       gap: 16px;
       width: 100%;
       padding: 50px;
+
+      @include mixins.tablet {
+        width: 100%;
+        padding: 50px;
+      }
+
+      @include mixins.mobile {
+        padding: 25px;
+      }
     }
 
     &-title {
       max-width: 240px;
       @include mixins.h3-pc;
       color: colors.$white;
+
+      @include mixins.tablet{
+        max-width: fit-content;
+      }
+
+      @include mixins.mobile {
+        @include mixins.h3-mobile;
+        color: colors.$white;
+        letter-spacing: 0.8px;
+      }
     }
 
     &-price {
       @include mixins.p-small;
       color: colors.$white;
+
+      @include mixins.mobile {
+        @include mixins.p-small-mobile;
+        color: colors.$white;
+      }
     }
 
     &-footer {
@@ -317,6 +509,15 @@ section {
       width: 100%;
       padding: 50px;
       z-index: 2;
+
+      @include mixins.tablet {
+        width: 100%;
+        padding: 50px;
+      }
+
+      @include mixins.mobile {
+        padding: 25px;
+      }
     }
   }
 
@@ -325,17 +526,22 @@ section {
     bottom: 43px;
     left: 30px;
     display: flex;
-    gap: 15px;
     align-items: center;
     justify-content: center;
+    gap: 15px;
     padding: 7px 20px;
-    cursor: pointer;
     background-color: transparent;
     border: none;
     border-radius: 50px;
     letter-spacing: -0.7px;
     @include mixins.customHoverMixin(width, 0.3s);
     @include mixins.customHoverMixin(background-color, 0.3s);
+
+    @include mixins.mobile {
+      bottom: 18px;
+      left: 10px;
+      padding: 5px 15px;
+    }
 
     &:hover {
       background-color: colors.$green400;
@@ -344,6 +550,11 @@ section {
     &-content {
       @include mixins.p-big;
       color: colors.$white;
+
+      @include mixins.mobile {
+        @include mixins.p-big-mobile;
+        color: colors.$white;
+      }
     }
     &:active {
       background: colors.$orange200 ;
@@ -360,7 +571,11 @@ section {
 }
 
 .tour-form {
-  background-color: colors.$beige100;
+  padding-top: 135px;
+
+  @include mixins.middle {
+    padding-top: 75px;
+  }
 
   &__content {
     @include mixins.flex-column;
@@ -370,10 +585,29 @@ section {
     gap: 30px;
     padding-bottom: 100px;
     @include mixins.flex-column;
+
+    @include mixins.middle {
+      padding-bottom: 75px;
+    }
+
+    @include mixins.mobile {
+      padding-bottom: 40px;
+      gap: 20px;
+    }
   }
 
   &__title {
     @include mixins.h2-pc;
+
+    @include mixins.middle {
+      text-align: center;
+      @include mixins.fluid-clamp(font-size, 34px, 59px);
+    }
+
+    @include mixins.mobile {
+      @include mixins.h2-mobile;
+      letter-spacing: 0.7px;
+    }
   }
 
   &__subtitle {
@@ -381,17 +615,45 @@ section {
     text-align: center;
     @include mixins.p-normal;
     color: colors.$gray300;
+
+    @include mixins.middle {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      @include mixins.fluid-clamp(font-size, 16px, 20px);
+    }
+
+    @include mixins.mobile {
+      @include mixins.p-normal-mobile;
+      color: colors.$gray300;
+    }
   }
 
   &__form {
     width: 100%;
     background-color: colors.$white;
     border-radius: 50px;
+
+    @include mixins.mobile {
+    }
   }
 
   &__wrapper {
     padding: 70px;
     border-radius: 50px;
+
+    @include mixins.tablet {
+      padding: 60px;
+    }
+
+    @include mixins.middle {
+      padding: 40px;
+    }
+
+    @include mixins.middle {
+      padding: 20px;
+      border-radius: 30px;
+    }
   }
 
   &__fields {
@@ -399,6 +661,17 @@ section {
     gap: 30px;
     column-gap: 33px;
     grid-template-columns: repeat(2, 1fr);
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+      column-gap: 20px;
+    }
+
+    @include mixins.mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
   }
 
   &__field {
@@ -412,6 +685,10 @@ section {
 
   &__label {
     @include mixins.p-normal;
+
+    @include mixins.mobile {
+      @include mixins.p-small-mobile;
+    }
   }
 
   &__input {
@@ -422,9 +699,25 @@ section {
     border-radius: 10px;
     @include mixins.p-normal;
 
+    @include mixins.middle {
+      padding: 15px;
+      min-width: 0;
+    }
+
+    @include mixins.mobile {
+      width: 100%;
+      padding: 10px;
+      max-height: 46px;
+    }
+
     &::placeholder {
       @include mixins.p-normal;
       color: colors.$gray300;
+
+      @include mixins.mobile {
+        @include mixins.p-normal-mobile;
+        color: colors.$gray300;
+      }
     }
 
     &:hover {
@@ -442,6 +735,11 @@ section {
     appearance: none;
     padding-right: 48px;
 
+    @include mixins.mobile {
+      @include mixins.p-normal-mobile;
+      color: colors.$gray300;
+    }
+
     &:invalid {
       color: colors.$gray300 ;
     }
@@ -456,6 +754,13 @@ section {
     pointer-events: none;
     content: '';
     background: url(/assets/images/svg/select-arrow.svg) no-repeat center / contain;
+
+    @include mixins.mobile {
+      top: 52%;
+      right: 10px;
+      width: 26px;
+      height: 26px;
+    }
   }
 
   &__select-item {
@@ -466,10 +771,14 @@ section {
     min-height: 152px;
     height: 0;
     resize: none;
+
+    @include mixins.mobile {
+      min-height: 132px;
+    }
   }
 
   &__comment-block {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   &__radio {
@@ -477,10 +786,13 @@ section {
     flex-direction: column;
     align-items: start;
     gap: 8px;
-    margin: 33px 0;
+    margin: 29px 0;
 
     &-name {
       @include mixins.p-normal;
+      @include mixins.mobile {
+        @include mixins.p-normal-mobile;
+      }
     }
 
     &-wrapper {
@@ -499,6 +811,10 @@ section {
 
     &-text {
       @include mixins.p-normal;
+
+      @include mixins.mobile {
+        @include mixins.p-normal-mobile;
+      }
     }
   }
 
@@ -513,6 +829,11 @@ section {
     border: 2px solid #1b1f2b;
     border-radius: 50%;
     @include mixins.customHoverMixin(border-color, 0.3s);
+
+    @include mixins.mobile {
+      width: 20px;
+      height: 20px;
+    }
 
     &:checked {
       border-color: colors.$black;
@@ -535,10 +856,24 @@ section {
     margin-bottom: 33px;
     flex-shrink: 0;
 
+    @include mixins.mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0;
+    }
+
     &-label {
       display: flex;
       gap: 19px;
       align-items: center;
+
+      @include mixins.mobile {
+        width: 100%;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        gap: 10px;
+      }
     }
 
     &-input {
@@ -551,6 +886,13 @@ section {
       appearance: none;
       border: 2px solid colors.$black;
       border-radius: 6px;
+      flex-shrink: 0;
+
+      @include mixins.mobile {
+        width: 20px;
+        height: 20px;
+      }
+
 
       &:checked {
         background: colors.$white;
@@ -584,6 +926,10 @@ section {
       @include mixins.p-small;
       color: colors.$black;
 
+      @include mixins.mobile {
+        padding: 0;
+      }
+
       &:hover {
         text-decoration: black underline;
       }
@@ -594,10 +940,15 @@ section {
     display: flex;
     gap: 30px;
     align-items: center;
+    width: 100%;
+
+    @include mixins.middle {
+      gap: 20px;
+    }
   }
 
   &__button {
-    width: 100%;
+    width: 100% ;
     max-width: 235px;
     padding: 15px 70px;
     cursor: pointer;
@@ -606,6 +957,14 @@ section {
     border: none;
     border-radius: 10px;
     @include mixins.p-normal;
+
+
+    @include mixins.middle {
+      @include mixins.fluid-clamp(width, 137px, 235px);
+      @include mixins.fluid-clamp(height, 47px, 58px);
+      @include mixins.fluid-clamp(padding, 12px, 15px);
+      @include mixins.fluid-clamp(font-size, 16px, 20px);
+    }
 
     &-cyan-btn {
       background-color: colors.$green400;
@@ -634,512 +993,511 @@ section {
     }
   }
 }
-
-.feedback {
-  background-color: colors.$beige100;
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    width: 100%;
-    max-width: 529px;
-    margin-bottom: 100px;
-
-    &-title {
-      text-align: center;
-      @include mixins.h2-pc;
-    }
-
-    &-subtitle {
-      max-width: 400px;
-      text-align: center;
-      @include mixins.p-normal;
-      color: colors.$gray300;
-    }
-  }
-
-  &__card-wrapper {
-    display: flex;
-    gap: 30px;
-    align-items: stretch;
-    height: 673px;
-  }
-
-  &__card {
-    display: flex;
-    width: 100%;
-    max-width: 570px;
-    height: 100%;
-    background-color: colors.$beige200;
-    border-radius: 50px;
-  }
-
-  &__card-content {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 40px;
-  }
-
-  &__card-text {
-    @include mixins.p-big;
-  }
-
-  &__card-info {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &__card-username {
-    margin-bottom: 8px;
-    @include mixins.h3-pc;
-  }
-
-  &__card-tour {
-    color: colors.$gray300;
-  }
-
-  &__card-user-avatar {
-    width: 75px;
-    height: 75px;
-    mix-blend-mode: multiply;
-  }
-}
-
-.gallery {
-  &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding-bottom: 100px;
-
-    &-title {
-      text-align: center;
-      @include mixins.h2-pc;
-    }
-
-    &-subtitle {
-      width: 418px;
-      text-align: center;
-      @include mixins.p-normal;
-      color: colors.$gray300;
-    }
-  }
-
-  &__photo-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 0 30px;
-
-    &__row {
-      display: grid;
-      gap: 30px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-      & > img {
-        display: block;
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 50px;
-      }
-    }
-  }
-}
-
-.pictures {
-  background-color: colors.$beige100;
-
-  &__container {
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-
-  &__header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 100px;
-  }
-
-  &__title {
-    text-align: center;
-    @include mixins.h2-pc;
-  }
-
-  &__subtitle {
-    width: 400px;
-    text-align: center;
-    @include mixins.p-normal;
-    color: colors.$gray300;
-  }
-
-  .images {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 0 30px;
-
-    &__row {
-      display: grid;
-      gap: 30px;
-
-      &:nth-child(1) {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      &:nth-child(2) {
-        grid-template-columns: repeat(5, 1fr);
-      }
-
-      &:nth-child(3) {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    &__item {
-      width: 100%;
-      height: 301px;
-      object-fit: cover;
-      border-radius: 50px;
-    }
-  }
-}
-
-.history {
-  background-color: colors.$beige100;
-
-  &__header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 100px;
-  }
-
-  &__title {
-    text-align: center;
-    @include mixins.h2-pc;
-  }
-
-  &__subtitle {
-    width: 400px;
-    text-align: center;
-    @include mixins.p-normal;
-    color: colors.$gray300;
-  }
-
-  &__card-wrapper {
-    gap: 50px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    @include mixins.flex-column;
-  }
-
-  &__card {
-    position: relative;
-    z-index: 4;
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
-    align-items: start;
-    justify-content: space-between;
-    width: 100%;
-    height: 100vh;
-    max-height: 567px;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
-    border-radius: 50px;
-
-    &-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -99;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transform: scale(1);
-      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.2) 100%);
-      @include mixins.customHoverMixin(transform, 0.3s);
-    }
-
-    &-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
-    }
-
-    &:hover &-background {
-      transform: scale(1.2);
-    }
-
-    &:hover &-btn {
-      background-color: colors.$green400;
-    }
-
-    &:active &-btn {
-      background-color: colors.$orange200 ;
-    }
-
-    &-top-block {
-      padding: 60px;
-    }
-
-    &-title {
-      margin-bottom: 37px;
-      @include mixins.h3-pc;
-      color: colors.$white;
-    }
-
-    &-subtitle {
-      max-width: 554px;
-      margin-bottom: 25px;
-      @include mixins.p-normal;
-      color: colors.$white;
-    }
-
-    &-bottom-block {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 60px 50px 60px;
-    }
-
-    &-btn {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      justify-content: center;
-      margin-left: -20px;
-      padding: 7px 20px;
-      cursor: pointer;
-      background-color: transparent;
-      border: none;
-      border-radius: 50px;
-      letter-spacing: -1px;
-      @include mixins.customHoverMixin(width, 0.3s);
-      @include mixins.customHoverMixin(background-color, 0.3s);
-
-      &:hover {
-        background-color: colors.$green400;
-      }
-
-      &-content {
-        @include mixins.p-big;
-        color: colors.$white;
-      }
-
-      &:active {
-        background: colors.$orange200 ;
-      }
-    }
-  }
-
-  &__card-list-wrapper {
-    padding-left: 30px;
-  }
-
-  &__card-list {
-    list-style-type: disc;
-    @include mixins.p-normal;
-    color: colors.$white;
-  }
-
-  &__links {
-    gap: 35px;
-    @include mixins.flex-center-between;
-  }
-
-  &__link-item {
-    position: relative;
-    text-decoration: none;
-    @include mixins.p-normal;
-    color: colors.$white;
-
-    &:after {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      display: block;
-      width: 0;
-      height: 2px;
-      content: '';
-      background-color: colors.$white;
-      @include mixins.customHoverMixin(width, 0.3s);
-      @include mixins.customHoverMixin(background-color, 0.3s);
-    }
-
-    &:hover:after {
-      width: 100%;
-    }
-
-    &:active {
-      color: colors.$orange200;
-
-      &:after {
-        width: 100%;
-        background-color: colors.$orange200;
-      }
-    }
-  }
-}
-
-.mail {
-  padding-bottom: 135px;
-  background-color: colors.$beige100;
-
-  &__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__centered-wrapper {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-  }
-
-  &__image {
-    max-width: 370px;
-    max-height: 370px;
-    border-radius: 50px;
-  }
-
-  &__text-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 371px;
-  }
-
-  &__title {
-    @include mixins.h3-pc;
-  }
-
-  &__subtitle {
-    @include mixins.p-normal;
-    color: colors.$gray300;
-
-    > a {
-      position: relative;
-      display: inline-block;
-      text-decoration: none;
-      @include mixins.p-normal;
-      color: colors.$black;
-
-      &:after {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 1px;
-        content: '';
-        background-color: colors.$black;
-        @include mixins.customHoverMixin(width, 0.3s);
-        @include mixins.customHoverMixin(background-color, 0.3s);
-      }
-
-      &:hover:after {
-        width: 100%;
-      }
-    }
-  }
-}
-
-.footer {
-  background-color: colors.$beige200;
-
-  &__content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 0;
-  }
-
-  &__link-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-  }
-
-  &__link-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    text-decoration: none;
-    color: inherit;
-    @include mixins.p-normal;
-
-    span {
-      position: relative;
-
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        width: 0;
-        background-color: colors.$black;
-        @include mixins.customHoverMixin(width, 0.3s);
-        @include mixins.customHoverMixin(background-color, 0.3s);
-      }
-
-      &:hover:after {
-        width: 100%;
-      }
-    }
-
-    &:active span:after {
-      background-color: colors.$orange200;
-    }
-  }
-
-  &__link-logo {
-    width: 26px;
-    height: 26px;
-  }
-
-  &__text {
-    @include mixins.p-normal;
-    color: colors.$gray300;
-  }
-}
+//
+//.feedback {
+//  background-color: colors.$beige100;
+//
+//  &__content {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//  }
+//
+//  &__header {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    gap: 30px;
+//    width: 100%;
+//    max-width: 529px;
+//    margin-bottom: 100px;
+//
+//    &-title {
+//      text-align: center;
+//      @include mixins.h2-pc;
+//    }
+//
+//    &-subtitle {
+//      max-width: 400px;
+//      text-align: center;
+//      @include mixins.p-normal;
+//      color: colors.$gray300;
+//    }
+//  }
+//
+//  &__card-wrapper {
+//    display: flex;
+//    gap: 30px;
+//    align-items: stretch;
+//    height: 673px;
+//  }
+//
+//  &__card {
+//    display: flex;
+//    width: 100%;
+//    max-width: 570px;
+//    height: 100%;
+//    background-color: colors.$beige200;
+//    border-radius: 50px;
+//  }
+//
+//  &__card-content {
+//    display: flex;
+//    flex: 1;
+//    flex-direction: column;
+//    justify-content: space-between;
+//    padding: 40px;
+//  }
+//
+//  &__card-text {
+//    @include mixins.p-big;
+//  }
+//
+//  &__card-info {
+//    display: flex;
+//    width: 100%;
+//    align-items: center;
+//    justify-content: space-between;
+//  }
+//
+//  &__card-username {
+//    margin-bottom: 8px;
+//    @include mixins.h3-pc;
+//  }
+//
+//  &__card-tour {
+//    color: colors.$gray300;
+//  }
+//
+//  &__card-user-avatar {
+//    width: 75px;
+//    height: 75px;
+//    mix-blend-mode: multiply;
+//  }
+//}
+//
+//.gallery {
+//  &__content {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//  }
+//
+//  &__header {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    gap: 30px;
+//    padding-bottom: 100px;
+//
+//    &-title {
+//      text-align: center;
+//      @include mixins.h2-pc;
+//    }
+//
+//    &-subtitle {
+//      width: 418px;
+//      text-align: center;
+//      @include mixins.p-normal;
+//      color: colors.$gray300;
+//    }
+//  }
+//
+//  &__photo-wrapper {
+//    display: flex;
+//    flex-direction: column;
+//    gap: 30px;
+//    padding: 0 30px;
+//
+//    &__row {
+//      display: grid;
+//      gap: 30px;
+//      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//
+//      & > img {
+//        display: block;
+//        width: 100%;
+//        height: 300px;
+//        object-fit: cover;
+//        border-radius: 50px;
+//      }
+//    }
+//  }
+//}
+//
+//.pictures {
+//  background-color: colors.$beige100;
+//
+//  &__container {
+//    width: 100%;
+//    max-width: 1920px;
+//    margin: 0 auto;
+//    box-sizing: border-box;
+//  }
+//
+//  &__header {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    justify-content: center;
+//    gap: 30px;
+//    margin-bottom: 100px;
+//  }
+//
+//  &__title {
+//    text-align: center;
+//    @include mixins.h2-pc;
+//  }
+//
+//  &__subtitle {
+//    width: 400px;
+//    text-align: center;
+//    @include mixins.p-normal;
+//    color: colors.$gray300;
+//  }
+//
+//  .images {
+//    display: flex;
+//    flex-direction: column;
+//    gap: 30px;
+//    padding: 0 30px;
+//
+//    &__row {
+//      display: grid;
+//      gap: 30px;
+//
+//      &:nth-child(1) {
+//        grid-template-columns: repeat(4, 1fr);
+//      }
+//
+//      &:nth-child(2) {
+//        grid-template-columns: repeat(5, 1fr);
+//      }
+//
+//      &:nth-child(3) {
+//        grid-template-columns: repeat(4, 1fr);
+//      }
+//    }
+//
+//    &__item {
+//      width: 100%;
+//      height: 301px;
+//      object-fit: cover;
+//      border-radius: 50px;
+//    }
+//  }
+//}
+//
+//.history {
+//  background-color: colors.$beige100;
+//
+//  &__header {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    justify-content: center;
+//    gap: 30px;
+//    margin-bottom: 100px;
+//  }
+//
+//  &__title {
+//    text-align: center;
+//    @include mixins.h2-pc;
+//  }
+//
+//  &__subtitle {
+//    width: 400px;
+//    text-align: center;
+//    @include mixins.p-normal;
+//    color: colors.$gray300;
+//  }
+//
+//  &__card-wrapper {
+//    gap: 50px;
+//    width: 100%;
+//    align-items: center;
+//    justify-content: center;
+//    @include mixins.flex-column;
+//  }
+//
+//  &__card {
+//    position: relative;
+//    z-index: 4;
+//    display: flex;
+//    overflow: hidden;
+//    flex-direction: column;
+//    align-items: start;
+//    justify-content: space-between;
+//    width: 100%;
+//    height: 100vh;
+//    max-height: 567px;
+//    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+//    border-radius: 50px;
+//
+//    &-background {
+//      position: absolute;
+//      top: 0;
+//      left: 0;
+//      z-index: -99;
+//      width: 100%;
+//      height: 100%;
+//      object-fit: cover;
+//      object-position: center;
+//      transform: scale(1);
+//      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.2) 100%);
+//      @include mixins.customHoverMixin(transform, 0.3s);
+//    }
+//
+//    &-overlay {
+//      position: absolute;
+//      top: 0;
+//      left: 0;
+//      z-index: -1;
+//      width: 100%;
+//      height: 100%;
+//      pointer-events: none;
+//      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+//    }
+//
+//    &:hover &-background {
+//      transform: scale(1.2);
+//    }
+//
+//    &:hover &-btn {
+//      background-color: colors.$green400;
+//    }
+//
+//    &:active &-btn {
+//      background-color: colors.$orange200 ;
+//    }
+//
+//    &-top-block {
+//      padding: 60px;
+//    }
+//
+//    &-title {
+//      margin-bottom: 37px;
+//      @include mixins.h3-pc;
+//      color: colors.$white;
+//    }
+//
+//    &-subtitle {
+//      max-width: 554px;
+//      margin-bottom: 25px;
+//      @include mixins.p-normal;
+//      color: colors.$white;
+//    }
+//
+//    &-bottom-block {
+//      display: flex;
+//      width: 100%;
+//      align-items: center;
+//      justify-content: space-between;
+//      padding: 0 60px 50px 60px;
+//    }
+//
+//    &-btn {
+//      display: flex;
+//      gap: 15px;
+//      align-items: center;
+//      justify-content: center;
+//      margin-left: -20px;
+//      padding: 7px 20px;
+//      cursor: pointer;
+//      background-color: transparent;
+//      border: none;
+//      border-radius: 50px;
+//      letter-spacing: -1px;
+//      @include mixins.customHoverMixin(width, 0.3s);
+//      @include mixins.customHoverMixin(background-color, 0.3s);
+//
+//      &:hover {
+//        background-color: colors.$green400;
+//      }
+//
+//      &-content {
+//        @include mixins.p-big;
+//        color: colors.$white;
+//      }
+//
+//      &:active {
+//        background: colors.$orange200 ;
+//      }
+//    }
+//  }
+//
+//  &__card-list-wrapper {
+//    padding-left: 30px;
+//  }
+//
+//  &__card-list {
+//    list-style-type: disc;
+//    @include mixins.p-normal;
+//    color: colors.$white;
+//  }
+//
+//  &__links {
+//    gap: 35px;
+//    @include mixins.flex-center-between;
+//  }
+//
+//  &__link-item {
+//    position: relative;
+//    text-decoration: none;
+//    @include mixins.p-normal;
+//    color: colors.$white;
+//
+//    &:after {
+//      position: absolute;
+//      bottom: -2px;
+//      left: 0;
+//      display: block;
+//      width: 0;
+//      height: 2px;
+//      content: '';
+//      background-color: colors.$white;
+//      @include mixins.customHoverMixin(width);
+//    }
+//
+//    &:hover:after {
+//      width: 100%;
+//    }
+//
+//    &:active {
+//      color: colors.$orange200;
+//
+//      &:after {
+//        width: 100%;
+//        background-color: colors.$orange200;
+//      }
+//    }
+//  }
+//}
+//
+//.mail {
+//  padding-bottom: 135px;
+//  background-color: colors.$beige100;
+//
+//  &__content {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//  }
+//
+//  &__centered-wrapper {
+//    display: flex;
+//    gap: 30px;
+//    align-items: center;
+//  }
+//
+//  &__image {
+//    max-width: 370px;
+//    max-height: 370px;
+//    border-radius: 50px;
+//  }
+//
+//  &__text-content {
+//    display: flex;
+//    flex-direction: column;
+//    gap: 20px;
+//    max-width: 371px;
+//  }
+//
+//  &__title {
+//    @include mixins.h3-pc;
+//  }
+//
+//  &__subtitle {
+//    @include mixins.p-normal;
+//    color: colors.$gray300;
+//
+//    > a {
+//      position: relative;
+//      display: inline-block;
+//      text-decoration: none;
+//      @include mixins.p-normal;
+//      color: colors.$black;
+//
+//      &:after {
+//        position: absolute;
+//        bottom: 0;
+//        left: 0;
+//        width: 0;
+//        height: 1px;
+//        content: '';
+//        background-color: colors.$black;
+//        @include mixins.customHoverMixin(width, 0.3s);
+//        @include mixins.customHoverMixin(background-color, 0.3s);
+//      }
+//
+//      &:hover:after {
+//        width: 100%;
+//      }
+//    }
+//  }
+//}
+//
+//.footer {
+//  background-color: colors.$beige200;
+//
+//  &__content {
+//    display: flex;
+//    align-items: center;
+//    justify-content: space-between;
+//    padding: 30px 0;
+//  }
+//
+//  &__link-list {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    gap: 25px;
+//  }
+//
+//  &__link-item {
+//    display: flex;
+//    align-items: center;
+//    gap: 10px;
+//
+//    text-decoration: none;
+//    color: inherit;
+//    @include mixins.p-normal;
+//
+//    span {
+//      position: relative;
+//
+//      &:after {
+//        content: '';
+//        position: absolute;
+//        bottom: 0;
+//        left: 0;
+//        height: 2px;
+//        width: 0;
+//        background-color: colors.$black;
+//        @include mixins.customHoverMixin(width, 0.3s);
+//        @include mixins.customHoverMixin(background-color, 0.3s);
+//      }
+//
+//      &:hover:after {
+//        width: 100%;
+//      }
+//    }
+//
+//    &:active span:after {
+//      background-color: colors.$orange200;
+//    }
+//  }
+//
+//  &__link-logo {
+//    width: 26px;
+//    height: 26px;
+//  }
+//
+//  &__text {
+//    @include mixins.p-normal;
+//    color: colors.$gray300;
+//  }
+//}
 
 
 @keyframes headerShow {
@@ -1161,841 +1519,4 @@ section {
 }
 
 
-//media
 
-@media (max-width: 1024px) {
-  section {
-    @include mixins.fluid-clamp(padding-top, 75px, 135px);
-  }
-
-  .container {
-    @include mixins.fluid-clamp(padding-left, 21px, 53px);
-    @include mixins.fluid-clamp(padding-right, 21px, 53px);
-  }
-
-  .find-tour__title,
-  .tour-form__title,
-  .feedback__header-title,
-  .pictures__title,
-  .history__title {
-    text-align: center;
-    @include mixins.fluid-clamp(font-size, 34px, 59px);
-  }
-
-  .header {
-    padding: 27px 0 !important;
-  }
-
-  .hero__subtitle,
-  .tour-form__subtitle,
-  .feedback__header-subtitle,
-  .pictures__subtitle,
-  .history__subtitle {
-    font-size: clamp(16px, 2.5vw, 20px);
-    text-align: center;
-    letter-spacing: -0.2px;
-    @include mixins.fluid-clamp(width, 318px, 418px);
-    color: colors.$gray300;
-  }
-
-  .header__nav-list {
-    gap: 30px !important;
-  }
-
-  .header__logo > img {
-    @include mixins.fluid-clamp(width, 133px, 181px);
-  }
-
-  .hero {
-    padding-top: 90px;
-    @include mixins.fluid-clamp(height, 482px, 831px);
-    background: linear-gradient(
-                    360deg,
-                    rgba(0, 0, 0, 0.4) 0%,
-                    rgba(0, 0, 0, 0.06) 48.44%,
-                    rgba(0, 0, 0, 0.5) 100%
-    ),
-    url('../images/medium-hero-bg.jpg') no-repeat center/cover;
-  }
-
-  .hero__title {
-    font-size: clamp(34px, 9.375vw, 96px);
-    letter-spacing: 1px;
-  }
-
-  .hero__subtitle {
-    max-width: 400px;
-    font-size: clamp(16px, 2.5vw, 20px);
-  }
-
-  .find-tour__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    @include mixins.fluid-clamp(gap, 10px, 30px);
-
-    &-link {
-      @include mixins.fluid-clamp(font-size, 16px, 23px);
-    }
-  }
-
-  .header__phone {
-    font-size: clamp(16px, 1.95vw, 20px);
-  }
-
-  .find-tour__card-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(296px, 1fr));
-    justify-items: center;
-    width: 100%;
-    gap: 18px;
-  }
-
-  .find-tour__list-link {
-    letter-spacing: -0.75px;
-  }
-
-  .find-tour__card {
-    width: 100%;
-    max-width: 450px;
-    max-height: 531px;
-    border-radius: 50px;
-
-    &-title {
-      max-width: fit-content;
-    }
-  }
-
-  .find-tour__card-header,
-  .find-tour__card-footer {
-    width: 100%;
-    padding: 50px;
-  }
-
-  .tour-form__wrapper {
-    @include mixins.fluid-clamp(padding, 20px, 60px);
-  }
-
-  .tour-form__fields {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
-    column-gap: 20px;
-  }
-
-  .tour-form__input {
-    min-width: 0;
-    @include mixins.fluid-clamp(padding, 10px, 20px);
-  }
-
-  .tour-form__button-block {
-    width: 100%;
-    @include mixins.fluid-clamp(gap, 10px, 30px);
-  }
-
-  .tour-form__button {
-    @include mixins.fluid-clamp(width, 137px, 235px);
-    @include mixins.fluid-clamp(height, 47px, 58px);
-    @include mixins.fluid-clamp(padding, 12px, 15px);
-    @include mixins.fluid-clamp(font-size, 16px, 20px);
-  }
-
-  .feedback__card-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(449px, 1fr));
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    gap: 18px;
-  }
-
-  .feedback__card {
-    width: 100%;
-    height: 100vh;
-    @include mixins.fluid-clamp(max-width, 318px, 450px);
-    @include mixins.fluid-clamp(max-height, 592px, 841px);
-
-    &-content {
-      @include mixins.fluid-clamp(padding, 20px, 40px);
-    }
-
-    &-text {
-      margin: 0 auto;
-      max-width: clamp(278px, 82vw, 370px);
-      word-break: normal;
-      @include mixins.fluid-clamp(font-size, 16px, 23px);
-    }
-
-    &-username {
-      @include mixins.fluid-clamp(font-size, 23px, 35px);
-    }
-  }
-
-  .tour-form__radio {
-    margin: 33px 0;
-  }
-
-  .tour-form__checkbox-label {
-    gap: 11px;
-  }
-
-  .tour-form__checkbox-input {
-    flex-shrink: 0;
-  }
-
-  .history__card {
-    overflow: hidden;
-    @include mixins.fluid-clamp(height, 455px, 567px);
-
-    &-title {
-      @include mixins.fluid-clamp(font-size, 23px, 35px);
-    }
-
-    &-subtitle,
-    &-list {
-      @include mixins.fluid-clamp(font-size, 16px, 20px);
-    }
-
-    &-btn-content {
-      @include mixins.fluid-clamp(font-size, 16px, 23px);
-    }
-
-    &-top-block {
-      @include mixins.fluid-clamp(padding, 30px, 60px);
-    }
-  }
-
-  .history__links {
-    @include mixins.fluid-clamp(gap, 10px, 35px);
-  }
-
-  .history__card-bottom-block {
-    @include mixins.fluid-clamp(padding-left, 30px, 60px);
-    @include mixins.fluid-clamp(padding-right, 30px, 60px);
-    @include mixins.fluid-clamp(padding-bottom, 30px, 50px);
-  }
-
-  .images {
-    @include mixins.fluid-clamp(padding-left, 18px, 30px) ;
-    @include mixins.fluid-clamp(padding-right, 18px, 30px) ;
-    @include mixins.fluid-clamp(gap, 18px, 30px);
-  }
-
-  .pictures {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    overflow: hidden;
-    align-items: center;
-
-    &__subtitle {
-      @include mixins.fluid-clamp(font-size, 16px, 20px);
-      text-align: center;
-    }
-
-    .images__row {
-      display: grid;
-      justify-content: center;
-      width: 100%;
-      margin: 0 auto;
-      @include mixins.fluid-clamp(gap, 18px, 20px);
-
-      .images__item {
-        width: 100%;
-        object-fit: cover;
-        @include mixins.fluid-clamp(border-radius, 20px, 50px);
-      }
-
-      &:nth-child(1) {
-        grid-template-columns: repeat(3, clamp(150px, calc(150px + (314 - 150) * ((100vw - 360px) / (1024 - 360))), 314px));
-
-        .images__item {
-          @include mixins.fluid-clamp(height, 110px, 301px);
-        }
-
-        .images__item:nth-child(n + 4) {
-          display: none;
-        }
-      }
-
-      &:nth-child(2) {
-        grid-template-columns: repeat(4, clamp(99px, calc(99px + (231 - 99) * ((100vw - 360px) / (1024 - 360))), 231px));
-
-        .images__item {
-          @include mixins.fluid-clamp(height, 110px, 301px);
-        }
-
-        .images__item:nth-child(n + 5) {
-          display: none;
-        }
-      }
-
-      &:nth-child(3) {
-        grid-template-columns: repeat(3, clamp(150px, calc(150px + (314 - 150) * ((100vw - 360px) / (1024 - 360))), 314px));
-
-        .images__item {
-          @include mixins.fluid-clamp(height, 110px, 301px);
-        }
-
-        .images__item:nth-child(n + 4) {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .mail {
-    padding-bottom: 75px;
-  }
-
-  .mail__image {
-    @include mixins.fluid-clamp(width, 130px, 370px);
-    @include mixins.fluid-clamp(height, 133px, 370px);
-    @include mixins.fluid-clamp(border-radius, 20px, 50px);
-  }
-
-  .mail__title {
-    @include mixins.fluid-clamp(font-size, 23px, 35px);
-  }
-
-  .mail__subtitle {
-    @include mixins.fluid-clamp(font-size, 16px, 20px);
-
-    & > a {
-      @include mixins.fluid-clamp(font-size, 16px, 20px);
-    }
-  }
-
-  .footer {
-    &__text {
-      @include mixins.fluid-clamp(font-size, 16px, 20px);
-    }
-
-    &__content {
-      flex-wrap: wrap;
-      max-width: 100%;
-      padding: 30px 53px;
-      gap: 6px !important;
-    }
-
-    &__link-list {
-      @include mixins.fluid-clamp(gap, 15px, 25px);
-      justify-content: center;
-    }
-
-    &__link-item {
-      gap: 5px;
-    }
-
-    &__link-item > span {
-      @include mixins.fluid-clamp(font-size, 16px, 20px);
-    }
-
-    &__link-logo {
-      @include mixins.fluid-clamp(width, 22px, 26px);
-    }
-  }
-}
-
-@media (max-width: 1023px) {
-  .header__nav-list {
-    display: none;
-  }
-
-  .history__links {
-    display: none;
-  }
-
-  .pictures {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    overflow: hidden;
-    align-items: center;
-
-    &__subtitle {
-      @include mixins.fluid-clamp(font-size, 16px, 20px);
-      text-align: center;
-    }
-  }
-
-  .images__row {
-    display: grid;
-    justify-content: center;
-    width: fit-content;
-    margin: 0 auto;
-    @include mixins.fluid-clamp(gap, 18px, 20px);
-
-    &:nth-child(1) {
-      grid-template-columns: repeat(2, clamp(150px, calc(150px + (314 - 150) * ((100vw - 360px) / (1024 - 360))), 314px)) !important;
-
-      .images__item {
-        @include mixins.fluid-clamp(height, 110px, 301px);
-      }
-
-      .images__item:nth-child(n + 3) {
-        display: none;
-      }
-    }
-
-    &:nth-child(2) {
-      grid-template-columns: repeat(3, clamp(99px, calc(99px + (231 - 99) * ((100vw - 360px) / (1024 - 360))), 231px)) !important;
-
-      .images__item {
-        @include mixins.fluid-clamp(height, 110px, 301px);
-      }
-
-      .images__item:nth-child(n + 4) {
-        display: none;
-      }
-    }
-
-    &:nth-child(3) {
-      grid-template-columns: repeat(2, clamp(150px, calc(150px + (314 - 150) * ((100vw - 360px) / (1024 - 360))), 314px)) !important;
-
-      .images__item {
-        @include mixins.fluid-clamp(height, 110px, 301px);
-      }
-
-      .images__item:nth-child(n + 3) {
-        display: none;
-      }
-    }
-
-    .images__item {
-      width: 100%;
-      object-fit: cover;
-      @include mixins.fluid-clamp(border-radius, 20px, 50px);
-    }
-  }
-}
-
-@media (max-width: 360px) {
-  .container {
-    padding: 0 21px;
-  }
-
-  section {
-    padding-top: 75px;
-  }
-
-  .header {
-    padding: 25px 0;
-
-    &__logo {
-      width: 133px;
-      height: 22px;
-    }
-  }
-
-  .header__nav {
-    display: none;
-  }
-
-  .header__phone {
-    font-size: 16px;
-  }
-
-  .hero {
-    gap: 40px;
-    padding-top: 136px;
-    max-height: 482px;
-    padding-bottom: 52px;
-  }
-
-  .background-wrapper {
-    min-height: 360px;
-  }
-
-  .hero__title {
-    max-width: 360px;
-    letter-spacing: 0.1px;
-    @include mixins.h1-mobile;
-    color: colors.$white;
-  }
-
-  .hero__subtitle {
-    max-width: 280px;
-    @include mixins.p-normal-mobile;
-    color: colors.$white;
-  }
-
-  .find-tour__header-block {
-    gap: 30px;
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  .find-tour__card-btn {
-    bottom: 15px;
-    left: 13px;
-    padding: 5px 15px;
-  }
-
-  .find-tour__card-btn-content {
-    @include mixins.p-big-mobile;
-    color: colors.$white;
-  }
-
-  .find-tour__title {
-    @include mixins.h2-mobile;
-    letter-spacing: 0.6px;
-  }
-
-  .find-tour__list-link {
-    @include mixins.p-normal-mobile;
-    font-weight: bold;
-    letter-spacing: -0.44px;
-  }
-
-  .find-tour__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .find-tour__list-item {
-    flex: 0 0 auto;
-  }
-
-  .find-tour__card-wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .find-tour__card {
-    max-width: 318px;
-    height: 318px;
-    border-radius: 20px;
-
-    &-header,
-    &-footer {
-      padding: 25px;
-    }
-
-    &-title {
-      @include mixins.h3-mobile;
-      color: colors.$white;
-      letter-spacing: 0.8px;
-    }
-
-    &-price {
-      @include mixins.p-small-mobile;
-      color: colors.$white;
-    }
-  }
-
-  .tour-form__header {
-    padding-bottom: 40px;
-    gap: 20px;
-  }
-
-  .tour-form__title {
-    width: 100%;
-    letter-spacing: 0.7px;
-  }
-
-  .tour-form__subtitle {
-    max-width: 320px;
-    text-align: center;
-    letter-spacing: -0.19px;
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-  }
-
-  .tour-form__wrapper {
-    width: 100%;
-    max-width: 318px;
-    padding: 20px;
-    border-radius: 30px;
-  }
-
-  .tour-form__label {
-    @include mixins.p-small-mobile;
-  }
-
-  .tour-form__fields {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .tour-form__input {
-    width: 100%;
-    max-height: 43px;
-
-    &::placeholder {
-      @include mixins.p-normal-mobile;
-      color: colors.$gray300;
-    }
-  }
-
-  .tour-form__radio {
-    gap: 11px;
-    margin: 30px 0;
-  }
-
-  .tour-form__label,
-  .tour-form__radio-name,
-  .tour-form__radio-text,
-  .tour-form__button,
-  .tour-form__checkbox-text {
-    @include mixins.p-normal-mobile;
-  }
-
-  .tour-form__radio-input {
-    width: 20px;
-    height: 20px;
-  }
-
-  .tour-form__select {
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-  }
-
-  .tour-form__textarea {
-    min-height: 132px;
-  }
-
-  .tour-form__checkbox {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0;
-
-    &-label {
-      display: flex;
-      width: 100%;
-      align-items: flex-start;
-      margin-bottom: 26px;
-      gap: 10px;
-    }
-
-    &-link {
-      padding: 0;
-    }
-  }
-
-  .tour-form__checkbox-label {
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .tour-form__checkbox-input {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-  }
-
-  .tour-form__button-cyan-btn {
-    color: colors.$white;
-  }
-
-  .tour-form__button-lightgreen-btn {
-    color: colors.$green400;
-  }
-
-  .tour-form__checkbox-text {
-    max-width: 248px;
-    color: colors.$gray300;
-  }
-
-  .tour-form__button-block {
-    margin-bottom: 20px;
-  }
-
-  .feedback__header {
-    margin: 0;
-    padding: 0 0 50px;
-    gap: 22px;
-  }
-
-  .feedback__header-title {
-    text-align: center;
-    letter-spacing: 0.8px;
-    @include mixins.h2-mobile;
-
-  }
-
-  .feedback__header-subtitle {
-    max-width: 320px;
-    text-align: center;
-    letter-spacing: -0.2px;
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-  }
-
-  .feedback__card-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-  }
-
-  .feedback__card {
-    max-width: 318px;
-    max-height: 592px;
-    border-radius: 20px;
-
-    &:nth-child(1) {
-      max-height: 408px;
-    }
-
-    &-text {
-      padding-bottom: 20px;
-      @include mixins.p-big-mobile;
-    }
-
-    &-username {
-      @include mixins.h3-mobile;
-    }
-
-    &-tour {
-      @include mixins.p-small-mobile;
-      color: colors.$gray300;
-    }
-
-    &-info {
-      align-items: end;
-    }
-  }
-
-  .history__title {
-    text-align: center;
-    @include mixins.h2-mobile;
-  }
-
-  .history__subtitle {
-    max-width: 320px;
-    text-align: center;
-    letter-spacing: -0.2px;
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-  }
-
-  .history__header {
-    margin-bottom: 50px;
-    gap: 20px;
-  }
-
-  .history__card {
-    max-width: 318px;
-    border-radius: 20px;
-
-    &-wrapper {
-      gap: 20px;
-    }
-
-    &-top-block,
-    &-bottom-block {
-      padding: 30px;
-    }
-
-    &-title {
-      max-width: 140px;
-      margin-bottom: 20px;
-      letter-spacing: 0.7px;
-      @include mixins.h3-mobile;
-      color: colors.$white;
-    }
-
-    &-subtitle,
-    &-list {
-      @include mixins.p-normal-mobile;
-      color: colors.$white;
-    }
-
-    &-btn-content {
-      @include mixins.p-big-mobile;
-      color: colors.$white;
-    }
-  }
-
-  .pictures__subtitle {
-    max-width: 320px;
-    text-align: center;
-    letter-spacing: -0.2px;
-    @include mixins.p-normal-mobile;
-    color: colors.$gray300;
-  }
-
-  .pictures__header {
-    margin-bottom: 50px;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .images {
-    width: 100%;
-    padding: 0;
-    gap: 18px !important;
-  }
-
-  .pictures .images__row {
-    width: 100%;
-    gap: 18px;
-
-    &:nth-child(1) {
-      grid-template-columns: repeat(2, 150px);
-
-      .images__item:nth-child(n + 3) {
-        display: none;
-      }
-    }
-
-    &:nth-child(2) {
-      grid-template-columns: repeat(3, 99px);
-      gap: 10px;
-
-      .images__item:nth-child(n + 4) {
-        display: none;
-      }
-    }
-
-    &:nth-child(3) {
-      grid-template-columns: repeat(2, 150px);
-
-      .images__item:nth-child(n + 3) {
-        display: none;
-      }
-    }
-
-    .images__item {
-      width: 100%;
-      height: 110px;
-      object-fit: cover;
-      border-radius: 20px;
-    }
-  }
-
-  .mail__title {
-    max-width: 292px;
-    letter-spacing: 1px;
-    text-align: center;
-  }
-
-  .mail__subtitle {
-    max-width: 292px;
-    text-align: center;
-  }
-
-  .mail__centered-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .footer__content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 21px;
-  }
-}
