@@ -35,7 +35,7 @@
       </a>
       <nav class="header__nav">
         <ul class="header__nav-list">
-          <li><a class="header__link" href="#tour">Туры</a></li>
+          <li><a class="header__link" href="#find-tour">Туры</a></li>
           <li>
             <a class="header__link" href="#createTour">Создать тур</a>
           </li>
@@ -54,18 +54,17 @@
       Идейные соображения высшего порядка, а также рамки и место обучения
       кадров
     </p>
-    <button class="hero__btn">Найти тур</button>
+    <button onclick="location.href='#find-tour'" class="hero__btn">Найти тур</button>
   </section>
 
-  <section id="find-tour" class="find-tour">
-    <div class="find-tour__content container">
+  <section id="find-tour" class="find-tour find-tour__content container">
       <div class="find-tour__header-block">
         <h2 class="find-tour__title">Выбери свой тур</h2>
         <ul class="find-tour__list">
           <li class="find-tour__list-item">
             <button
               id="find-tour__link1"
-              class="find-tour__list-link find-tour__list-link_active"
+              class="find-tour__list-link find-tour__list-link-active"
             >
               Популярные
             </button>
@@ -222,11 +221,9 @@
           </div>
         </article>
       </div>
-    </div>
   </section>
 
-  <section id="createTour" class="tour-form">
-    <div class="tour-form__content container">
+  <section id="createTour" class="tour-form tour-form__content container">
       <div class="tour-form__header">
         <h2 class="tour-form__title">Собери свой тур</h2>
         <p class="tour-form__subtitle">
@@ -386,11 +383,9 @@
           </div>
         </div>
       </form>
-    </div>
   </section>
 
-  <section id="feedback" class="feedback">
-    <div class="feedback__content container">
+  <section id="feedback" class="feedback feedback__content container">
       <div class="feedback__header">
         <h2 class="feedback__header-title">
           Отзывы наших путешественников
@@ -457,12 +452,9 @@
           </div>
         </article>
       </div>
-    </div>
   </section>
 
-  <section class="pictures">
-    <div class="pictures__container">
-      <div class="pictures__content">
+  <section class="pictures pictures__container pictures__content">
         <div class="pictures__header">
           <h2 class="pictures__title">Фотографии путешествий</h2>
           <p class="pictures__subtitle">
@@ -546,12 +538,9 @@
             />
           </div>
         </div>
-      </div>
-    </div>
   </section>
 
-  <section id="history" class="history">
-    <div class="history__content container">
+  <section id="history" class="history history__content container">
       <div class="history__header">
         <h2 class="history__title">Истории путешествий</h2>
         <div class="history__subtitle">
@@ -622,29 +611,17 @@
               <span class="history__card-btn-content">Подробнее</span>
               <img src="/assets/images/svg/arrow.svg" alt="arrow" />
             </button>
-            <div class="history__links">
-              <a
-                target="_blank"
-                class="history__link-item"
-                href="https://web.telegram.org/a/"
-              >
-                telegram
-              </a>
-              <a
-                target="_blank"
-                class="history__link-item"
-                href="https://www.facebook.com/"
-              >
-                facebook
-              </a>
-              <a
-                target="_blank"
-                class="history__link-item"
-                href="https://vk.com/"
-              >
-                ВКонтакте
-              </a>
-            </div>
+            <ul class="history__links">
+              <li>
+                <a class="history__link-item" href="https://web.telegram.org/a/">telegram</a>
+              </li>
+              <li>
+                <a class="history__link-item" href="https://www.facebook.com/">facebook</a>
+              </li>
+              <li>
+                <a class="history__link-item" href="https://www.youtube.com/">YouTube</a>
+              </li>
+            </ul>
           </div>
         </article>
 
@@ -669,19 +646,23 @@
               <span class="history__card-btn-content">Подробнее</span>
               <img src="/assets/images/svg/arrow.svg" alt="arrow" />
             </button>
-            <div class="history__links">
-              <a class="history__link-item" href="https://web.telegram.org/a/">telegram</a>
-              <a class="history__link-item" href="https://www.facebook.com/">facebook</a>
-              <a class="history__link-item" href="https://vk.com/">ВКонтакте</a>
-            </div>
+            <ul class="history__links">
+              <li>
+                <a class="history__link-item" href="https://web.telegram.org/a/">telegram</a>
+              </li>
+              <li>
+                <a class="history__link-item" href="https://www.facebook.com/">facebook</a>
+              </li>
+              <li>
+                <a class="history__link-item" href="https://www.youtube.com/">YouTube</a>
+              </li>
+            </ul>
           </div>
         </article>
       </div>
-    </div>
   </section>
 
-  <section class="mail">
-    <div class="mail__content container">
+  <section class="mail mail__content container">
       <div class="mail__centered-wrapper">
         <img
           class="mail__image"
@@ -696,14 +677,12 @@
           </p>
         </div>
       </div>
-    </div>
   </section>
 </main>
 
 <footer class="footer">
   <div class="footer__content container">
     <p class="footer__text">Наши социальные сети</p>
-
     <ul class="footer__link-list">
       <li>
         <a class="footer__link-item" href="https://web.telegram.org/">
