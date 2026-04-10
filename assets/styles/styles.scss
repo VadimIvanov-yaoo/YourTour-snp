@@ -133,7 +133,7 @@ main {
   z-index: 10;
   width: 100%;
   backdrop-filter: blur(54px);
-  background-color: colors.$beige200;
+  background-color: rgba(244, 240, 233, 0.6);
   transform: translateY(-100%);
 
   .header__nav-list li .header__link {
@@ -493,8 +493,8 @@ main {
 
       @include mixins.mobile {
         @include mixins.h3-mobile;
-        color: colors.$white;
         letter-spacing: 0.8px;
+        color: colors.$white;
       }
     }
 
@@ -833,29 +833,34 @@ main {
     margin: 0;
     cursor: pointer;
     appearance: none;
-    border: 2px solid #1b1f2b;
+    border: 2px solid colors.$black;
     border-radius: 50%;
-    @include mixins.customHoverMixin(border-color, 0.3s);
 
     @include mixins.mobile {
       width: 20px;
       height: 20px;
     }
 
-    &:checked {
-      border-color: colors.$black;
-    }
-
-    &:checked::after {
+    &::after {
       position: absolute;
       top: 50%;
       left: 50%;
       width: 12px;
       height: 12px;
       content: '';
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(0);
       background: colors.$black;
       border-radius: 50%;
+      @include mixins.customHoverMixin(transform, 0.3s);
+
+      @include mixins.mobile {
+        width: 8px;
+        height: 8px;
+      }
+    }
+
+    &:checked::after {
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 
@@ -1771,7 +1776,7 @@ main {
     }
 
     @include mixins.middle {
-      justify-content: center;
+      justify-content: space-around;
       flex-wrap: wrap;
       gap: 7px;
       padding: 30px 10px;
