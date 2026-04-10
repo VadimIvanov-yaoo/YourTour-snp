@@ -122,33 +122,6 @@ function validateForm(e) {
   const phone = document.getElementById('phone').value.trim()
   const select = document.getElementById('tours').value
 
-  if (
-    !name ||
-    !emailInput ||
-    !dateFromValue ||
-    !dateToValue ||
-    !phone ||
-    !select
-  ) {
-    alert('Введите все поля')
-    return
-  }
-
-  if (!validateName(name)) {
-    alert('Имя должно содержать только русские буквы')
-    return
-  }
-
-  if (!validateEmail(emailInput)) {
-    alert('Некорректный email')
-    return
-  }
-
-  if (!validatePhoneNumber(phone)) {
-    alert('Не правильный формат номера телефона')
-    return
-  }
-
   const [fromDay, fromMonth, fromYear] = dateFromValue.split('.')
   const dateFrom = new Date(fromYear, fromMonth - 1, fromDay)
 
@@ -158,14 +131,49 @@ function validateForm(e) {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
 
-  if (dateFrom < today || dateTo < today) {
-    alert('Дата не может быть прошедшей')
-    return
-  }
+  const validateFun = [
+    {
+      fun: !(
+        !name ||
+        !emailInput ||
+        !dateFromValue ||
+        !dateToValue ||
+        !phone ||
+        !select
+      ),
+      message: 'Введите все поля',
+    },
+    {
+      fun: !!validateName(name),
+      message: 'Имя должно содержать только русские буквы',
+    },
 
-  if (dateFrom > dateTo) {
-    alert('Значение "Дата от" не должно превышать "Дата до"')
-    return
+    {
+      fun: !!validateEmail(emailInput),
+      message: 'Некорректный email',
+    },
+
+    {
+      fun: !!validatePhoneNumber(phone),
+      message: 'Не корректный формат номера телефона',
+    },
+
+    {
+      fun: !(dateFrom < today || dateTo < today),
+      message: 'Дата не может быть прошедшей',
+    },
+
+    {
+      fun: !(dateFrom > dateTo),
+      message: 'Значение "Дата от" не должно превышать "Дата до"',
+    },
+  ]
+
+  for (const item of validateFun) {
+    if (!item.fun) {
+      alert(item.message)
+      return
+    }
   }
 }
 document.getElementById('tourForm').addEventListener('submit', function (e) {
