@@ -446,6 +446,20 @@ main {
       @include mixins.customHoverMixin(transform, 0.3s);
     }
 
+    @include mixins.hover("&-bg") {
+      transform: scale(1.2);
+    }
+
+    @include mixins.hover('&-btn') {
+      background-color: colors.$green400;
+    }
+
+    @media (hover: hover) {
+      &:active &-btn {
+        background: colors.$orange200;
+      }
+    }
+
     &-overlay {
       position: absolute;
       top: 0;
@@ -456,10 +470,6 @@ main {
       pointer-events: none;
       content: '';
       background: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%);
-    }
-
-    &:hover &-bg {
-      transform: scale(1.2);
     }
 
     &-header {
@@ -541,14 +551,19 @@ main {
     @include mixins.customHoverMixin(width, 0.3s);
     @include mixins.customHoverMixin(background-color, 0.3s);
 
+
     @include mixins.mobile {
       bottom: 18px;
       left: 10px;
       padding: 5px 15px;
     }
 
-    &:hover {
+    @include mixins.hover {
       background-color: colors.$green400;
+
+      &:active {
+        background: colors.$orange200;
+      }
     }
 
     &-content {
@@ -561,17 +576,6 @@ main {
       }
     }
 
-    &:active {
-      background: colors.$orange200;
-    }
-  }
-
-  &__card:hover &__card-btn {
-    background-color: colors.$green400;
-  }
-
-  &__card:active &__card-btn {
-    background: colors.$orange200;
   }
 }
 
@@ -920,7 +924,14 @@ main {
         transform: rotate(45deg);
         border-right: 2px solid colors.$black;
         border-bottom: 2px solid colors.$black;
+
+        @include mixins.mobile {
+          top: 1px;
+          left: 5px;
+        }
       }
+
+
     }
 
     &-text {
@@ -1443,7 +1454,6 @@ main {
     background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
     border-radius: 50px;
 
-
     @include mixins.mobile {
       max-height: 455px;
       border-radius: 20px;
@@ -1453,7 +1463,7 @@ main {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: -99;
+      z-index: -1;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1462,6 +1472,21 @@ main {
       background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.2) 100%);
       @include mixins.customHoverMixin(transform, 0.3s);
     }
+
+    @include mixins.hover("&-background") {
+      transform: scale(1.2);
+    }
+
+    @include mixins.hover("&-btn") {
+      background-color: colors.$green400;
+    }
+
+    @media (hover: hover) {
+      &:active &-btn {
+        background-color: colors.$orange200;
+      }
+    }
+
 
     &-overlay {
       position: absolute;
@@ -1472,18 +1497,6 @@ main {
       height: 100%;
       pointer-events: none;
       background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
-    }
-
-    &:hover &-background {
-      transform: scale(1.2);
-    }
-
-    &:hover &-btn {
-      background-color: colors.$green400;
-    }
-
-    &:active &-btn {
-      background-color: colors.$orange200;
     }
 
     &-top-block {
@@ -1557,9 +1570,12 @@ main {
       @include mixins.customHoverMixin(width, 0.3s);
       @include mixins.customHoverMixin(background-color, 0.3s);
 
-
-      &:hover {
+      @include mixins.hover {
         background-color: colors.$green400;
+
+        &:active {
+          background-color: colors.$orange200;
+        }
       }
 
       &-content {
@@ -1570,10 +1586,6 @@ main {
           @include mixins.p-big-mobile;
           color: colors.$white;
         }
-      }
-
-      &:active {
-        background: colors.$orange200;
       }
     }
   }
@@ -1624,195 +1636,242 @@ main {
       @include mixins.customHoverMixin(width);
     }
 
-    &:hover:after {
-      width: 100%;
-    }
-
-    &:active {
-      color: colors.$orange200;
-
+    @include mixins.hover {
       &:after {
         width: 100%;
+      }
+
+      &:active {
+        color: colors.$orange200;
+
+        &:after {
+          width: 100%;
+          background-color: colors.$orange200;
+        }
+      }
+    }
+  }
+}
+
+  .mail {
+    padding: 135px 0;
+
+    @include mixins.middle {
+      padding: 75px 0;
+    }
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__centered-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+
+      @include mixins.middle {
+        justify-content: center;
+        flex-wrap: wrap;;
+      }
+
+      @include mixins.mobile {
+        gap: 35px;
+      }
+    }
+
+    &__image {
+      max-width: 370px;
+      max-height: 370px;
+      border-radius: 50px;
+
+      @include mixins.middle {
+        width: 100%;
+        height: auto;
+        max-width: 270px;
+        max-height: none;
+      }
+
+      @include mixins.mobile {
+        max-height: 133px;
+        max-width: 130px;
+        border-radius: 20px;
+      }
+    }
+
+    &__text-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 371px;
+
+      @include mixins.middle {
+        text-align: center;
+      }
+
+      @include mixins.mobile {
+        max-width: 292px;
+        text-align: center;
+      }
+    }
+
+    &__title {
+      @include mixins.h3-pc;
+
+      @include mixins.middle {
+        @include mixins.fluid-clamp(font-size, 23px, 35px);
+      }
+
+      @include mixins.mobile {
+        @include mixins.h3-mobile;
+        letter-spacing: 0.8px;
+      }
+    }
+
+    &__subtitle {
+      @include mixins.p-normal;
+      color: colors.$gray300;
+
+      @include mixins.middle {
+        @include mixins.fluid-clamp(font-size, 16px, 20px);
+      }
+
+
+      > a {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        @include mixins.p-normal;
+        color: colors.$black;
+
+        @include mixins.mobile {
+          @include mixins.p-normal-mobile;
+          color: colors.$black;
+        }
+
+        @include mixins.mobile {
+          @include mixins.p-normal-mobile;
+          color: colors.$black;
+        }
+
+
+        &:after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 1px;
+          content: '';
+          background-color: colors.$black;
+          @include mixins.customHoverMixin(width, 0.3s);
+          @include mixins.customHoverMixin(background-color, 0.3s);
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .footer {
+    background-color: colors.$beige200;
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 21px;
+
+
+      @include mixins.tablet {
+        padding: 30px 53px;
+      }
+
+      @include mixins.middle {
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 7px;
+        padding: 30px 10px;
+      }
+
+      @include mixins.mobile {
+        padding: 20px 10px;
+      }
+    }
+
+    &__link-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+
+      @include mixins.middle {
+        gap: 15px;
+      }
+    }
+
+    &__link-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      text-decoration: none;
+      color: inherit;
+      @include mixins.p-normal;
+
+      @include mixins.middle {
+        gap: 5px;
+      }
+
+      span {
+        position: relative;
+
+        @include mixins.middle {
+          @include mixins.fluid-clamp(font-size, 16px, 20px);
+        }
+
+        @include mixins.mobile {
+          @include mixins.p-normal-mobile;
+          color: colors.$black;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          width: 0;
+          background-color: colors.$black;
+          @include mixins.customHoverMixin(width, 0.3s);
+          @include mixins.customHoverMixin(background-color, 0.3s);
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+      }
+
+      &:active span:after {
         background-color: colors.$orange200;
       }
     }
-  }
-}
 
-.mail {
-  padding: 135px 0;
+    &__link-logo {
+      width: 26px;
+      height: 26px;
 
-  @include mixins.middle {
-    padding: 75px 0;
-  }
-
-  &__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__centered-wrapper {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-
-    @include mixins.middle {
-      justify-content: center;
-      flex-wrap: wrap;;
+      @include mixins.middle {
+        width: 22px;
+        height: 26px;
+      }
     }
 
-    @include mixins.mobile {
-      gap: 35px;
-    }
-  }
-
-  &__image {
-    max-width: 370px;
-    max-height: 370px;
-    border-radius: 50px;
-
-    @include mixins.middle {
-      width: 100%;
-      height: auto;
-      max-width: 270px;
-      max-height: none;
-    }
-
-    @include mixins.mobile {
-      max-height: 133px;
-      max-width: 130px;
-      border-radius: 20px;
-    }
-  }
-
-  &__text-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 371px;
-
-    @include mixins.middle {
-      text-align: center;
-    }
-
-    @include mixins.mobile {
-      max-width: 292px;
-      text-align: center;
-    }
-  }
-
-  &__title {
-    @include mixins.h3-pc;
-
-    @include mixins.middle {
-      @include mixins.fluid-clamp(font-size, 23px, 35px);
-    }
-
-    @include mixins.mobile {
-      @include mixins.h3-mobile;
-      letter-spacing: 0.8px;
-    }
-  }
-
-  &__subtitle {
-    @include mixins.p-normal;
-    color: colors.$gray300;
-
-    @include mixins.middle {
-      @include mixins.fluid-clamp(font-size, 16px, 20px);
-    }
-
-
-    > a {
-      position: relative;
-      display: inline-block;
-      text-decoration: none;
+    &__text {
       @include mixins.p-normal;
-      color: colors.$black;
-
-      @include mixins.mobile {
-        @include mixins.p-normal-mobile;
-        color: colors.$black;
-      }
-
-      @include mixins.mobile {
-        @include mixins.p-normal-mobile;
-        color: colors.$black;
-      }
-
-
-      &:after {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 1px;
-        content: '';
-        background-color: colors.$black;
-        @include mixins.customHoverMixin(width, 0.3s);
-        @include mixins.customHoverMixin(background-color, 0.3s);
-      }
-
-      &:hover:after {
-        width: 100%;
-      }
-    }
-  }
-}
-
-.footer {
-  background-color: colors.$beige200;
-
-  &__content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 21px;
-
-
-    @include mixins.tablet {
-      padding: 30px 53px;
-    }
-
-    @include mixins.middle {
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 7px;
-      padding: 30px 10px;
-    }
-
-    @include mixins.mobile {
-      padding: 20px 10px;
-    }
-  }
-
-  &__link-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-
-    @include mixins.middle {
-      gap: 15px;
-    }
-  }
-
-  &__link-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    text-decoration: none;
-    color: inherit;
-    @include mixins.p-normal;
-
-    @include mixins.middle {
-      gap: 5px;
-    }
-
-    span {
-      position: relative;
+      color: colors.$gray300;
 
       @include mixins.middle {
         @include mixins.fluid-clamp(font-size, 16px, 20px);
@@ -1820,74 +1879,28 @@ main {
 
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
-        color: colors.$black;
-      }
-
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        width: 0;
-        background-color: colors.$black;
-        @include mixins.customHoverMixin(width, 0.3s);
-        @include mixins.customHoverMixin(background-color, 0.3s);
-      }
-
-      &:hover:after {
-        width: 100%;
+        color: colors.$gray300;
       }
     }
+  }
 
-    &:active span:after {
-      background-color: colors.$orange200;
+  @keyframes headerShow {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
     }
   }
 
-  &__link-logo {
-    width: 26px;
-    height: 26px;
-
-    @include mixins.middle {
-      width: 22px;
-      height: 26px;
+  @keyframes headerHide {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
     }
   }
-
-  &__text {
-    @include mixins.p-normal;
-    color: colors.$gray300;
-
-    @include mixins.middle {
-      @include mixins.fluid-clamp(font-size, 16px, 20px);
-    }
-
-    @include mixins.mobile {
-      @include mixins.p-normal-mobile;
-      color: colors.$gray300;
-    }
-  }
-}
-
-
-@keyframes headerShow {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes headerHide {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-100%);
-  }
-}
 
 
 
