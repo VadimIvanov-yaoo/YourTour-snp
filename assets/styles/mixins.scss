@@ -139,17 +139,17 @@
     }
 
   }
-  @media (hover: none) {
-    @if $class {
-      &:active #{$class} {
-        @content;
-      }
-    } @else {
-      &:active {
-        @content;
-      }
-    }
-  }
+  //@media (hover: none) {
+  //  @if $class {
+  //    &:active #{$class} {
+  //      @content;
+  //    }
+  //  } @else {
+  //    &:active {
+  //      @content;
+  //    }
+  //  }
+  //}
 }
 
 @mixin customHoverMixin($style: all, $time: 0.3s, $method: ease, $cursor: pointer) {
