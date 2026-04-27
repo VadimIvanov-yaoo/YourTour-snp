@@ -81,7 +81,6 @@ main {
     @include mixins.p-normal;
     color: colors.$white;
 
-
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
       color: colors.$white;
@@ -178,24 +177,26 @@ main {
   gap: 50px;
   padding-top: 0;
   text-align: center;
-  background: linear-gradient(
-                  360deg,
-                  rgba(0, 0, 0, 0.4) 0%,
-                  rgba(0, 0, 0, 0.06) 48.44%,
-                  rgba(0, 0, 0, 0.5) 100%
-  ),
-  url('../images/hero-background.jpg') no-repeat center/cover;
+  background:
+    linear-gradient(
+      360deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.06) 48.44%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url('../images/hero-background.jpg') no-repeat center/cover;
 
   @include mixins.tablet {
     padding-top: 90px;
     @include mixins.fluid-clamp(height, 482px, 831px);
-    background: linear-gradient(
-                    360deg,
-                    rgba(0, 0, 0, 0.4) 0%,
-                    rgba(0, 0, 0, 0.06) 48.44%,
-                    rgba(0, 0, 0, 0.5) 100%
-    ),
-    url('../images/medium-hero-bg.jpg') no-repeat center/cover;
+    background:
+      linear-gradient(
+        360deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.06) 48.44%,
+        rgba(0, 0, 0, 0.5) 100%
+      ),
+      url('../images/medium-hero-bg.jpg') no-repeat center/cover;
   }
 
   @include mixins.mobile {
@@ -332,7 +333,6 @@ main {
     @include mixins.p-big;
     @include mixins.customHoverMixin(width);
 
-
     @include mixins.middle {
       @include mixins.fluid-clamp(font-size, 16px, 23px);
     }
@@ -417,7 +417,12 @@ main {
     align-items: start;
     justify-content: space-between;
     aspect-ratio: 9 / 12.92;
-    background: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%);
+    background: linear-gradient(
+      360deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.06) 48.44%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
     border-radius: 50px;
 
     @include mixins.tablet {
@@ -429,7 +434,6 @@ main {
     }
 
     @include mixins.mobile {
-      max-width: 318px;
       aspect-ratio: 1 / 1;
       border-radius: 20px;
     }
@@ -446,7 +450,7 @@ main {
       @include mixins.customHoverMixin(transform, 0.3s);
     }
 
-    @include mixins.hover("&-bg") {
+    @include mixins.hover('&-bg') {
       transform: scale(1.2);
     }
 
@@ -469,7 +473,12 @@ main {
       height: 100%;
       pointer-events: none;
       content: '';
-      background: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%);
+      background: linear-gradient(
+        360deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.06) 48.44%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
     }
 
     &-header {
@@ -485,6 +494,10 @@ main {
       @include mixins.tablet {
         width: 100%;
         padding: 50px;
+      }
+
+      @include mixins.middle {
+        padding: 35px;
       }
 
       @include mixins.mobile {
@@ -529,6 +542,10 @@ main {
         padding: 50px;
       }
 
+      @include mixins.middle {
+        padding: 35px;
+      }
+
       @include mixins.mobile {
         padding: 25px;
       }
@@ -550,8 +567,7 @@ main {
     letter-spacing: -0.7px;
     @include mixins.customHoverMixin(width, 0.3s);
     @include mixins.customHoverMixin(background-color, 0.3s);
-
-
+    
     @include mixins.mobile {
       bottom: 18px;
       left: 10px;
@@ -575,7 +591,6 @@ main {
         color: colors.$white;
       }
     }
-
   }
 }
 
@@ -624,7 +639,6 @@ main {
     text-align: center;
     @include mixins.p-normal;
     color: colors.$gray300;
-
 
     @include mixins.middle {
       width: 100%;
@@ -760,7 +774,7 @@ main {
     height: 26px;
     pointer-events: none;
     content: '';
-    background: url(/assets/images/svg/select-arrow.svg) no-repeat center / contain;
+    background: url(/images/svg/select-arrow.svg) no-repeat center / contain;
 
     @include mixins.mobile {
       top: 52%;
@@ -1095,19 +1109,10 @@ main {
 
   &__card {
     display: flex;
-    width: 100%;;
+    width: 100%;
     height: 100%;
-    //max-height: 673px;
     background-color: colors.$beige200;
     border-radius: 50px;
-
-    @include mixins.tablet {
-      //max-height: 841px;
-    }
-
-    @include mixins.middle {
-      //max-height: 592px;
-    }
 
     @include mixins.mobile {
       height: auto;
@@ -1353,7 +1358,6 @@ main {
     @include mixins.middle {
       border-radius: 30px;
       height: 180px;
-
     }
 
     @include mixins.mobile {
@@ -1362,7 +1366,6 @@ main {
       max-width: 150px;
     }
   }
-
 }
 
 .history {
@@ -1448,11 +1451,16 @@ main {
     align-items: start;
     justify-content: space-between;
     width: 100%;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
     border-radius: 50px;
+    min-height: 567px;
 
     @include mixins.mobile {
-      max-height: 455px;
+      min-height: 455px;
       border-radius: 20px;
     }
 
@@ -1466,15 +1474,19 @@ main {
       object-fit: cover;
       object-position: center;
       transform: scale(1);
-      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.2) 100%);
+      background: linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0) 0.01%,
+        rgba(0, 0, 0, 0.2) 100%
+      );
       @include mixins.customHoverMixin(transform, 0.3s);
     }
 
-    @include mixins.hover("&-background") {
+    @include mixins.hover('&-background') {
       transform: scale(1.2);
     }
 
-    @include mixins.hover("&-btn") {
+    @include mixins.hover('&-btn') {
       background-color: colors.$green400;
     }
 
@@ -1492,11 +1504,15 @@ main {
       width: 100%;
       height: 100%;
       pointer-events: none;
-      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+      background: linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.2) 100%
+      );
     }
 
     &-top-block {
-      flex: 1;
+      width: 100%;
       padding: 60px;
 
       @include mixins.middle {
@@ -1670,7 +1686,7 @@ main {
 
     @include mixins.middle {
       justify-content: center;
-      flex-wrap: wrap;;
+      flex-wrap: wrap;
     }
 
     @include mixins.mobile {
@@ -1734,7 +1750,6 @@ main {
       @include mixins.fluid-clamp(font-size, 16px, 20px);
     }
 
-
     > a {
       position: relative;
       display: inline-block;
@@ -1751,7 +1766,6 @@ main {
         @include mixins.p-normal-mobile;
         color: colors.$black;
       }
-
 
       &:after {
         position: absolute;
@@ -1780,7 +1794,6 @@ main {
     align-items: center;
     justify-content: space-between;
     padding: 30px 21px;
-
 
     @include mixins.tablet {
       padding: 30px 53px;
@@ -1898,6 +1911,3 @@ main {
     transform: translateY(-100%);
   }
 }
-
-
-
