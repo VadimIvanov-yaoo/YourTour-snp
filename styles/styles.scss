@@ -78,12 +78,11 @@ main {
 
   &__phone {
     text-decoration: none;
-    @include mixins.p-normal;
     color: colors.$white;
+    @include mixins.p-normal;
 
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
-      color: colors.$white;
     }
   }
 
@@ -103,8 +102,8 @@ main {
       li {
         .header__link {
           text-decoration: none;
-          @include mixins.p-normal;
           color: colors.$white;
+          @include mixins.p-normal;
           @include mixins.customHoverMixin(color);
 
           &:after {
@@ -137,8 +136,8 @@ main {
 
   .header__nav-list li .header__link {
     position: relative;
-    @include mixins.customHoverMixin(color);
     color: colors.$black;
+    @include mixins.customHoverMixin(color);
 
     &:after {
       display: block;
@@ -175,7 +174,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 50px;
-  padding-top: 0;
+
   text-align: center;
   background:
     linear-gradient(
@@ -188,7 +187,6 @@ main {
 
   @include mixins.tablet {
     padding-top: 90px;
-    @include mixins.fluid-clamp(height, 482px, 831px);
     background:
       linear-gradient(
         360deg,
@@ -197,6 +195,8 @@ main {
         rgba(0, 0, 0, 0.5) 100%
       ),
       url('../images/medium-hero-bg.jpg') no-repeat center/cover;
+
+    @include mixins.fluid-clamp(height, 482px, 831px);
   }
 
   @include mixins.mobile {
@@ -208,24 +208,24 @@ main {
   &__title {
     max-width: 768px;
     letter-spacing: 2.2px;
-    @include mixins.h1-pc;
     color: colors.$white;
+    @include mixins.h1-pc;
 
     @include mixins.tablet {
       font-size: clamp(34px, 9.375vw, 96px);
     }
 
     @include mixins.mobile {
-      @include mixins.h1-mobile;
       letter-spacing: 1px;
       color: colors.$white;
+      @include mixins.h1-mobile;
     }
   }
 
   &__subtitle {
     max-width: 562px;
-    @include mixins.p-normal;
     color: colors.$white;
+    @include mixins.p-normal;
 
     @include mixins.tablet {
       font-size: clamp(16px, 2.5vw, 20px);
@@ -234,7 +234,6 @@ main {
 
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
-      color: colors.$white;
     }
   }
 
@@ -243,6 +242,7 @@ main {
     background-color: colors.$white;
     border: 1px solid colors.$white;
     border-radius: 10px;
+
     @include mixins.p-small;
     @include mixins.customHoverMixin(background-color, 0.25s);
     @include mixins.customHoverMixin(color, 0.25s);
@@ -299,8 +299,8 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h2-mobile;
       letter-spacing: 0.6px;
+      @include mixins.h2-mobile;
     }
   }
 
@@ -338,9 +338,9 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.p-normal-mobile;
-      font-weight: bold;
       letter-spacing: -0.45px;
+      @include mixins.p-normal-mobile;
+      font-weight: bold; // kak
     }
 
     &:after {
@@ -362,18 +362,19 @@ main {
   &__list-link-active {
     position: relative;
     text-decoration: none;
-    @include mixins.p-big;
     color: colors.$orange200;
+    @include mixins.p-big;
 
     @include mixins.middle {
       @include mixins.fluid-clamp(font-size, 16px, 23px);
     }
 
     @include mixins.mobile {
-      @include mixins.p-normal-mobile;
-      font-weight: bold;
+      //font-weight: bold;
       letter-spacing: -0.45px;
       color: colors.$orange200;
+      @include mixins.p-normal-mobile;
+      font-weight: bold; // исправить
     }
 
     &:after {
@@ -507,27 +508,26 @@ main {
 
     &-title {
       max-width: 240px;
-      @include mixins.h3-pc;
       color: colors.$white;
+      @include mixins.h3-pc;
 
       @include mixins.tablet {
         max-width: fit-content;
       }
 
       @include mixins.mobile {
-        @include mixins.h3-mobile;
         letter-spacing: 0.8px;
         color: colors.$white;
+        @include mixins.h3-mobile;
       }
     }
 
     &-price {
-      @include mixins.p-small;
       color: colors.$white;
+      @include mixins.p-small;
 
       @include mixins.mobile {
         @include mixins.p-small-mobile;
-        color: colors.$white;
       }
     }
 
@@ -567,7 +567,7 @@ main {
     letter-spacing: -0.7px;
     @include mixins.customHoverMixin(width, 0.3s);
     @include mixins.customHoverMixin(background-color, 0.3s);
-    
+
     @include mixins.mobile {
       bottom: 18px;
       left: 10px;
@@ -583,12 +583,11 @@ main {
     }
 
     &-content {
-      @include mixins.p-big;
       color: colors.$white;
+      @include mixins.p-big;
 
       @include mixins.mobile {
         @include mixins.p-big-mobile;
-        color: colors.$white;
       }
     }
   }
@@ -629,16 +628,16 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h2-mobile;
       letter-spacing: 0.7px;
+      @include mixins.h2-mobile;
     }
   }
 
   &__subtitle {
     width: 400px;
     text-align: center;
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       width: 100%;
@@ -649,7 +648,6 @@ main {
 
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
-      color: colors.$gray300;
     }
   }
 
@@ -679,8 +677,7 @@ main {
 
   &__fields {
     display: grid;
-    gap: 30px;
-    column-gap: 33px;
+    gap: 29px;
     grid-template-columns: repeat(2, 1fr);
 
     @include mixins.tablet {
@@ -691,7 +688,6 @@ main {
     @include mixins.mobile {
       display: flex;
       flex-direction: column;
-      gap: 30px;
     }
   }
 
@@ -732,12 +728,11 @@ main {
     }
 
     &::placeholder {
-      @include mixins.p-normal;
       color: colors.$gray300;
+      @include mixins.p-normal;
 
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
-        color: colors.$gray300;
       }
     }
 
@@ -757,8 +752,8 @@ main {
     padding-right: 48px;
 
     @include mixins.mobile {
-      @include mixins.p-normal-mobile;
       color: colors.$gray300;
+      @include mixins.p-normal-mobile;
     }
 
     &:invalid {
@@ -802,7 +797,7 @@ main {
     margin-top: 33px;
 
     @include mixins.mobile {
-      margin-top: 20px;
+      margin-top: 25px;
     }
   }
 
@@ -811,10 +806,11 @@ main {
     flex-direction: column;
     align-items: start;
     gap: 8px;
-    margin: 29px 0;
+    margin: 30px 0;
 
     &-name {
       @include mixins.p-normal;
+
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
       }
@@ -890,7 +886,7 @@ main {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin: 0;
+      margin-bottom: 25px;
     }
 
     &-label {
@@ -901,7 +897,6 @@ main {
       @include mixins.mobile {
         width: 100%;
         align-items: flex-start;
-        margin-bottom: 30px;
         gap: 10px;
       }
     }
@@ -947,9 +942,9 @@ main {
     }
 
     &-text {
-      letter-spacing: -0.165px;
-      @include mixins.p-small;
+      letter-spacing: -0.5px;
       color: colors.$gray300;
+      @include mixins.p-small;
     }
 
     &-link {
@@ -957,8 +952,8 @@ main {
       border: none;
       text-decoration: none;
       text-underline-offset: 3px;
-      @include mixins.p-small;
       color: colors.$black;
+      @include mixins.p-small;
 
       @include mixins.mobile {
         padding: 0;
@@ -981,7 +976,8 @@ main {
     }
 
     @include mixins.mobile {
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 21px;
     }
   }
 
@@ -1001,6 +997,9 @@ main {
       @include mixins.fluid-clamp(height, 47px, 58px);
       @include mixins.fluid-clamp(padding, 12px, 15px);
       @include mixins.fluid-clamp(font-size, 16px, 20px);
+    }
+    @include mixins.mobile {
+      padding: 12px 29px;
     }
 
     &-cyan-btn {
@@ -1081,8 +1080,8 @@ main {
     &-subtitle {
       max-width: 400px;
       text-align: center;
-      @include mixins.p-normal;
       color: colors.$gray300;
+      @include mixins.p-normal;
 
       @include mixins.middle {
         width: 100%;
@@ -1171,7 +1170,7 @@ main {
 
     @include mixins.mobile {
       @include mixins.h3-mobile;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.8px; //991
     }
   }
 
@@ -1223,16 +1222,16 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h2-mobile;
       letter-spacing: 1px;
+      @include mixins.h2-mobile;
     }
   }
 
   &__subtitle {
     width: 400px;
     text-align: center;
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       width: 100%;
@@ -1243,8 +1242,8 @@ main {
 
     @include mixins.mobile {
       max-width: 318px;
-      @include mixins.p-normal-mobile;
       color: colors.$gray300;
+      @include mixins.p-normal-mobile;
     }
   }
 
@@ -1260,7 +1259,6 @@ main {
 
     @include mixins.mobile {
       padding: 0 18px;
-
       gap: 18px;
     }
   }
@@ -1268,6 +1266,7 @@ main {
   &__row {
     display: grid;
     gap: 30px;
+    grid-auto-rows: 301px;
 
     &:nth-child(1) {
       grid-template-columns: repeat(4, 1fr);
@@ -1283,6 +1282,7 @@ main {
 
     @include mixins.tablet {
       gap: 20px;
+
       &:nth-child(1) {
         grid-template-columns: repeat(3, 1fr);
 
@@ -1307,6 +1307,7 @@ main {
     }
 
     @include mixins.middle {
+      grid-auto-rows: 180px;
       &:nth-child(1) {
         grid-template-columns: repeat(2, 1fr);
 
@@ -1334,6 +1335,8 @@ main {
 
     @include mixins.mobile {
       gap: 18px;
+      grid-auto-rows: 110px;
+
       &:nth-child(1) {
         grid-template-columns: repeat(2, 150px);
       }
@@ -1350,19 +1353,21 @@ main {
   }
 
   &__item {
+    display: block;
     width: 100%;
-    height: 301px;
+    //height: 301px;
+    height: 100%;
     object-fit: cover;
     border-radius: 50px;
 
     @include mixins.middle {
       border-radius: 30px;
-      height: 180px;
+      //height: 180px;
     }
 
     @include mixins.mobile {
       border-radius: 20px;
-      height: 110px;
+      //height: 110px;
       max-width: 150px;
     }
   }
@@ -1402,16 +1407,16 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h2-mobile;
       letter-spacing: 1px;
+      @include mixins.h2-mobile;
     }
   }
 
   &__subtitle {
     width: 400px;
     text-align: center;
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       width: 100%;
@@ -1422,8 +1427,8 @@ main {
 
     @include mixins.mobile {
       max-width: 318px;
-      @include mixins.p-normal-mobile;
       color: colors.$gray300;
+      @include mixins.p-normal-mobile;
     }
   }
 
@@ -1446,11 +1451,11 @@ main {
     position: relative;
     z-index: 4;
     display: flex;
-    overflow: hidden;
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
     width: 100%;
+    overflow: hidden;
     background: linear-gradient(
       270deg,
       rgba(0, 0, 0, 0) 0%,
@@ -1526,8 +1531,8 @@ main {
 
     &-title {
       margin-bottom: 37px;
-      @include mixins.h3-pc;
       color: colors.$white;
+      @include mixins.h3-pc;
 
       @include mixins.middle {
         margin-bottom: 20px;
@@ -1543,12 +1548,11 @@ main {
     &-subtitle {
       max-width: 554px;
       margin-bottom: 25px;
-      @include mixins.p-normal;
       color: colors.$white;
+      @include mixins.p-normal;
 
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
-        color: colors.$white;
       }
     }
 
@@ -1592,12 +1596,11 @@ main {
       }
 
       &-content {
-        @include mixins.p-big;
         color: colors.$white;
+        @include mixins.p-big;
 
         @include mixins.mobile {
           @include mixins.p-big-mobile;
-          color: colors.$white;
         }
       }
     }
@@ -1613,12 +1616,11 @@ main {
 
   &__card-list {
     list-style-type: disc;
-    @include mixins.p-normal;
     color: colors.$white;
+    @include mixins.p-normal;
 
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
-      color: colors.$white;
     }
   }
 
@@ -1634,8 +1636,8 @@ main {
   &__link-item {
     position: relative;
     text-decoration: none;
-    @include mixins.p-normal;
     color: colors.$white;
+    @include mixins.p-normal;
 
     &:after {
       position: absolute;
@@ -1701,8 +1703,8 @@ main {
 
     @include mixins.middle {
       width: 100%;
-      height: auto;
       max-width: 270px;
+      height: auto;
       max-height: none;
     }
 
@@ -1737,14 +1739,14 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h3-mobile;
       letter-spacing: 0.8px;
+      @include mixins.h3-mobile;
     }
   }
 
   &__subtitle {
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       @include mixins.fluid-clamp(font-size, 16px, 20px);
@@ -1754,17 +1756,15 @@ main {
       position: relative;
       display: inline-block;
       text-decoration: none;
-      @include mixins.p-normal;
       color: colors.$black;
+      @include mixins.p-normal;
 
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
-        color: colors.$black;
       }
 
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
-        color: colors.$black;
       }
 
       &:after {
@@ -1778,7 +1778,6 @@ main {
         @include mixins.customHoverMixin(width, 0.3s);
         @include mixins.customHoverMixin(background-color, 0.3s);
       }
-
       &:hover:after {
         width: 100%;
       }
@@ -1826,7 +1825,6 @@ main {
     display: flex;
     align-items: center;
     gap: 10px;
-
     text-decoration: none;
     color: inherit;
     @include mixins.p-normal;
@@ -1843,8 +1841,8 @@ main {
       }
 
       @include mixins.mobile {
-        @include mixins.p-normal-mobile;
         color: colors.$black;
+        @include mixins.p-normal-mobile;
       }
 
       &:after {
@@ -1880,16 +1878,16 @@ main {
   }
 
   &__text {
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       @include mixins.fluid-clamp(font-size, 16px, 20px);
     }
 
     @include mixins.mobile {
-      @include mixins.p-normal-mobile;
       color: colors.$gray300;
+      @include mixins.p-normal-mobile;
     }
   }
 }

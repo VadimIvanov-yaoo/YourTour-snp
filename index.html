@@ -24,23 +24,21 @@
   </head>
   <body>
     <header class="header">
-      <div class="container">
-        <div class="header__content">
-          <a class="header__logo" href="#">
-            <img id="logo" src="/logo.svg" alt="logo" />
-          </a>
-          <nav class="header__nav">
-            <ul class="header__nav-list">
-              <li><a class="header__link" href="#find-tour">Туры</a></li>
-              <li>
-                <a class="header__link" href="#createTour">Создать тур</a>
-              </li>
-              <li><a class="header__link" href="#feedback">Отзывы</a></li>
-              <li><a class="header__link" href="#history">Истории</a></li>
-            </ul>
-          </nav>
-          <a href="tel:79999999999" class="header__phone">+7 999 999 99 99</a>
-        </div>
+      <div class="container header__content">
+        <a class="header__logo" href="#">
+          <img id="logo" src="/logo.svg" alt="logo" />
+        </a>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li><a class="header__link" href="#find-tour">Туры</a></li>
+            <li>
+              <a class="header__link" href="#createTour">Создать тур</a>
+            </li>
+            <li><a class="header__link" href="#feedback">Отзывы</a></li>
+            <li><a class="header__link" href="#history">Истории</a></li>
+          </ul>
+        </nav>
+        <a href="tel:79999999999" class="header__phone">+7 999 999 99 99</a>
       </div>
     </header>
     <main>
@@ -255,163 +253,153 @@
           </p>
         </div>
 
-        <form id="tourForm" class="tour-form__form">
-          <div class="tour-form__wrapper">
-            <div class="tour-form__stack">
-              <div class="tour-form__fields">
-                <div class="tour-form__field">
-                  <label for="name" class="tour-form__label">Имя</label>
-                  <input
-                    id="name"
-                    class="tour-form__input"
-                    placeholder="Введите Ваше имя"
-                    type="text"
-                    required
-                  />
-                </div>
-
-                <div class="tour-form__field">
-                  <label for="tours" class="tour-form__label">
-                    Направление
-                  </label>
-                  <select
-                    class="tour-form__input tour-form__select"
-                    name="tour"
-                    id="tours"
-                    required
-                  >
-                    <option value="" selected disabled>
-                      Куда хотите ехать
-                    </option>
-                    <option value="America">Америка</option>
-                    <option value="France">Франция</option>
-                    <option value="Asia">Азия</option>
-                  </select>
-                </div>
-
-                <div class="tour-form__field">
-                  <label for="email" class="tour-form__label">Email</label>
-                  <input
-                    id="email"
-                    class="tour-form__input"
-                    placeholder="example@mail.com"
-                    type="email"
-                    required
-                  />
-                </div>
-
-                <div class="tour-form__field">
-                  <label for="phone" class="tour-form__label">Телефон</label>
-                  <input
-                    id="phone"
-                    class="tour-form__input"
-                    placeholder="+ 7 (_ _ _) _ _ _ - _ _ - _ _"
-                    type="tel"
-                    required
-                  />
-                </div>
-
-                <div class="tour-form__field">
-                  <label for="tour-form__input__from" class="tour-form__label">
-                    Дата от
-                  </label>
-                  <input
-                    id="tour-form__input__from"
-                    class="tour-form__input"
-                    placeholder="ДД.ММ.ГГГГ"
-                    type="text"
-                    maxlength="10"
-                    required
-                  />
-                </div>
-
-                <div class="tour-form__field">
-                  <label for="tour-form__input__to" class="tour-form__label">
-                    Дата до
-                  </label>
-                  <input
-                    id="tour-form__input__to"
-                    class="tour-form__input"
-                    placeholder="ДД.ММ.ГГГГ"
-                    type="text"
-                    maxlength="10"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div class="tour-form__field tour-form__comment-block">
-                <label for="comment" class="tour-form__label">
-                  Комментарий
-                </label>
-                <textarea
-                  class="tour-form__input tour-form__textarea"
-                  id="comment"
-                  rows="5"
-                  required
-                ></textarea>
-              </div>
-
-              <div class="tour-form__radio">
-                <span class="tour-form__radio-name">Вам есть 18 лет?</span>
-
-                <div class="tour-form__radio-wrapper">
-                  <label class="tour-form__radio-option">
-                    <input
-                      required
-                      class="tour-form__radio-input"
-                      type="radio"
-                      name="age"
-                      value="yes"
-                    />
-                    <span class="tour-form__radio-text">Да</span>
-                  </label>
-
-                  <label class="tour-form__radio-option">
-                    <input
-                      class="tour-form__radio-input"
-                      type="radio"
-                      name="age"
-                      value="no"
-                    />
-                    <span class="tour-form__radio-text">Нет</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="tour-form__checkbox">
-                <label class="tour-form__checkbox-label">
-                  <input
-                    required
-                    class="tour-form__checkbox-input"
-                    type="checkbox"
-                  />
-                  <span class="tour-form__checkbox-text">
-                    Нажимая кнопку, я принимаю условия
-                    <a href="#" class="tour-form__checkbox-link">
-                      Лицензионного договора
-                    </a>
-                  </span>
-                </label>
-              </div>
-
-              <div class="tour-form__button-block">
-                <button
-                  id="submitBtn"
-                  type="submit"
-                  class="tour-form__button tour-form__button-cyan-btn"
-                >
-                  Найти тур
-                </button>
-
-                <button
-                  type="reset"
-                  class="tour-form__button tour-form__button-lightgreen-btn"
-                >
-                  Сбросить
-                </button>
-              </div>
+        <form id="tourForm" class="tour-form__form tour-form__wrapper">
+          <div class="tour-form__fields">
+            <div class="tour-form__field">
+              <label for="name" class="tour-form__label">Имя</label>
+              <input
+                id="name"
+                class="tour-form__input"
+                placeholder="Введите Ваше имя"
+                type="text"
+                required
+              />
             </div>
+
+            <div class="tour-form__field">
+              <label for="tours" class="tour-form__label">Направление</label>
+              <select
+                class="tour-form__input tour-form__select"
+                name="tour"
+                id="tours"
+                required
+              >
+                <option value="" selected disabled>Куда хотите ехать</option>
+                <option value="America">Америка</option>
+                <option value="France">Франция</option>
+                <option value="Asia">Азия</option>
+              </select>
+            </div>
+
+            <div class="tour-form__field">
+              <label for="email" class="tour-form__label">Email</label>
+              <input
+                id="email"
+                class="tour-form__input"
+                placeholder="example@mail.com"
+                type="email"
+                required
+              />
+            </div>
+
+            <div class="tour-form__field">
+              <label for="phone" class="tour-form__label">Телефон</label>
+              <input
+                id="phone"
+                class="tour-form__input"
+                placeholder="+ 7 (_ _ _) _ _ _ - _ _ - _ _"
+                type="tel"
+                required
+              />
+            </div>
+
+            <div class="tour-form__field">
+              <label for="tour-form__input__from" class="tour-form__label">
+                Дата от
+              </label>
+              <input
+                id="tour-form__input__from"
+                class="tour-form__input"
+                placeholder="ДД.ММ.ГГГГ"
+                type="text"
+                maxlength="10"
+                required
+              />
+            </div>
+
+            <div class="tour-form__field">
+              <label for="tour-form__input__to" class="tour-form__label">
+                Дата до
+              </label>
+              <input
+                id="tour-form__input__to"
+                class="tour-form__input"
+                placeholder="ДД.ММ.ГГГГ"
+                type="text"
+                maxlength="10"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="tour-form__field tour-form__comment-block">
+            <label for="comment" class="tour-form__label">Комментарий</label>
+            <textarea
+              class="tour-form__input tour-form__textarea"
+              id="comment"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <div class="tour-form__radio">
+            <span class="tour-form__radio-name">Вам есть 18 лет?</span>
+
+            <div class="tour-form__radio-wrapper">
+              <label class="tour-form__radio-option">
+                <input
+                  required
+                  class="tour-form__radio-input"
+                  type="radio"
+                  name="age"
+                  value="yes"
+                />
+                <span class="tour-form__radio-text">Да</span>
+              </label>
+
+              <label class="tour-form__radio-option">
+                <input
+                  class="tour-form__radio-input"
+                  type="radio"
+                  name="age"
+                  value="no"
+                />
+                <span class="tour-form__radio-text">Нет</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="tour-form__checkbox">
+            <label class="tour-form__checkbox-label">
+              <input
+                required
+                class="tour-form__checkbox-input"
+                type="checkbox"
+              />
+              <span class="tour-form__checkbox-text">
+                Нажимая кнопку, я принимаю условия
+                <a href="#" class="tour-form__checkbox-link">
+                  Лицензионного договора
+                </a>
+              </span>
+            </label>
+          </div>
+
+          <div class="tour-form__button-block">
+            <button
+              id="submitBtn"
+              type="submit"
+              class="tour-form__button tour-form__button-cyan-btn"
+            >
+              Найти тур
+            </button>
+
+            <button
+              type="reset"
+              class="tour-form__button tour-form__button-lightgreen-btn"
+            >
+              Сбросить
+            </button>
           </div>
         </form>
       </section>
@@ -724,20 +712,18 @@
         </div>
       </section>
 
-      <section class="mail mail__content container">
-        <div class="mail__centered-wrapper">
-          <img
-            class="mail__image"
-            src="images/footer-photo.jpg"
-            alt="footer image"
-          />
-          <div class="mail__text-content">
-            <h3 class="mail__title">Пора в путешествие вместе с нами!</h3>
-            <p class="mail__subtitle">
-              Напиши на почту и узнай подробности на
-              <a href="mailto:yourtour@gmail.com">yourtour@gmail.com</a>
-            </p>
-          </div>
+      <section class="mail mail__content container mail__centered-wrapper">
+        <img
+          class="mail__image"
+          src="images/footer-photo.jpg"
+          alt="footer image"
+        />
+        <div class="mail__text-content">
+          <h3 class="mail__title">Пора в путешествие вместе с нами!</h3>
+          <p class="mail__subtitle">
+            Напиши на почту и узнай подробности на
+            <a href="mailto:yourtour@gmail.com">yourtour@gmail.com</a>
+          </p>
         </div>
       </section>
     </main>
