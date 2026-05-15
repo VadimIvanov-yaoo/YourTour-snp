@@ -20,8 +20,8 @@ main {
   width: 100%;
   max-width: 1210px;
   margin: 0 auto;
-  padding-left: 21px;
   padding-right: 21px;
+  padding-left: 21px;
   box-sizing: border-box;
 
   @include mixins.tablet {
@@ -44,9 +44,9 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 10;
-  padding: 28px 0;
+  width: 100%;
+  padding: 29px 0;
 
   @include mixins.mobile {
     padding: 25px 0;
@@ -78,12 +78,11 @@ main {
 
   &__phone {
     text-decoration: none;
-    @include mixins.p-normal;
     color: colors.$white;
+    @include mixins.p-normal;
 
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
-      color: colors.$white;
     }
   }
 
@@ -103,8 +102,8 @@ main {
       li {
         .header__link {
           text-decoration: none;
-          @include mixins.p-normal;
           color: colors.$white;
+          @include mixins.p-normal;
           @include mixins.customHoverMixin(color);
 
           &:after {
@@ -131,14 +130,14 @@ main {
   left: 0;
   z-index: 10;
   width: 100%;
-  backdrop-filter: blur(54px);
   background-color: rgba(244, 240, 233, 0.6);
+  backdrop-filter: blur(54px);
   transform: translateY(-100%);
 
   .header__nav-list li .header__link {
     position: relative;
-    @include mixins.customHoverMixin(color);
     color: colors.$black;
+    @include mixins.customHoverMixin(color);
 
     &:after {
       display: block;
@@ -170,12 +169,13 @@ main {
 .hero {
   position: relative;
   display: flex;
-  height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;
-  padding-top: 0;
+  padding-bottom: 10px;
+  height: 100vh;
+  min-height: 770px;
   text-align: center;
   background:
     linear-gradient(
@@ -188,7 +188,8 @@ main {
 
   @include mixins.tablet {
     padding-top: 90px;
-    @include mixins.fluid-clamp(height, 482px, 831px);
+    padding-bottom: 0;
+    min-height: 482px;
     background:
       linear-gradient(
         360deg,
@@ -197,6 +198,8 @@ main {
         rgba(0, 0, 0, 0.5) 100%
       ),
       url('../images/medium-hero-bg.jpg') no-repeat center/cover;
+
+    @include mixins.fluid-clamp(height, 482px, 831px);
   }
 
   @include mixins.mobile {
@@ -207,25 +210,25 @@ main {
 
   &__title {
     max-width: 768px;
-    letter-spacing: 2.2px;
-    @include mixins.h1-pc;
+    letter-spacing: 1.2px;
     color: colors.$white;
+    @include mixins.h1-pc;
 
     @include mixins.tablet {
       font-size: clamp(34px, 9.375vw, 96px);
     }
 
     @include mixins.mobile {
-      @include mixins.h1-mobile;
       letter-spacing: 1px;
       color: colors.$white;
+      @include mixins.h1-mobile;
     }
   }
 
   &__subtitle {
     max-width: 562px;
-    @include mixins.p-normal;
     color: colors.$white;
+    @include mixins.p-normal;
 
     @include mixins.tablet {
       font-size: clamp(16px, 2.5vw, 20px);
@@ -234,35 +237,34 @@ main {
 
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
-      color: colors.$white;
     }
   }
 
   &__btn {
     padding: 5px 20px;
-    background-color: colors.$white;
     border: 1px solid colors.$white;
     border-radius: 10px;
+    background-color: colors.$white;
     @include mixins.p-small;
     @include mixins.customHoverMixin(background-color, 0.25s);
     @include mixins.customHoverMixin(color, 0.25s);
 
     &:hover {
+      border: 1px solid colors.$orange200;
       background-color: colors.$orange200;
       color: colors.$white;
-      border: 1px solid colors.$orange200;
     }
 
     &:active {
+      border: 1px solid colors.$orange100;
       background-color: colors.$orange100;
       color: colors.$black;
-      border: 1px solid colors.$orange100;
     }
   }
 }
-
 .find-tour {
   padding-top: 135px;
+
   @include mixins.middle {
     padding-top: 75px;
   }
@@ -273,20 +275,20 @@ main {
   }
 
   &__header-block {
-    width: 100%;
     gap: 35px;
+    width: 100%;
     margin-bottom: 105px;
     @include mixins.flex-column;
 
     @include mixins.middle {
-      margin-bottom: 75px;
       gap: 30px;
+      margin-bottom: 75px;
     }
 
     @include mixins.mobile {
-      text-align: center;
-      margin-bottom: 50px;
       gap: 30px;
+      margin-bottom: 50px;
+      text-align: center;
     }
   }
 
@@ -299,17 +301,18 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h2-mobile;
       letter-spacing: 0.6px;
+      @include mixins.h2-mobile;
     }
   }
 
   &__list {
     gap: 30px;
     @include mixins.flex-center-between;
+
     @include mixins.tablet {
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 30px;
     }
 
@@ -326,8 +329,8 @@ main {
     position: relative;
     display: inline-flex;
     padding: 0;
-    background: none;
     border: none;
+    background: none;
     text-decoration: none;
     letter-spacing: -0.7px;
     @include mixins.p-big;
@@ -338,16 +341,16 @@ main {
     }
 
     @include mixins.mobile {
+      letter-spacing: -0.45px;
       @include mixins.p-normal-mobile;
       font-weight: bold;
-      letter-spacing: -0.45px;
     }
 
     &:after {
       position: absolute;
+      bottom: -2.4px;
       display: block;
       width: 0;
-      bottom: -2.4px;
       height: 2px;
       content: '';
       background-color: colors.$black;
@@ -362,18 +365,18 @@ main {
   &__list-link-active {
     position: relative;
     text-decoration: none;
-    @include mixins.p-big;
     color: colors.$orange200;
+    @include mixins.p-big;
 
     @include mixins.middle {
       @include mixins.fluid-clamp(font-size, 16px, 23px);
     }
 
     @include mixins.mobile {
-      @include mixins.p-normal-mobile;
-      font-weight: bold;
       letter-spacing: -0.45px;
       color: colors.$orange200;
+      @include mixins.p-normal-mobile;
+      font-weight: bold;
     }
 
     &:after {
@@ -391,9 +394,9 @@ main {
 
   &__card-wrapper {
     display: grid;
-    gap: 30px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
+    gap: 30px;
     width: 100%;
 
     @include mixins.tablet {
@@ -403,7 +406,6 @@ main {
     }
 
     @include mixins.mobile {
-      display: grid;
       grid-template-columns: 1fr;
       gap: 18px;
     }
@@ -417,18 +419,18 @@ main {
     align-items: start;
     justify-content: space-between;
     aspect-ratio: 9 / 12.92;
+    border-radius: 50px;
     background: linear-gradient(
       360deg,
       rgba(0, 0, 0, 0.4) 0%,
       rgba(0, 0, 0, 0.06) 48.44%,
       rgba(0, 0, 0, 0.5) 100%
     );
-    border-radius: 50px;
 
     @include mixins.tablet {
-      max-width: 450px;
       aspect-ratio: 10 / 14;
       width: 100%;
+      max-width: 450px;
       max-height: 531px;
       border-radius: 50px;
     }
@@ -471,8 +473,8 @@ main {
       z-index: 1;
       width: 100%;
       height: 100%;
-      pointer-events: none;
       content: '';
+      pointer-events: none;
       background: linear-gradient(
         360deg,
         rgba(0, 0, 0, 0.4) 0%,
@@ -507,35 +509,34 @@ main {
 
     &-title {
       max-width: 240px;
-      @include mixins.h3-pc;
       color: colors.$white;
+      @include mixins.h3-pc;
 
       @include mixins.tablet {
         max-width: fit-content;
       }
 
       @include mixins.mobile {
-        @include mixins.h3-mobile;
         letter-spacing: 0.8px;
         color: colors.$white;
+        @include mixins.h3-mobile;
       }
     }
 
     &-price {
-      @include mixins.p-small;
       color: colors.$white;
+      @include mixins.p-small;
 
       @include mixins.mobile {
         @include mixins.p-small-mobile;
-        color: colors.$white;
       }
     }
 
     &-footer {
       position: relative;
+      z-index: 2;
       width: 100%;
       padding: 50px;
-      z-index: 2;
 
       @include mixins.tablet {
         width: 100%;
@@ -561,13 +562,13 @@ main {
     justify-content: center;
     gap: 15px;
     padding: 7px 20px;
-    background-color: transparent;
     border: none;
     border-radius: 50px;
+    background-color: transparent;
     letter-spacing: -0.7px;
     @include mixins.customHoverMixin(width, 0.3s);
     @include mixins.customHoverMixin(background-color, 0.3s);
-    
+
     @include mixins.mobile {
       bottom: 18px;
       left: 10px;
@@ -583,12 +584,11 @@ main {
     }
 
     &-content {
-      @include mixins.p-big;
       color: colors.$white;
+      @include mixins.p-big;
 
       @include mixins.mobile {
         @include mixins.p-big-mobile;
-        color: colors.$white;
       }
     }
   }
@@ -615,8 +615,8 @@ main {
     }
 
     @include mixins.mobile {
-      padding-bottom: 40px;
       gap: 20px;
+      padding-bottom: 40px;
     }
   }
 
@@ -629,16 +629,16 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h2-mobile;
       letter-spacing: 0.7px;
+      @include mixins.h2-mobile;
     }
   }
 
   &__subtitle {
     width: 400px;
     text-align: center;
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       width: 100%;
@@ -649,14 +649,13 @@ main {
 
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
-      color: colors.$gray300;
     }
   }
 
   &__form {
     width: 100%;
-    background-color: colors.$white;
     border-radius: 50px;
+    background-color: colors.$white;
   }
 
   &__wrapper {
@@ -679,9 +678,8 @@ main {
 
   &__fields {
     display: grid;
-    gap: 30px;
-    column-gap: 33px;
     grid-template-columns: repeat(2, 1fr);
+    gap: 29px;
 
     @include mixins.tablet {
       grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
@@ -691,7 +689,6 @@ main {
     @include mixins.mobile {
       display: flex;
       flex-direction: column;
-      gap: 30px;
     }
   }
 
@@ -715,29 +712,28 @@ main {
   &__input {
     width: 100%;
     padding: 20px;
-    background-color: colors.$beige100;
     border: 1px solid colors.$beige200;
     border-radius: 10px;
+    background-color: colors.$beige100;
     @include mixins.p-normal;
 
     @include mixins.middle {
-      padding: 15px;
       min-width: 0;
+      padding: 15px;
     }
 
     @include mixins.mobile {
       width: 100%;
-      padding: 10px;
       max-height: 46px;
+      padding: 10px;
     }
 
     &::placeholder {
-      @include mixins.p-normal;
       color: colors.$gray300;
+      @include mixins.p-normal;
 
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
-        color: colors.$gray300;
       }
     }
 
@@ -746,9 +742,9 @@ main {
     }
 
     &:focus {
-      transform: none;
-      outline: none;
       border: 1px solid colors.$gray300;
+      outline: none;
+      transform: none;
     }
   }
 
@@ -757,8 +753,8 @@ main {
     padding-right: 48px;
 
     @include mixins.mobile {
-      @include mixins.p-normal-mobile;
       color: colors.$gray300;
+      @include mixins.p-normal-mobile;
     }
 
     &:invalid {
@@ -772,8 +768,8 @@ main {
     right: 20px;
     width: 26px;
     height: 26px;
-    pointer-events: none;
     content: '';
+    pointer-events: none;
     background: url(/images/svg/select-arrow.svg) no-repeat center / contain;
 
     @include mixins.mobile {
@@ -789,8 +785,8 @@ main {
   }
 
   &__textarea {
-    min-height: 152px;
     height: 0;
+    min-height: 152px;
     resize: none;
 
     @include mixins.mobile {
@@ -802,7 +798,7 @@ main {
     margin-top: 33px;
 
     @include mixins.mobile {
-      margin-top: 20px;
+      margin-top: 25px;
     }
   }
 
@@ -811,10 +807,15 @@ main {
     flex-direction: column;
     align-items: start;
     gap: 8px;
-    margin: 29px 0;
+    margin: 32px 0;
+
+    @include mixins.mobile {
+      margin: 30px 0;
+    }
 
     &-name {
       @include mixins.p-normal;
+
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
       }
@@ -822,16 +823,16 @@ main {
 
     &-wrapper {
       display: flex;
-      gap: 31px;
       align-items: center;
       justify-content: center;
+      gap: 31px;
     }
 
     &-option {
       display: flex;
-      gap: 11px;
       align-items: start;
       justify-content: center;
+      gap: 11px;
     }
 
     &-text {
@@ -866,9 +867,9 @@ main {
       width: 12px;
       height: 12px;
       content: '';
-      transform: translate(-50%, -50%) scale(0);
-      background: colors.$black;
       border-radius: 50%;
+      background: colors.$black;
+      transform: translate(-50%, -50%) scale(0);
       @include mixins.customHoverMixin(transform, 0.3s);
 
       @include mixins.mobile {
@@ -883,32 +884,36 @@ main {
   }
 
   &__checkbox {
-    margin-bottom: 33px;
     flex-shrink: 0;
+    margin-bottom: 33px;
 
     @include mixins.mobile {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin: 0;
+      margin-bottom: 25px;
     }
 
     &-label {
       display: flex;
-      gap: 19px;
       align-items: center;
+      gap: 19px;
+
+      @include mixins.tablet {
+        gap: 11px;
+      }
 
       @include mixins.mobile {
-        width: 100%;
         align-items: flex-start;
-        margin-bottom: 30px;
         gap: 10px;
+        width: 100%;
       }
     }
 
     &-input {
       position: relative;
       display: inline-block;
+      flex-shrink: 0;
       width: 26px;
       height: 26px;
       margin: 0;
@@ -916,7 +921,6 @@ main {
       appearance: none;
       border: 2px solid colors.$black;
       border-radius: 6px;
-      flex-shrink: 0;
 
       @include mixins.mobile {
         width: 20px;
@@ -924,8 +928,8 @@ main {
       }
 
       &:checked {
-        background: colors.$white;
         border-color: colors.$black;
+        background: colors.$white;
       }
 
       &:checked::after {
@@ -935,9 +939,9 @@ main {
         width: 6px;
         height: 12px;
         content: '';
-        transform: rotate(45deg);
         border-right: 2px solid colors.$black;
         border-bottom: 2px solid colors.$black;
+        transform: rotate(45deg);
 
         @include mixins.mobile {
           top: 1px;
@@ -947,18 +951,22 @@ main {
     }
 
     &-text {
-      letter-spacing: -0.165px;
-      @include mixins.p-small;
+      letter-spacing: -0.2px;
       color: colors.$gray300;
+      @include mixins.p-small;
+
+      @include mixins.mobile {
+        letter-spacing: -0.5px;
+      }
     }
 
     &-link {
-      background: none;
       border: none;
+      background: none;
       text-decoration: none;
       text-underline-offset: 3px;
-      @include mixins.p-small;
       color: colors.$black;
+      @include mixins.p-small;
 
       @include mixins.mobile {
         padding: 0;
@@ -972,8 +980,8 @@ main {
 
   &__button-block {
     display: flex;
-    gap: 30px;
     align-items: center;
+    gap: 30px;
     width: 100%;
 
     @include mixins.middle {
@@ -981,7 +989,8 @@ main {
     }
 
     @include mixins.mobile {
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 21px;
     }
   }
 
@@ -989,11 +998,11 @@ main {
     width: 100%;
     max-width: 235px;
     padding: 15px 70px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
     font-family: Roboto, sans-serif;
     text-decoration: none;
-    border: none;
-    border-radius: 10px;
     @include mixins.p-normal;
 
     @include mixins.middle {
@@ -1001,6 +1010,10 @@ main {
       @include mixins.fluid-clamp(height, 47px, 58px);
       @include mixins.fluid-clamp(padding, 12px, 15px);
       @include mixins.fluid-clamp(font-size, 16px, 20px);
+    }
+
+    @include mixins.mobile {
+      padding: 12px 29px;
     }
 
     &-cyan-btn {
@@ -1040,9 +1053,9 @@ main {
 
   &__content {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
-    flex: 1;
     height: 100%;
   }
 
@@ -1060,8 +1073,8 @@ main {
     }
 
     @include mixins.mobile {
-      margin-bottom: 50px;
       gap: 20px;
+      margin-bottom: 50px;
     }
 
     &-title {
@@ -1073,16 +1086,16 @@ main {
       }
 
       @include mixins.mobile {
-        @include mixins.h2-mobile;
         letter-spacing: 1px;
+        @include mixins.h2-mobile;
       }
     }
 
     &-subtitle {
       max-width: 400px;
       text-align: center;
-      @include mixins.p-normal;
       color: colors.$gray300;
+      @include mixins.p-normal;
 
       @include mixins.middle {
         width: 100%;
@@ -1111,8 +1124,8 @@ main {
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: colors.$beige200;
     border-radius: 50px;
+    background-color: colors.$beige200;
 
     @include mixins.mobile {
       height: auto;
@@ -1123,19 +1136,23 @@ main {
 
   &__card-content {
     display: flex;
-    width: 100%;
     flex-direction: column;
     justify-content: space-between;
     gap: 70px;
+    width: 100%;
     padding: 40px;
 
+    @include mixins.tablet {
+      gap: 65px;
+    }
+
     @include mixins.middle {
-      padding: 20px;
       gap: 56px;
+      padding: 20px;
     }
 
     @include mixins.mobile {
-      gap: 46px;
+      gap: 45px;
     }
   }
 
@@ -1143,8 +1160,8 @@ main {
     @include mixins.p-big;
 
     @include mixins.tablet {
-      margin: 0 auto;
       max-width: clamp(278px, 82vw, 370px);
+      margin: 0 auto;
       word-break: normal;
       @include mixins.fluid-clamp(font-size, 16px, 23px);
     }
@@ -1156,9 +1173,9 @@ main {
 
   &__card-info {
     display: flex;
-    width: 100%;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
   }
 
   &__card-username {
@@ -1170,8 +1187,8 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h3-mobile;
       letter-spacing: 0.8px;
+      @include mixins.h3-mobile;
     }
   }
 
@@ -1209,8 +1226,8 @@ main {
     margin-bottom: 100px;
 
     @include mixins.mobile {
-      margin-bottom: 50px;
       gap: 20px;
+      margin-bottom: 50px;
     }
   }
 
@@ -1223,16 +1240,16 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h2-mobile;
       letter-spacing: 1px;
+      @include mixins.h2-mobile;
     }
   }
 
   &__subtitle {
     width: 400px;
     text-align: center;
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       width: 100%;
@@ -1243,8 +1260,8 @@ main {
 
     @include mixins.mobile {
       max-width: 318px;
-      @include mixins.p-normal-mobile;
       color: colors.$gray300;
+      @include mixins.p-normal-mobile;
     }
   }
 
@@ -1259,14 +1276,14 @@ main {
     }
 
     @include mixins.mobile {
-      padding: 0 18px;
-
       gap: 18px;
+      padding: 0 21px;
     }
   }
 
   &__row {
     display: grid;
+    grid-auto-rows: 301px;
     gap: 30px;
 
     &:nth-child(1) {
@@ -1283,6 +1300,7 @@ main {
 
     @include mixins.tablet {
       gap: 20px;
+
       &:nth-child(1) {
         grid-template-columns: repeat(3, 1fr);
 
@@ -1290,6 +1308,7 @@ main {
           display: none;
         }
       }
+
       &:nth-child(2) {
         grid-template-columns: repeat(4, 1fr);
 
@@ -1297,6 +1316,7 @@ main {
           display: none;
         }
       }
+
       &:nth-child(3) {
         grid-template-columns: repeat(3, 1fr);
 
@@ -1307,6 +1327,8 @@ main {
     }
 
     @include mixins.middle {
+      grid-auto-rows: 180px;
+
       &:nth-child(1) {
         grid-template-columns: repeat(2, 1fr);
 
@@ -1333,7 +1355,9 @@ main {
     }
 
     @include mixins.mobile {
+      grid-auto-rows: 110px;
       gap: 18px;
+
       &:nth-child(1) {
         grid-template-columns: repeat(2, 150px);
       }
@@ -1350,20 +1374,19 @@ main {
   }
 
   &__item {
+    display: block;
     width: 100%;
-    height: 301px;
+    height: 100%;
     object-fit: cover;
     border-radius: 50px;
 
     @include mixins.middle {
       border-radius: 30px;
-      height: 180px;
     }
 
     @include mixins.mobile {
-      border-radius: 20px;
-      height: 110px;
       max-width: 150px;
+      border-radius: 20px;
     }
   }
 }
@@ -1388,8 +1411,8 @@ main {
     }
 
     @include mixins.mobile {
-      margin-bottom: 50px;
       gap: 20px;
+      margin-bottom: 50px;
     }
   }
 
@@ -1402,16 +1425,16 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h2-mobile;
       letter-spacing: 1px;
+      @include mixins.h2-mobile;
     }
   }
 
   &__subtitle {
     width: 400px;
     text-align: center;
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       width: 100%;
@@ -1422,8 +1445,8 @@ main {
 
     @include mixins.mobile {
       max-width: 318px;
-      @include mixins.p-normal-mobile;
       color: colors.$gray300;
+      @include mixins.p-normal-mobile;
     }
   }
 
@@ -1446,18 +1469,18 @@ main {
     position: relative;
     z-index: 4;
     display: flex;
-    overflow: hidden;
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
+    overflow: hidden;
     width: 100%;
+    min-height: 567px;
+    border-radius: 50px;
     background: linear-gradient(
       270deg,
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.2) 100%
     );
-    border-radius: 50px;
-    min-height: 567px;
 
     @include mixins.mobile {
       min-height: 455px;
@@ -1473,12 +1496,12 @@ main {
       height: 100%;
       object-fit: cover;
       object-position: center;
-      transform: scale(1);
       background: linear-gradient(
         270deg,
         rgba(0, 0, 0, 0) 0.01%,
         rgba(0, 0, 0, 0.2) 100%
       );
+      transform: scale(1);
       @include mixins.customHoverMixin(transform, 0.3s);
     }
 
@@ -1526,8 +1549,8 @@ main {
 
     &-title {
       margin-bottom: 37px;
-      @include mixins.h3-pc;
       color: colors.$white;
+      @include mixins.h3-pc;
 
       @include mixins.middle {
         margin-bottom: 20px;
@@ -1543,20 +1566,19 @@ main {
     &-subtitle {
       max-width: 554px;
       margin-bottom: 25px;
-      @include mixins.p-normal;
       color: colors.$white;
+      @include mixins.p-normal;
 
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
-        color: colors.$white;
       }
     }
 
     &-bottom-block {
       display: flex;
-      width: 100%;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
       padding: 45px 60px 55px 60px;
 
       @include mixins.middle {
@@ -1570,15 +1592,15 @@ main {
 
     &-btn {
       display: flex;
-      gap: 15px;
       align-items: center;
       justify-content: center;
+      gap: 15px;
       margin-left: -20px;
       padding: 7px 20px;
-      cursor: pointer;
-      background-color: transparent;
       border: none;
       border-radius: 50px;
+      background-color: transparent;
+      cursor: pointer;
       letter-spacing: -1px;
       @include mixins.customHoverMixin(width, 0.3s);
       @include mixins.customHoverMixin(background-color, 0.3s);
@@ -1592,12 +1614,11 @@ main {
       }
 
       &-content {
-        @include mixins.p-big;
         color: colors.$white;
+        @include mixins.p-big;
 
         @include mixins.mobile {
           @include mixins.p-big-mobile;
-          color: colors.$white;
         }
       }
     }
@@ -1613,12 +1634,11 @@ main {
 
   &__card-list {
     list-style-type: disc;
-    @include mixins.p-normal;
     color: colors.$white;
+    @include mixins.p-normal;
 
     @include mixins.mobile {
       @include mixins.p-normal-mobile;
-      color: colors.$white;
     }
   }
 
@@ -1634,8 +1654,8 @@ main {
   &__link-item {
     position: relative;
     text-decoration: none;
-    @include mixins.p-normal;
     color: colors.$white;
+    @include mixins.p-normal;
 
     &:after {
       position: absolute;
@@ -1681,12 +1701,12 @@ main {
 
   &__centered-wrapper {
     display: flex;
-    gap: 30px;
     align-items: center;
+    gap: 30px;
 
     @include mixins.middle {
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     @include mixins.mobile {
@@ -1701,14 +1721,14 @@ main {
 
     @include mixins.middle {
       width: 100%;
-      height: auto;
       max-width: 270px;
+      height: auto;
       max-height: none;
     }
 
     @include mixins.mobile {
-      max-height: 133px;
       max-width: 130px;
+      max-height: 133px;
       border-radius: 20px;
     }
   }
@@ -1737,14 +1757,14 @@ main {
     }
 
     @include mixins.mobile {
-      @include mixins.h3-mobile;
       letter-spacing: 0.8px;
+      @include mixins.h3-mobile;
     }
   }
 
   &__subtitle {
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       @include mixins.fluid-clamp(font-size, 16px, 20px);
@@ -1754,17 +1774,11 @@ main {
       position: relative;
       display: inline-block;
       text-decoration: none;
-      @include mixins.p-normal;
       color: colors.$black;
+      @include mixins.p-normal;
 
       @include mixins.mobile {
         @include mixins.p-normal-mobile;
-        color: colors.$black;
-      }
-
-      @include mixins.mobile {
-        @include mixins.p-normal-mobile;
-        color: colors.$black;
       }
 
       &:after {
@@ -1800,8 +1814,8 @@ main {
     }
 
     @include mixins.middle {
-      justify-content: space-around;
       flex-wrap: wrap;
+      justify-content: space-around;
       gap: 7px;
       padding: 30px 10px;
     }
@@ -1826,7 +1840,6 @@ main {
     display: flex;
     align-items: center;
     gap: 10px;
-
     text-decoration: none;
     color: inherit;
     @include mixins.p-normal;
@@ -1843,17 +1856,17 @@ main {
       }
 
       @include mixins.mobile {
-        @include mixins.p-normal-mobile;
         color: colors.$black;
+        @include mixins.p-normal-mobile;
       }
 
       &:after {
-        content: '';
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 2px;
         width: 0;
+        height: 2px;
+        content: '';
         background-color: colors.$black;
         @include mixins.customHoverMixin(width, 0.3s);
         @include mixins.customHoverMixin(background-color, 0.3s);
@@ -1880,16 +1893,16 @@ main {
   }
 
   &__text {
-    @include mixins.p-normal;
     color: colors.$gray300;
+    @include mixins.p-normal;
 
     @include mixins.middle {
       @include mixins.fluid-clamp(font-size, 16px, 20px);
     }
 
     @include mixins.mobile {
-      @include mixins.p-normal-mobile;
       color: colors.$gray300;
+      @include mixins.p-normal-mobile;
     }
   }
 }
