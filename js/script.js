@@ -175,6 +175,9 @@ function validateForm(e) {
       return
     }
   }
+  alert('Форма отправлена')
+
+  document.getElementById('tourForm').reset()
 }
 document.getElementById('tourForm').addEventListener('submit', function (e) {
   validateForm(e)
