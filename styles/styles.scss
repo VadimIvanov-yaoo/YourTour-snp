@@ -57,6 +57,7 @@ main {
   }
 
   &__logo {
+    width: 185px;
     @include mixins.middle {
       width: 150px;
       height: 30px;
